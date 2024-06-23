@@ -10,7 +10,7 @@ const Header = () => {
     <header className={styles.header}>
         <a href="/" className={`${font.className} ${styles.logo}`}>Lofi Typing</a>
       <nav>
-        <Link href={'/'} className={''}></Link>
+        <Link href={'/'} className={''}>Typing</Link>
       </nav>
     </header>
   );
