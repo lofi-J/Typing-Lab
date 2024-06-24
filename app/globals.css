@@ -1,65 +1,40 @@
 :root {
-  --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
-    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
-    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
-
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-
-  --primary-glow: conic-gradient(
-    from 180deg at 50% 50%,
-    #16abff33 0deg,
-    #0885ff33 55deg,
-    #54d6ff33 120deg,
-    #0071ff33 160deg,
-    transparent 360deg
-  );
-  --secondary-glow: radial-gradient(
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0)
-  );
+  "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+  "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+  /* color */
+  --primary-color: #fff;
+  --primary-color-rgb: rgb(255, 255, 255);
+  --background-color: #000;
+  --background-color-rgb: rgb(0, 0, 0);
+  --header-background-color: rgba(var(--background-color-rgb, 0.8));
+  
+  /* shape */
+  --border-radius: 12px;
 }
 
-/* change Theme */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+[data-theme="dark"] {
+  --primary-color: #000;
+  --primary-color-rgb: rgb(0, 0, 0);
+  --background-color: #fff;
+  --background-color-rgb: rgb(255, 255, 255);
+  --header-background-color: rgba(var(--background-color-rgb, 0.8));
+}
 
-    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-    --secondary-glow: linear-gradient(
-      to bottom right,
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0.3)
-    );
-  }
+/* Add transitions for smooth theme change */
+body, .header, .footer {
+  transition: background-color 0.3s, color 0.3s;
 }
 
 * {
   box-sizing: border-box;
-  padding: 0;
+}
+
+html, body {
   margin: 0;
-}
-
-html,
-body {
-  font-size: 62.25%;
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--primary-color);
 }
 
 a {
@@ -67,8 +42,11 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+button {
+  cursor: pointer;
+  background-color: inherit;
+  outline: none;
+  border: none;
+  color: var(--primary-color);
 }
+
