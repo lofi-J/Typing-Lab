@@ -35,6 +35,12 @@ html, body {
   padding: 0;
   background-color: var(--background-color);
   color: var(--primary-color);
+  
+  /* block drag */
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none
 }
 
 a {
@@ -48,5 +54,6 @@ button {
   outline: none;
   border: none;
   color: var(--primary-color);
+  padding: 0;
 }
 

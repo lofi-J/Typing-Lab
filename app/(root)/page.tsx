@@ -1,7 +1,9 @@
-export default function Home() {
+import TextWriterAnimation from "@/component/TextWriterAnimation";
+
+export default function LandingPage() {
   return (
     <main>
-      App
+      <TextWriterAnimation text={'Lofi Typing'} delay={100} />
     </main>
   );
 }
