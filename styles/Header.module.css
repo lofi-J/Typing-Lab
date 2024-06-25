@@ -7,6 +7,13 @@
 	padding: 0 3rem;
 	background-color: var(--header-background-color);
 }
+.nav {
+	width: 100rem;
+	height: max-content;
+	display: flex;
+	justify-content: space-between;
+}
+
 .logo {
 	font-size: 2rem;
 	font-weight: bold;
@@ -19,24 +26,18 @@
 	display: flex;
 	align-items: center;
 	gap: 1rem;
+	padding-bottom: 0.3rem;
+	border-bottom: 1px solid transparent;
 	& > a {
 		text-transform: uppercase;
 		letter-spacing: 0.05rem;
 		&:hover {
-			padding-bottom: 0.3rem;
 			border-bottom: 1px solid var(--primary-color);
 		}
 	}
 }
 .active {
-	padding-bottom: 0.3rem;
 	border-bottom: 1px solid var(--primary-color);
-}
-.nav {
-	width: 100rem;
-	height: max-content;
-	display: flex;
-	justify-content: space-between;
 }
 .theme_toggle {
 	display: flex;
