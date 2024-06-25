@@ -1,3 +1,4 @@
+/* default theme dark */
 :root {
   --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
   "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
@@ -12,7 +13,10 @@
   --gradient-middle-color: #14122c;
   --gradient-end-color: #22102c;
   --gradient-background-color: linear-gradient(to bottom right, var(--gradient-start-color), var(--gradient-middle-color), var(--gradient-end-color));
+  
+  --accent-color: #c2ffa3;
   --light-yellow: #fdfda4;
+  --a: #2b259f;
   
   /* shape */
   --border-radius: 12px;
@@ -21,15 +25,17 @@
   --header-height: 4.8rem;
 }
 
-[data-theme="dark"] {
+[data-theme="light"] {
   --primary-color: #000;
   --primary-color-rgb: rgb(0, 0, 0);
   --background-color: #fff;
   --background-color-rgb: rgb(255, 255, 255);
   --header-background-color: rgba(var(--background-color-rgb, 0.8));
-  --gradient-start-color: #4177ff;
-  --gradient-middle-color: #998f8f;
-  --gradient-end-color: #4fdfff;
+  --gradient-start-color: #c2ffa3;
+  --gradient-middle-color: #deffcb;
+  --gradient-end-color: #ffffff;
+  
+  --accent-color: #06142c;
 }
 
 /* smooth theme change */

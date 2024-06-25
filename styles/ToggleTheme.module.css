@@ -18,7 +18,7 @@
 
 .moon {
 	&:hover {
-		fill: var(--gradient-start-color);
+		fill: var(--a);
 		transform: scaleX(-1);
 	}
 }

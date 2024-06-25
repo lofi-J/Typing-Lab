@@ -29,7 +29,7 @@ const ToggleTheme = () => {
   
   return (
     <button onClick={toggleTheme} className={style.button}>
-      {theme === 'light' ?
+      {theme === 'dark' ?
         <LuSunMedium className={style.sun} /> :
         <IoMoonSharp className={style.moon} />
       }

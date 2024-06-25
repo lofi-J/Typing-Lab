@@ -35,7 +35,9 @@ const Header = () => {
         </Link>
         <div className={style.link_wrap}>
           {headers.map((item, index) => (
-            <Link key={index} href={item.link}>{item.title}</Link>
+            <Link key={index} href={item.link} className={`${pathname===item.link ? style.active : ''}`}>
+              {item.title}
+            </Link>
           ))}
           <ToggleTheme />
         </div>

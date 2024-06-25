@@ -12,13 +12,25 @@
 	font-weight: bold;
 	text-align: center;
 	&:hover {
-		color: red;
+		color: var(--accent-color);
 	}
 }
 .link_wrap {
 	display: flex;
 	align-items: center;
 	gap: 1rem;
+	& > a {
+		text-transform: uppercase;
+		letter-spacing: 0.05rem;
+		&:hover {
+			padding-bottom: 0.3rem;
+			border-bottom: 1px solid var(--primary-color);
+		}
+	}
+}
+.active {
+	padding-bottom: 0.3rem;
+	border-bottom: 1px solid var(--primary-color);
 }
 .nav {
 	width: 100rem;
