@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import {LuSunMedium} from "react-icons/lu";
 import {IoMoonSharp} from "react-icons/io5";
 import LocalStorage from "@/scripts/LocalStorage";
-import styled from "styled-components";
+import style from "@/styles/ToggleTheme.module.css";
 
 
 const ToggleTheme = () => {
@@ -26,19 +26,15 @@ const ToggleTheme = () => {
     setTheme(result);
   }
   
+  
   return (
-    <Button onClick={toggleTheme}>
-      {theme === 'light' ? <LuSunMedium /> : <IoMoonSharp />}
-    </Button>
+    <button onClick={toggleTheme} className={style.button}>
+      {theme === 'light' ?
+        <LuSunMedium className={style.sun} /> :
+        <IoMoonSharp className={style.moon} />
+      }
+    </button>
   );
 }
-
-const Button = styled.button`
-  width: 100%;
-  svg {
-    width: 1.3rem;
-    height: 1.3rem;
-  }
-`;
 
 export default ToggleTheme;

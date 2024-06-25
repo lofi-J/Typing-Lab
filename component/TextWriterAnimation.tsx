@@ -1,53 +1,50 @@
 'use client';
 
-import styled from "styled-components";
 import {useEffect, useState} from "react";
+import style from "@/styles/TextWriterAnimation.module.css";
+
 
 interface ITextWriter {
   text: string;
   delay?: number;
+  rewrite?: boolean;
+  hasCaret?: boolean;
+  playOnRender?: boolean;
 }
 
-const TextWriterAnimation = ({text, delay}: ITextWriter) => {
-  const [currentText, setCurrentText] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
+const TextWriterAnimation = ({text, delay=150, rewrite, hasCaret=false, playOnRender=true}: ITextWriter) => {
+  const [localRewrite, setLocalRewrite] = useState(rewrite);
+  const [currentText, setCurrentText] = useState(playOnRender ? '' : text);
+  const [currentIndex, setCurrentIndex] = useState(playOnRender ? 0 : text.length);
+  const [isDone, setIsDone] = useState(false);
   
   useEffect(() => {
+    if (localRewrite !== rewrite) {
+      setCurrentText('');
+      setCurrentIndex(0);
+      setLocalRewrite(rewrite);
+    }
+    
     if (currentIndex < text.length) {
       const timeout = setTimeout(() => {
         setCurrentText(prevText => prevText + text[currentIndex]);
         setCurrentIndex(prevIndex => prevIndex + 1);
       }, delay)
       
-      return () => clearTimeout(timeout);
+      return () => {
+        if (text.length-1 === currentIndex) {
+          setIsDone(true);
+        }
+        clearTimeout(timeout);
+      }
     }
-  }, [currentIndex, delay, text])
+  }, [currentIndex, delay, text, rewrite, localRewrite])
   
   return (
-    <StyledTextWriter>{currentText}</StyledTextWriter>
+    <span className={`${hasCaret ? style.caret : ''} ${isDone ? style.done : ''}`}>
+      {currentText}
+    </span>
   );
 }
-
-const StyledTextWriter = styled.span`
-  position: relative;
-	font-size: 1.5rem;
-  font-weight: bold;
-  &::after {
-    content: '';
-    position: absolute;
-    right: -0.3rem;
-    top: 20%;
-    width: 2px;
-    height: 80%;
-    background-color: var(--primary-color);
-    animation: blink 1s step-start infinite;
-  }
-  @keyframes blink {
-    0% { opacity: 1; }
-    50% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-`
-
 
 export default TextWriterAnimation;

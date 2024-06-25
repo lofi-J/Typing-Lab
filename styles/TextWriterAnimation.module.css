@@ -1,0 +1,18 @@
+@keyframes blink {
+	from, to {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+}
+
+.caret::after {
+	content: '|';
+	background-color: var(--primary-color);
+	-webkit-animation: blink 1s infinite;
+}
+.caret.done::after {
+  visibility: hidden;
+  animation: none;
+}
