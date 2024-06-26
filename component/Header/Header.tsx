@@ -1,10 +1,10 @@
 'use client';
 
+import style from "./Header.module.css";
 import Link from "next/link";
-import style from "@/styles/Header.module.css";
 import {Playfair_Display} from "next/font/google";
-import ToggleTheme from "@/component/ToggleTheme";
-import TextWriterAnimation from "@/component/TextWriterAnimation";
+import ToggleTheme from "@/component/ToggleTheme/ToggleTheme";
+import TextWriterAnimation from "@/component/TextWriterAnimation/TextWriterAnimation";
 import {useState} from "react";
 import {usePathname} from "next/navigation";
 import headers from "@/static/header";

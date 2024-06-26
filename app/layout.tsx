@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import React from "react";
 import { Inter } from "next/font/google";
-import Header from "@/component/Header";
-import "../globals.css";
+import Header from "@/component/Header/Header";
+import "./globals.css";
 
 
 // google font

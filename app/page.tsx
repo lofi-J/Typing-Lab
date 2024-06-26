@@ -1,5 +1,5 @@
-import TextWriterAnimation from "@/component/TextWriterAnimation";
 import style from "./page.module.css";
+import TextWriterAnimation from "@/component/TextWriterAnimation/TextWriterAnimation";
 
 export default function LandingPage() {
   return (

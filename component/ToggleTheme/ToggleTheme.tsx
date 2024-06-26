@@ -1,10 +1,10 @@
 'use client';
 
+import style from "./ToggleTheme.module.css";
 import {useEffect, useState} from "react";
 import {LuSunMedium} from "react-icons/lu";
 import {IoMoonSharp} from "react-icons/io5";
 import LocalStorage from "@/scripts/LocalStorage";
-import style from "@/styles/ToggleTheme.module.css";
 
 
 const ToggleTheme = () => {

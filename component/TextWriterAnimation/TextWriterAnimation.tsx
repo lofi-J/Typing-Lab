@@ -1,7 +1,7 @@
 'use client';
 
+import style from "./TextWriterAnimation.module.css";
 import {useEffect, useState} from "react";
-import style from "@/styles/TextWriterAnimation.module.css";
 
 
 interface ITextWriter {
