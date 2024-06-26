@@ -3,7 +3,6 @@
 	flex-direction: column;
 	align-items: center;
 }
-
 .title {
 	padding-top: 10%;
 }
@@ -11,3 +10,24 @@
 .title > span {
 	font-size: 4rem;
 }
+/* press to any key to typing */
+@keyframes showing {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+.info {
+	margin-top: 10%;
+	animation: showing 0.8s ease;
+	&:hover {
+		cursor: pointer;
+	}
+}
+.p {
+	border: 1px solid var(--normal-gray);
+	border-radius: var(--border-radius);
+	background-color: var(--accent-color);
+	font-size: 1.2rem;
+	padding: 0.8rem 1rem;
+}
+
+

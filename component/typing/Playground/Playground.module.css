@@ -1,0 +1,30 @@
+.container {
+	width: 100%;
+}
+
+.board {
+	position: relative;
+	display: flex;
+	justify-content: flex-start;
+}
+.target_text, .write {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 1rem;
+}
+
+/* Target Text design */
+.target_text {
+	font-size: 1.5rem;
+	font-weight: 300;
+	color: var(--gray-900);
+	letter-spacing: 0.15rem;
+}
+/* Write Text design */
+.write {
+	font-size: 1.5rem;
+	font-weight: 500;
+	color: var(--background-color);
+	letter-spacing: 0.15rem;
+}

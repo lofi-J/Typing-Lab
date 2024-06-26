@@ -1,7 +1,7 @@
 'use client';
 
 import style from "./TextWriterAnimation.module.css";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 
 interface ITextWriter {
@@ -10,9 +10,10 @@ interface ITextWriter {
   rewrite?: boolean;
   hasCaret?: boolean;
   playOnRender?: boolean;
+  setIsDoneForParent?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const TextWriterAnimation = ({text, delay=150, rewrite, hasCaret=false, playOnRender=true}: ITextWriter) => {
+const TextWriterAnimation = ({text, delay=150, rewrite, hasCaret=false, playOnRender=true, setIsDoneForParent}: ITextWriter) => {
   const [localRewrite, setLocalRewrite] = useState(rewrite);
   const [currentText, setCurrentText] = useState(playOnRender ? '' : text);
   const [currentIndex, setCurrentIndex] = useState(playOnRender ? 0 : text.length);
@@ -33,6 +34,9 @@ const TextWriterAnimation = ({text, delay=150, rewrite, hasCaret=false, playOnRe
       
       return () => {
         if (text.length-1 === currentIndex) {
+          if(setIsDoneForParent) {
+            setIsDoneForParent(true);
+          }
           setIsDone(true);
         }
         clearTimeout(timeout);
