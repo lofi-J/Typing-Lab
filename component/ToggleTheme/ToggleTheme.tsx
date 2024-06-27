@@ -1,6 +1,6 @@
 'use client';
 
-import style from "./ToggleTheme.module.css";
+import styles from "./ToggleTheme.module.css";
 import {useEffect, useState} from "react";
 import {LuSunMedium} from "react-icons/lu";
 import {IoMoonSharp} from "react-icons/io5";
@@ -28,10 +28,10 @@ const ToggleTheme = () => {
   
   
   return (
-    <button onClick={toggleTheme} className={style.button}>
+    <button onClick={toggleTheme} className={styles.button}>
       {theme === 'dark' ?
-        <LuSunMedium className={style.sun} /> :
-        <IoMoonSharp className={style.moon} />
+        <LuSunMedium className={styles.sun} /> :
+        <IoMoonSharp className={styles.moon} />
       }
     </button>
   );

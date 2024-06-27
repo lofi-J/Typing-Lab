@@ -3,10 +3,3 @@
 	justify-content: center;
 	align-items: center;
 }
-.container {
-	width: var(--playground-width);
-	height: 30rem;
-	margin: 0 auto;
-	padding: 1rem;
-	background-color: var(--gray-500);
-}

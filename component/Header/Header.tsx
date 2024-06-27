@@ -1,6 +1,6 @@
 'use client';
 
-import style from "./Header.module.css";
+import styles from "./Header.module.css";
 import Link from "next/link";
 import {Playfair_Display} from "next/font/google";
 import ToggleTheme from "@/component/ToggleTheme/ToggleTheme";
@@ -28,14 +28,14 @@ const Header = () => {
   
   
   return (
-    <header className={style.header}>
-      <nav className={style.nav}>
-        <Link href={'/'} className={`${font.className} ${style.logo}`} onClick={onClickLogo}>
+    <header className={styles.header}>
+      <nav className={styles.nav}>
+        <Link href={'/'} className={`${font.className} ${styles.logo}`} onClick={onClickLogo}>
           <TextWriterAnimation text={'Lofi Typing'} delay={80} rewrite={reWriteLogo} playOnRender={false} />
         </Link>
-        <div className={style.link_wrap}>
+        <div className={styles.link_wrap}>
           {headers.map((item, index) => (
-            <Link key={index} href={item.link} className={`${pathname===item.link ? style.active : ''}`}>
+            <Link key={index} href={item.link} className={`${pathname===item.link ? styles.active : ''}`}>
               {item.title}
             </Link>
           ))}

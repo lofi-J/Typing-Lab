@@ -1,6 +1,6 @@
 'use client';
 
-import style from "./page.module.css";
+import styles from "./page.module.css";
 import {useRouter} from "next/navigation";
 import {useEffect, useState} from "react";
 import TextWriterAnimation from "@/component/TextWriterAnimation/TextWriterAnimation";
@@ -20,8 +20,8 @@ export default function LandingPage() {
   }, [router]);
   
   return (
-    <main className={style.main}>
-      <h1 className={style.title}>
+    <main className={styles.main}>
+      <h1 className={styles.title}>
         <TextWriterAnimation
           text={'Hava a chill typing experience.'}
           delay={50}
@@ -31,10 +31,10 @@ export default function LandingPage() {
       </h1>
       {isDone && (
         <div
-          className={style.info}
+          className={styles.info}
           onClick={() => router.push('/typing')}
         >
-          <p className={style.p}>Press to any key.</p>
+          <p className={styles.p}>Press to any key.</p>
         </div>
       )}
     </main>

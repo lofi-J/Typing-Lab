@@ -13,8 +13,12 @@
   --gradient-middle-color: #14122c;
   --gradient-end-color: #22102c;
   --gradient-background-color: linear-gradient(to bottom right, var(--gradient-start-color), var(--gradient-middle-color), var(--gradient-end-color));
+  --card-gradient-start-color: #131d30;
+  --card-gradient-end-color: #15091b;
+  --card-gradient-background: linear-gradient(to right, var(--card-gradient-start-color), var(--card-gradient-end-color));
   --accent-color: #8200ff;
   --light-yellow: #fdfda4;
+  --mint: #37f3f4;
   --normal-gray: #333;
   --gray-100: #f0f0f0;  /* 가장 밝은 회색 */
   --gray-200: #d9d9d9;

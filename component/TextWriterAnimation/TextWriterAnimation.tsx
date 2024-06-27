@@ -1,6 +1,6 @@
 'use client';
 
-import style from "./TextWriterAnimation.module.css";
+import styles from "./TextWriterAnimation.module.css";
 import React, {useEffect, useState} from "react";
 
 
@@ -42,10 +42,10 @@ const TextWriterAnimation = ({text, delay=150, rewrite, hasCaret=false, playOnRe
         clearTimeout(timeout);
       }
     }
-  }, [currentIndex, delay, text, rewrite, localRewrite])
+  }, [currentIndex, delay, text, rewrite, localRewrite, setIsDoneForParent])
   
   return (
-    <span className={`${hasCaret ? style.caret : ''} ${isDone ? style.done : ''}`}>
+    <span className={`${hasCaret ? styles.caret : ''} ${isDone ? styles.done : ''}`}>
       {currentText}
     </span>
   );

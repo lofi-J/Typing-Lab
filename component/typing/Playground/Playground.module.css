@@ -1,30 +1,53 @@
 .container {
 	width: 100%;
 }
-
 .board {
 	position: relative;
 	display: flex;
 	justify-content: flex-start;
 }
-.target_text, .write {
+.target_text, .print {
 	position: absolute;
+	height: 1.5rem;
 	top: 0;
 	left: 0;
-	padding: 1rem;
-}
-
-/* Target Text design */
-.target_text {
 	font-size: 1.5rem;
 	font-weight: 300;
-	color: var(--gray-900);
 	letter-spacing: 0.15rem;
 }
-/* Write Text design */
-.write {
-	font-size: 1.5rem;
-	font-weight: 500;
-	color: var(--background-color);
-	letter-spacing: 0.15rem;
+/* input design */
+.input {
+	height: 1.5rem;
+	background-color: transparent;
+	border: none;
+	outline: none;
+	opacity: 0;
+}
+
+/* Target Text */
+.target_text {
+	color: var(--gray-900);
+}
+/* print Text */
+.print {
+	color: white;
+	& > span:last-child::after {
+		content: '';
+		display: inline-block;
+		width: 0.2rem;
+		height: 1.5rem;
+		vertical-align: middle;
+		background-color: var(--primary-color);
+		-webkit-animation: blink 1.3s infinite;
+		animation: blink 1.3s infinite;
+	}
+}
+
+@keyframes blink {
+	from, to {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
 }
