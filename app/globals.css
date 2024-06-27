@@ -35,7 +35,12 @@
   
   /* size */
   --header-height: 4.8rem;
-  --playground-width: 80rem;
+  /* size[px] */
+  --playground-width: 1000px;
+  --playground-height: 450px;
+  --cell-width: 22px;
+  --cell-blank-width: 10px;
+  --cell-height: 34px;
 }
 
 [data-theme="light"] {
@@ -59,6 +64,7 @@ body, .header, .footer {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 html, body {
@@ -69,7 +75,9 @@ html, body {
   -webkit-user-select:none;
   -moz-user-select:none;
   -ms-user-select:none;
-  user-select:none
+  user-select:none;
+  
+  font-size: 62.25%;
 }
 /* main 본문은 항상 100vw, 100vh를 차지할것 */
 main {

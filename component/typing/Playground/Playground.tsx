@@ -1,52 +1,78 @@
 'use client';
 
 import styles from "./Playground.module.css";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useRef, useState, useCallback} from "react";
 import Cell from "@/component/Cell/Cell";
 
 interface IPlayground {
-  typingTarget: string;
+  typingTargetList: string[];
 }
 
-const Playground = ({typingTarget}: IPlayground) => {
+const Playground = ({typingTargetList}: IPlayground) => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const [inputText, setInputText] = useState('');
+  const [focusIndex, setFocusIndex] = useState(0);
+  const [inputTextList, setInputTextList] = useState(Array.from({length: typingTargetList.length}, () => ''));
   
   const handleInputText = (value: string) => {
-    setInputText(value);
+    console.log(value);
   }
   
+  const handleClickInside = useCallback((event: MouseEvent) => {
+    if (containerRef.current && containerRef.current.contains(event.target as Node)) {
+      if (inputRef.current !== null) {
+        inputRef.current.focus();
+      }
+    }
+  }, [containerRef])
+  
+  // For input focusing
   useEffect(() => {
-    if (inputRef.current) { inputRef.current.focus(); }
-  }, [])
+    if (inputRef.current !== null) {
+      inputRef.current.focus();
+    }
+    
+    document.addEventListener('mousedown', handleClickInside);
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickInside);
+    }
+  }, [handleClickInside, focusIndex])
   
   return (
-    <div className={styles.container}>
+    <div ref={containerRef} className={styles.container}>
       <div className={styles.board}>
         <input
           ref={inputRef}
           className={styles.input}
           type="text"
-          value={inputText}
+          value={''}
           onChange={e => handleInputText(e.target.value)}
         />
-        <div className={styles.target_text}>
-          {typingTarget.split('').map((letter, index) => (
-            <span key={`-${index}`}>{letter}</span>
-          ))}
-        </div>
-        <div className={styles.print}>
-          <span />
-          {inputText.split('').map((letter, index) => (
-            <Cell 
-              key={`+${index}`}
-              isCollect={false}
-            >
-              {letter}
-              </Cell>
-            ))
-          }
-        </div>
+        {typingTargetList.map((list, index) => (
+          <div key={`targetList-${index}`} className={styles.wrap}>
+            <div className={styles.target_text}>
+              {list.split('').map((letter, index) => (
+                <Cell
+                  key={`-${index}`}
+                  type={'placeholder'}
+                  char={letter}
+                  isTypingNow={false} // TODO
+                />
+              ))}
+            </div>
+            <div className={styles.print}>
+              {inputTextList[index].split('').map((letter, index) => (
+                <Cell
+                  key={`+${index}`}
+                  type={'print'}
+                  char={letter}
+                  isCollect={true} // TODO
+                />
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
