@@ -41,6 +41,10 @@
   --cell-width: 22px;
   --cell-blank-width: 10px;
   --cell-height: 34px;
+  
+  /* font-size */
+  --typing-size: 1.8rem;
+  --typing-weight: 500;
 }
 
 [data-theme="light"] {

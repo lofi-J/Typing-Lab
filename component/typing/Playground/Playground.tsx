@@ -1,79 +1,47 @@
 'use client';
 
 import styles from "./Playground.module.css";
-import {useEffect, useRef, useState, useCallback} from "react";
-import Cell from "@/component/Cell/Cell";
+import '@/utils/extension/arrayExtensions';
+import {useEffect, useState} from "react";
+import TypingLine from "@/component/typing/TypingLine/TypingLine";
+import TypingInput from "@/component/typing/TypingInput/TypingInput";
+import UserText from "@/component/typing/UserText/UserText";
+import {indexToKey, initLineRange} from "@/utils/playgroundHelper";
 
 interface IPlayground {
-  typingTargetList: string[];
+  targetList: string[];
 }
 
-const Playground = ({typingTargetList}: IPlayground) => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const inputRef = useRef<HTMLInputElement | null>(null);
-  const [focusIndex, setFocusIndex] = useState(0);
-  const [inputTextList, setInputTextList] = useState(Array.from({length: typingTargetList.length}, () => ''));
+const Playground = ({targetList}: IPlayground) => {
+  // input을 통해 totalUserText를 update해야함.
+  const [totalUserText, setTotalUserTexts] = useState<string[]>(Array.from({length: targetList.length}, () => ''));
+  const [showUserText, setShowUserText] = useState<string[]>(['']);
+  const [lineRange, setLineRange] = useState(initLineRange(targetList));
+  const [lines, setLines] = useState(targetList.copy(lineRange.start, lineRange.end));
   
-  const handleInputText = (value: string) => {
-    console.log(value);
-  }
   
-  const handleClickInside = useCallback((event: MouseEvent) => {
-    if (containerRef.current && containerRef.current.contains(event.target as Node)) {
-      if (inputRef.current !== null) {
-        inputRef.current.focus();
-      }
-    }
-  }, [containerRef])
-  
-  // For input focusing
+  // update show user text
   useEffect(() => {
-    if (inputRef.current !== null) {
-      inputRef.current.focus();
-    }
-    
-    document.addEventListener('mousedown', handleClickInside);
-    
-    return () => {
-      document.removeEventListener('mousedown', handleClickInside);
-    }
-  }, [handleClickInside, focusIndex])
+    const result = totalUserText.copy(lineRange.start, lineRange.end);
+    setShowUserText(result);
+  }, [lineRange, totalUserText]);
+  
   
   return (
-    <div ref={containerRef} className={styles.container}>
-      <div className={styles.board}>
-        <input
-          ref={inputRef}
-          className={styles.input}
-          type="text"
-          value={''}
-          onChange={e => handleInputText(e.target.value)}
-        />
-        {typingTargetList.map((list, index) => (
-          <div key={`targetList-${index}`} className={styles.wrap}>
-            <div className={styles.target_text}>
-              {list.split('').map((letter, index) => (
-                <Cell
-                  key={`-${index}`}
-                  type={'placeholder'}
-                  char={letter}
-                  isTypingNow={false} // TODO
-                />
-              ))}
-            </div>
-            <div className={styles.print}>
-              {inputTextList[index].split('').map((letter, index) => (
-                <Cell
-                  key={`+${index}`}
-                  type={'print'}
-                  char={letter}
-                  isCollect={true} // TODO
-                />
-              ))}
-            </div>
-          </div>
+    <div className={styles.container}>
+      <div className={styles.text_wrap}>
+        {!!lines.length && lines.map((line, i) => (
+          <TypingLine key={indexToKey('wrap', i)} lineIndex={i} line={line} />
         ))}
+        <UserText showUserText={showUserText} />
       </div>
+      <TypingInput
+        lines={lines}
+        totalUserText={totalUserText}
+        setTotalUserText={setTotalUserTexts}
+        lineRange={lineRange}
+        setLineRange={setLineRange}
+      />
     </div>
   );
 }

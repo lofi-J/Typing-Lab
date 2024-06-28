@@ -1,66 +1,13 @@
 .container {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
 	width: 100%;
-	min-height: 30vh;
+	height: 100%;
 }
-.board {
+.text_wrap {
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
-	justify-content: flex-start;
+	gap: 1.5rem;
 }
-.wrap {
-	position: relative;
-	display: inline-block;
-}
-.target_text, .print {
-	display: flex;
-	flex-wrap: wrap;
-	font-weight: 300;
-	letter-spacing: 0.15rem;
-}
-/* input design */
-.input {
-	position: absolute;
-	top: 0;
-	left:0;
-	width: 100%;
-	height: var(--cell-height);
-	border: none;
-	outline: none;
-	opacity: 0;
-	z-index: 2;
-}
-
-/* Target Text */
-.target_text {
-	color: var(--gray-900);
-}
-/* print Text */
-/*.print {*/
-/*	color: white;*/
-/*	width: max-content;*/
-/*	& > span:last-child::after {*/
-/*		position: absolute;*/
-/*		left: 0;*/
-/*		top: 0;*/
-/*		margin-left: 0.2rem;*/
-/*		content: '';*/
-/*		display: inline-block;*/
-/*		width: 0.2rem;*/
-/*		height: var(--cell-height);*/
-/*		vertical-align: middle;*/
-/*		background-color: var(--primary-color);*/
-/*		-webkit-animation: blink 1.3s infinite;*/
-/*		animation: blink 1.3s infinite;*/
-/*	}*/
-/*}*/
-
-/*@keyframes blink {*/
-/*	from, to {*/
-/*		opacity: 0;*/
-/*	}*/
-/*	50% {*/
-/*		opacity: 1;*/
-/*	}*/
-/*}*/

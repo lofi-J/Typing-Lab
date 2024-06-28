@@ -4,7 +4,7 @@ import styles from "./ToggleTheme.module.css";
 import {useEffect, useState} from "react";
 import {LuSunMedium} from "react-icons/lu";
 import {IoMoonSharp} from "react-icons/io5";
-import LocalStorage from "@/scripts/LocalStorage";
+import LocalStorage from "@/utils/LocalStorage";
 
 
 const ToggleTheme = () => {

@@ -1,0 +1,25 @@
+.line {
+	position: absolute;
+	top: 0;
+	left: 0;
+	& > span {
+		height: 21px;
+	}
+	& > span:last-of-type::after {
+		content: '';
+		display: inline-block;
+		width: 0.2rem;
+		height: 100%;
+		transform: translateY(50%);
+		background-color: var(--primary-color);
+		animation: blink 1s step-start infinite;
+	}
+}
+@keyframes blink {
+	0%, 100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+}

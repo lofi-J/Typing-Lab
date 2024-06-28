@@ -1,0 +1,5 @@
+.cell {
+	font-size: var(--typing-size);
+	font-weight: var(--typing-weight);
+	color: var(--primary-color);
+}
