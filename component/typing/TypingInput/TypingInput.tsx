@@ -1,6 +1,6 @@
 import styles from "./TypingInput.module.css";
 import {TLineRange} from "@/utils/playgroundHelper";
-import {SetStateAction} from "react";
+import React, {SetStateAction} from "react";
 import "@/utils/splitKR";
 
 interface ITypingInput {
@@ -17,9 +17,8 @@ interface ITypingInput {
 * lineRange: 현재 보여지는 3개의 라인에 대한 index이다.
 */
 const TypingInput = ({lines, totalUserText, setTotalUserText, lineRange, setLineRange}: ITypingInput) => {
-  const targetList = lines[0];
   
-  // setTotalFn
+  // setTotalUserText Fn
   const setInputText = (value: string) => {
     const result = [...totalUserText];
     result[lineRange.start] = value;
@@ -30,11 +29,22 @@ const TypingInput = ({lines, totalUserText, setTotalUserText, lineRange, setLine
     setInputText(e.target.value);
   }
   
+  const onKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const key = e.key || e.keyCode;
+    if (key === 'Enter' || key === 13) {
+      console.log(`user pressed Enter!`);
+      // TODO lineRange update logic 6.28
+    }
+  }
+  
+  
   return (
     <input
       className={styles.input}
       type={'text'}
-      onChange={(e) => onChange(e)}
+      onChange={onChange}
+      onKeyDown={onKeydown}
     />
   );
 }

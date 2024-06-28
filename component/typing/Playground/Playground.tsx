@@ -13,7 +13,6 @@ interface IPlayground {
 }
 
 const Playground = ({targetList}: IPlayground) => {
-  // input을 통해 totalUserText를 update해야함.
   const [totalUserText, setTotalUserTexts] = useState<string[]>(Array.from({length: targetList.length}, () => ''));
   const [showUserText, setShowUserText] = useState<string[]>(['']);
   const [lineRange, setLineRange] = useState(initLineRange(targetList));
