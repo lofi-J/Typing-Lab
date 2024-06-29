@@ -6,7 +6,7 @@ import {useEffect, useState} from "react";
 import TypingLine from "@/component/typing/TypingLine/TypingLine";
 import TypingInput from "@/component/typing/TypingInput/TypingInput";
 import UserText from "@/component/typing/UserText/UserText";
-import {indexToKey, initLineRange} from "@/utils/playgroundHelper";
+import {indexToKey, initLineRange, TLineRange} from "@/utils/playgroundHelper";
 
 interface IPlayground {
   targetList: string[];
@@ -15,9 +15,8 @@ interface IPlayground {
 const Playground = ({targetList}: IPlayground) => {
   const [totalUserText, setTotalUserTexts] = useState<string[]>(Array.from({length: targetList.length}, () => ''));
   const [showUserText, setShowUserText] = useState<string[]>(['']);
-  const [lineRange, setLineRange] = useState(initLineRange(targetList));
+  const [lineRange, setLineRange] = useState<TLineRange>(initLineRange(targetList));
   const [lines, setLines] = useState(targetList.copy(lineRange.start, lineRange.end));
-  
   
   // update show user text
   useEffect(() => {

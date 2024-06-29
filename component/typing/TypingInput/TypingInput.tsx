@@ -3,21 +3,18 @@ import {TLineRange} from "@/utils/playgroundHelper";
 import React, {SetStateAction} from "react";
 import "@/utils/splitKR";
 
+
 interface ITypingInput {
   lines: string[];
   totalUserText: string[];
   setTotalUserText: (value: (((prevState: string[]) => string[]) | string[])) => void;
   lineRange: TLineRange;
-  setLineRange: Dispatch<SetStateAction<TLineRange>>;
+  setLineRange: (value: (((prevState: TLineRange) => TLineRange) | TLineRange)) => void;
 }
 
-/*
-* lines: 타이핑할 타겟 gray색상
-* totalUserText: input을 통해 업데이트할 유저가 입력할 텍스트 리스트 string[]이다.
-* lineRange: 현재 보여지는 3개의 라인에 대한 index이다.
-*/
 const TypingInput = ({lines, totalUserText, setTotalUserText, lineRange, setLineRange}: ITypingInput) => {
-  
+  const MAX_LINE_INDEX = totalUserText.length-1;
+
   // setTotalUserText Fn
   const setInputText = (value: string) => {
     const result = [...totalUserText];
@@ -28,13 +25,21 @@ const TypingInput = ({lines, totalUserText, setTotalUserText, lineRange, setLine
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputText(e.target.value);
   }
+
+  const nextLineRange = () => {
+    const nextStart = (lineRange.start + 1) <= MAX_LINE_INDEX ? lineRange.start + 1 : undefined;
+    const nextEnd = (lineRange.end + 1) <= MAX_LINE_INDEX ? lineRange.end + 1 : undefined;
+
+    setLineRange(prev => {
+      return {start: nextStart || prev.start, end: nextEnd || prev.end}
+    })
+  }
   
   const onKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     e.preventDefault();
     const key = e.key || e.keyCode;
     if (key === 'Enter' || key === 13) {
-      console.log(`user pressed Enter!`);
-      // TODO lineRange update logic 6.28
+      nextLineRange();
     }
   }
   

@@ -1,7 +1,8 @@
 import styles from "./Cell.module.css";
 
 interface ICell {
-  char: string;
+  char: string,
+  key?: string
 }
 
 const Cell = ({char}: ICell) => {
