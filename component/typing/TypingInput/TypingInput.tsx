@@ -1,20 +1,24 @@
 import styles from "./TypingInput.module.css";
-import {TLineRange} from "@/utils/playgroundHelper";
-import React, {SetStateAction} from "react";
+import {TLineRange, validateTypingChar} from "@/utils/playgroundHelper";
+import React, {useEffect} from "react";
 import "@/utils/splitKR";
 
 
 interface ITypingInput {
-  lines: string[];
+  targetList: string[];
   totalUserText: string[];
-  setTotalUserText: (value: (((prevState: string[]) => string[]) | string[])) => void;
+  setTotalUserText: React.Dispatch<React.SetStateAction<string[]>>;
   lineRange: TLineRange;
-  setLineRange: (value: (((prevState: TLineRange) => TLineRange) | TLineRange)) => void;
+  setLineRange: React.Dispatch<React.SetStateAction<TLineRange>>;
+  setValidationResultArr: React.Dispatch<React.SetStateAction<boolean[][]>>;
 }
 
-const TypingInput = ({lines, totalUserText, setTotalUserText, lineRange, setLineRange}: ITypingInput) => {
+const TypingInput = (
+  {targetList, totalUserText, setTotalUserText, lineRange, setLineRange, setValidationResultArr
+}: ITypingInput) => {
+  
   const MAX_LINE_INDEX = totalUserText.length-1;
-
+  
   // setTotalUserText Fn
   const setInputText = (value: string) => {
     const result = [...totalUserText];
@@ -22,10 +26,29 @@ const TypingInput = ({lines, totalUserText, setTotalUserText, lineRange, setLine
     setTotalUserText(result);
   }
   
+  // setResultArray Fn
+  const setValidationArr = (isCorrect: boolean, charIndex: number) => {
+    if (charIndex < 0) { return; }
+    
+    setValidationResultArr(prev => {
+      return prev.map((row, index) => {
+        if (index===lineRange.start) {
+          const newRow = [...row];
+          newRow[charIndex] = isCorrect;
+          return newRow;
+        }
+      });
+    })
+  }
+  
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputText(e.target.value);
+    // validate
+    const isCorrect = validateTypingChar(targetList.copy(lineRange.start, lineRange.end)[0], e.target.value);
+    setValidationArr(isCorrect, e.target.value.length-1);
   }
 
+  // TODO
   const nextLineRange = () => {
     const nextStart = (lineRange.start + 1) <= MAX_LINE_INDEX ? lineRange.start + 1 : undefined;
     const nextEnd = (lineRange.end + 1) <= MAX_LINE_INDEX ? lineRange.end + 1 : undefined;
@@ -36,13 +59,29 @@ const TypingInput = ({lines, totalUserText, setTotalUserText, lineRange, setLine
   }
   
   const onKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    e.preventDefault();
     const key = e.key || e.keyCode;
     if (key === 'Enter' || key === 13) {
+      e.preventDefault();
       nextLineRange();
     }
   }
   
+  // Backspace 또는 ctrl + a 로 인한 예외 처리
+  useEffect(() => {
+    const maxLength = totalUserText[lineRange.start].length;
+    
+    // 수정 중인 인덱스 파트에서 maxLength이상의 결과값들을 제거
+    setValidationResultArr(prev => {
+      const updateArr = [...prev];
+      const currArr = updateArr[lineRange.start];
+      
+      if (currArr.length > maxLength) {
+        updateArr[lineRange.start] = currArr.slice(0, maxLength);
+      }
+      
+      return updateArr;
+    })
+  }, [totalUserText, lineRange, setValidationResultArr]);
   
   return (
     <input
@@ -50,6 +89,7 @@ const TypingInput = ({lines, totalUserText, setTotalUserText, lineRange, setLine
       type={'text'}
       onChange={onChange}
       onKeyDown={onKeydown}
+      autoFocus={true}
     />
   );
 }

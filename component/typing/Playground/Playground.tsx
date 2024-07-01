@@ -2,11 +2,12 @@
 
 import styles from "./Playground.module.css";
 import '@/utils/extension/arrayExtensions';
-import {useEffect, useState} from "react";
-import TypingLine from "@/component/typing/TypingLine/TypingLine";
+import {useState} from "react";
+import ShowLine from "@/component/typing/ShowLine/ShowLine";
 import TypingInput from "@/component/typing/TypingInput/TypingInput";
 import UserText from "@/component/typing/UserText/UserText";
-import {indexToKey, initLineRange, TLineRange} from "@/utils/playgroundHelper";
+import {initLineRange, TLineRange} from "@/utils/playgroundHelper";
+
 
 interface IPlayground {
   targetList: string[];
@@ -14,29 +15,25 @@ interface IPlayground {
 
 const Playground = ({targetList}: IPlayground) => {
   const [totalUserText, setTotalUserTexts] = useState<string[]>(Array.from({length: targetList.length}, () => ''));
-  const [showUserText, setShowUserText] = useState<string[]>(['']);
+  const [validationResultArray, setValidationResultArray] = useState<boolean[][]>(Array.from({length: targetList.length}, () => []));
   const [lineRange, setLineRange] = useState<TLineRange>(initLineRange(targetList));
-  const [lines, setLines] = useState(targetList.copy(lineRange.start, lineRange.end));
-  
-  // update show user text
-  useEffect(() => {
-    const result = totalUserText.copy(lineRange.start, lineRange.end);
-    setShowUserText(result);
-  }, [lineRange, totalUserText]);
-  
   
   return (
     <div className={styles.container}>
       <div className={styles.text_wrap}>
-        {!!lines.length && lines.map((line, i) => (
-          <TypingLine key={indexToKey('wrap', i)} lineIndex={i} line={line} />
-        ))}
-        <UserText showUserText={showUserText} />
+        <ShowLine
+          targetList={targetList}
+          totalUserText={totalUserText}
+          lineRange={lineRange}
+        />
+        <UserText totalUserText={totalUserText} lineRange={lineRange} validResult={validationResultArray} />
       </div>
       <TypingInput
-        lines={lines}
+        targetList={targetList}
         totalUserText={totalUserText}
         setTotalUserText={setTotalUserTexts}
+        resultArray={validationResultArray}
+        setValidationResultArr={setValidationResultArray}
         lineRange={lineRange}
         setLineRange={setLineRange}
       />

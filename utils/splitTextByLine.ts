@@ -1,3 +1,9 @@
+const CHAR_WIDTH = 22;
+const BLANK_WIDTH = 10;
+/*
+* string으로 구성된 글을 string[]로 나누어준다.
+* @param {string} text - 타이핑 타겟
+* */
 export const splitTextByLine = (text: string): string[] => {
   const result: string[] = [];
   let currentWord = '';
@@ -14,8 +20,8 @@ export const splitTextByLine = (text: string): string[] => {
     currentWord += char;
     
     // acc width
-    if (char === ' ') currentWidth += 10;
-    else currentWidth += 22;
+    if (char === ' ') currentWidth += BLANK_WIDTH;
+    else currentWidth += CHAR_WIDTH;
     
     // check width at face to blank
     if (char === ' ' && currentWidth >= 880) {

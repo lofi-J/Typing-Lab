@@ -1,8 +1,12 @@
-.line {
+.lines {
 	width: max-content;
 	& > span {
 		font-size: var(--typing-size);
 		font-weight: var(--typing-weight);
 		color: var(--gray-500);
 	}
+}
+.line {
+	display: flex;
+	align-items: center;
 }

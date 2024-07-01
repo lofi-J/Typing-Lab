@@ -18,6 +18,7 @@
   --card-gradient-background: linear-gradient(to right, var(--card-gradient-start-color), var(--card-gradient-end-color));
   --accent-color: #8200ff;
   --light-yellow: #fdfda4;
+  --red: #ff8a8a;
   --mint: #37f3f4;
   --normal-gray: #333;
   --gray-100: #f0f0f0;  /* 가장 밝은 회색 */
@@ -38,9 +39,10 @@
   /* size[px] */
   --playground-width: 1000px;
   --playground-height: 450px;
-  --cell-width: 22px;
+  --cell-width: 18px;
   --cell-blank-width: 10px;
-  --cell-height: 34px;
+  --cell-height: 20px;
+  --caret-height: 18px;
   
   /* font-size */
   --typing-size: 1.8rem;
@@ -83,7 +85,7 @@ html, body {
   
   font-size: 62.25%;
 }
-/* main 본문은 항상 100vw, 100vh를 차지할것 */
+/* main 본문은 항상 100vw, 100vh를 차지 */
 main {
   padding-top: var(--header-height);
   min-width: 100vw;

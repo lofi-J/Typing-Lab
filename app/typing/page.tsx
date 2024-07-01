@@ -2,6 +2,7 @@ import styles from "./page.module.css";
 import Playground from "@/component/typing/Playground/Playground";
 import GradientCard from "@/component/Card/GradientCard/GradientCard";
 import sentence from "@/static/texts/두고가는계절";
+// import sentence from "@/static/texts/ENdummy";
 import {splitTextByLine} from "@/utils/splitTextByLine";
 
 

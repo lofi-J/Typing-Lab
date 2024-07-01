@@ -1,18 +1,18 @@
-.line {
+.lines {
 	position: absolute;
 	top: 0;
 	left: 0;
 	display: flex;
 	flex-direction: column;
-	& > span {
-		height: 21px;
-	}
+}
+.line {
+	display: flex;
+	align-items: center;
 	& > span:last-of-type::after {
 		content: '';
 		display: inline-block;
 		width: 0.2rem;
-		height: 100%;
-		transform: translateY(50%);
+		height: var(--caret-height);
 		background-color: var(--primary-color);
 		animation: blink 1s step-start infinite;
 	}
