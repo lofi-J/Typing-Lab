@@ -1,6 +1,6 @@
 import styles from "./TypingInput.module.css";
 import {TLineRange, validateTypingChar} from "@/utils/playgroundHelper";
-import React, {useEffect} from "react";
+import React, {ChangeEvent, useEffect} from "react";
 import "@/utils/splitKR";
 
 
@@ -36,6 +36,8 @@ const TypingInput = (
           const newRow = [...row];
           newRow[charIndex] = isCorrect;
           return newRow;
+        } else {
+          return [...row];
         }
       });
     })
@@ -45,7 +47,9 @@ const TypingInput = (
     setInputText(e.target.value);
     // validate
     const isCorrect = validateTypingChar(targetList.copy(lineRange.start, lineRange.end)[0], e.target.value);
-    setValidationArr(isCorrect, e.target.value.length-1);
+    if (typeof isCorrect === 'boolean') {
+      setValidationArr(isCorrect, e.target.value.length-1);
+    }
   }
 
   // TODO
