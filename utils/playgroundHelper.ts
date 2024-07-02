@@ -1,3 +1,4 @@
+import { TLang } from "@/static/texts/default_article";
 import {isKR, splitKR} from "@/utils/splitKR";
 
 
@@ -47,3 +48,17 @@ export const validateTypingChar = (correctChar: string, inputChar: string) => {
 }
 
 export const indexToKey = (str: string, index: number) => `${str}-${index}`;
+
+export const checkLanguage = (text: string): TLang | undefined => {
+  let type = undefined;
+  
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    if (/[a-zA-Z]/.test(char)) {
+      return 'en';
+    } else if (/[ㄱ-하-ㅣ-가-힣]/.test(char)) {
+      return 'kr';
+    }
+  }
+  return undefined;
+}

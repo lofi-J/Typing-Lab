@@ -23,8 +23,13 @@ const CHO_PERIOD = 21 * 28; // 588 ( 28 * 21 )
 const JUNG_PERIOD = 28; // 28
 
 export function isKR(char: string) {
-  const kr = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+  const kr = /^[ㄱ-ㅎㅏ-ㅣ가-힣$@$!%*?&#^_. +0-9]$/;
   return kr.test(char);
+}
+
+export function isEn(char: string) {
+  const en = /^[a-zA-Z0-9$@$!%*?&#^_. +]$/;
+  return en.test(char);
 }
 
 export function splitKR(char: string) {

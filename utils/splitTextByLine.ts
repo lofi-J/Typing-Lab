@@ -1,10 +1,14 @@
-const CHAR_WIDTH = 22;
-const BLANK_WIDTH = 10;
+import { TLang } from "@/static/texts/default_article";
+
+const CHAR_WIDTH = 2.2;
+const BLANK_WIDTH = 1;
+const EN_CHAR_WIDTH = 1.1;
+const EN_BLANK_WIDTH = 0.8;
 /*
 * string으로 구성된 글을 string[]로 나누어준다.
 * @param {string} text - 타이핑 타겟
 * */
-export const splitTextByLine = (text: string): string[] => {
+export const splitTextByLine = (text: string, playgroundWidth: number, langType: TLang): string[] => {
   const result: string[] = [];
   let currentWord = '';
   let currentWidth = 0;
@@ -20,11 +24,11 @@ export const splitTextByLine = (text: string): string[] => {
     currentWord += char;
     
     // acc width
-    if (char === ' ') currentWidth += BLANK_WIDTH;
-    else currentWidth += CHAR_WIDTH;
+    if (char === ' ') currentWidth += langType === 'kr' ? BLANK_WIDTH : EN_BLANK_WIDTH;
+    else currentWidth += langType === 'kr' ? CHAR_WIDTH : EN_CHAR_WIDTH;
     
     // check width at face to blank
-    if (char === ' ' && currentWidth >= 850) {
+    if (char === ' ' && currentWidth >= playgroundWidth) {
       saveAndInit();
     }
   }

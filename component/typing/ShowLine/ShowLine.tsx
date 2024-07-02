@@ -23,7 +23,7 @@ const ShowLine = ({targetList, totalUserText, lineRange}: IShowLine) => {
               char={char}
               color={"gray"}
               width={char === ' ' ? '0.8rem' : 'auto'}
-              hidden={(index === lineRange.start && i < userTextLength)}
+              hidden={(index === 0 && i < userTextLength)}
             />
           ))}
         </div>

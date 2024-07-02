@@ -1,7 +1,8 @@
 import styles from "./TypingInput.module.css";
 import {TLineRange, validateTypingChar} from "@/utils/playgroundHelper";
-import React, {ChangeEvent, useEffect} from "react";
+import React, {ChangeEvent, useEffect, useRef} from "react";
 import "@/utils/splitKR";
+import { TLang } from "@/static/texts/default_article";
 
 
 interface ITypingInput {
@@ -11,12 +12,13 @@ interface ITypingInput {
   lineRange: TLineRange;
   setLineRange: React.Dispatch<React.SetStateAction<TLineRange>>;
   setValidationResultArr: React.Dispatch<React.SetStateAction<boolean[][]>>;
+  langType: TLang;
 }
 
 const TypingInput = (
-  {targetList, totalUserText, setTotalUserText, lineRange, setLineRange, setValidationResultArr
+  {targetList, totalUserText, setTotalUserText, lineRange, setLineRange, setValidationResultArr, langType
 }: ITypingInput) => {
-  
+  const inputRef = useRef<HTMLInputElement>(null);
   const MAX_LINE_INDEX = totalUserText.length-1;
   
   // setTotalUserText Fn
@@ -32,7 +34,7 @@ const TypingInput = (
     
     setValidationResultArr(prev => {
       return prev.map((row, index) => {
-        if (index===lineRange.start) {
+        if (index === lineRange.start) {
           const newRow = [...row];
           newRow[charIndex] = isCorrect;
           return newRow;
@@ -52,7 +54,6 @@ const TypingInput = (
     }
   }
 
-  // TODO
   const nextLineRange = () => {
     const nextStart = (lineRange.start + 1) <= MAX_LINE_INDEX ? lineRange.start + 1 : undefined;
     const nextEnd = (lineRange.end + 1) <= MAX_LINE_INDEX ? lineRange.end + 1 : undefined;
@@ -62,11 +63,18 @@ const TypingInput = (
     })
   }
   
+  const clearInputBuffer = () => {
+    if (inputRef.current) {
+      inputRef.current.value = '';
+    }
+  }
+
   const onKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const key = e.key || e.keyCode;
     if (key === 'Enter' || key === 13) {
       e.preventDefault();
       nextLineRange();
+      clearInputBuffer();
     }
   }
   
@@ -89,6 +97,7 @@ const TypingInput = (
   
   return (
     <input
+      ref={inputRef}
       className={styles.input}
       type={'text'}
       onChange={onChange}
