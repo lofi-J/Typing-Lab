@@ -1,9 +1,9 @@
 const headers = [
-  {title: 'home', link: '/'},
-  {title: 'typing', link: '/typing'},
-  {title: 'contents', link: '/contents'},
-  {title: 'notice', link: '/notice'},
-  {title: 'login', link: '/login'},
+  {title: 'Home', link: '/'},
+  {title: 'Typing', link: '/typing'},
+  {title: 'Contents', link: '/contents'},
+  {title: 'Notice', link: '/notice'},
+  {title: 'Login', link: '/login'},
 ]
 
 export default headers;

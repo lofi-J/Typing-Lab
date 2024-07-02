@@ -11,7 +11,7 @@ export default function Typing() {
   
   return (
     <main className={styles.main}>
-      <GradientCard style={{width: 'var(--playground-width)', height: 'var(--playground-height)', position: 'relative'}}>
+      <GradientCard style={{width: 'var(--playground-width)', position: 'relative'}}>
         <Playground targetList={targetList} />
       </GradientCard>
     </main>

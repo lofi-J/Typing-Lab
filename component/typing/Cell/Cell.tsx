@@ -4,10 +4,10 @@ import {CSSProperties} from "react";
 export type TCellColor = 'gray' | 'red' | 'white';
 
 interface ICell {
-  key?: string;
   char: string;
   color: TCellColor;
   hidden?: boolean;
+  width: string;
 }
 
 const getColor = (color: TCellColor) => {
@@ -23,10 +23,11 @@ const getColor = (color: TCellColor) => {
   }
 }
 
-const Cell = ({char, color, hidden}: ICell) => {
+const Cell = ({char, color, hidden, width}: ICell) => {
   const style: CSSProperties = {
     color: getColor(color),
-    opacity: hidden ? '0' : '1'
+    opacity: hidden ? '0' : '1',
+    width: width
   }
   return (
     <span className={styles.cell} style={style}>{char}</span>

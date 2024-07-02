@@ -24,7 +24,7 @@ export const splitTextByLine = (text: string): string[] => {
     else currentWidth += CHAR_WIDTH;
     
     // check width at face to blank
-    if (char === ' ' && currentWidth >= 880) {
+    if (char === ' ' && currentWidth >= 850) {
       saveAndInit();
     }
   }

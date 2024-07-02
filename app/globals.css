@@ -16,9 +16,11 @@
   --card-gradient-start-color: #131d30;
   --card-gradient-end-color: #15091b;
   --card-gradient-background: linear-gradient(to right, var(--card-gradient-start-color), var(--card-gradient-end-color));
-  --accent-color: #8200ff;
+  --accent-color: #3360cc;
   --light-yellow: #fdfda4;
   --red: #ff8a8a;
+  --light-blue: var(--accent-color);
+  --dark-blue: #113ead;
   --mint: #37f3f4;
   --normal-gray: #333;
   --gray-100: #f0f0f0;  /* 가장 밝은 회색 */
@@ -38,16 +40,13 @@
   --main-width: 102.4rem;
   --header-height: 4.8rem;
   /* size[px] */
-  --playground-width: 1000px;
-  --playground-height: 450px;
-  --cell-width: 18px;
-  --cell-blank-width: 10px;
-  --cell-height: 20px;
+  --playground-width: 850px;
+  --playground-height: 400px;
   --caret-height: 18px;
   
   /* font-size */
-  --typing-size: 1.8rem;
-  --typing-weight: 500;
+  --typing-size: 2rem;
+  --typing-weight: 200;
 }
 
 [data-theme="light"] {
@@ -62,7 +61,7 @@
   --accent-color: #06142c;
 }
 
-/* smooth theme change */
+/* smooth theme change */t
 body, .header, .footer {
   transition: background-color 0.3s, color 0.3s;
 }
@@ -72,6 +71,7 @@ body, .header, .footer {
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
+  font-size: 62.5%;
 }
 
 html, body {

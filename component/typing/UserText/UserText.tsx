@@ -22,13 +22,14 @@ const UserText = ({totalUserText, lineRange, validResult}: IUserText) => {
     <div className={styles.lines}>
       {showUserText.map((line, index) => (
         <div key={indexToKey('user-line', index)} className={styles.line}>
-          {index === 0 && <span></span>}
+          {index === 0 && <span className={styles.empty_caret}></span>}
           {line.split('').map((char, i) => (
             <Cell
               key={indexToKey('user-char', i)}
               char={char}
               color={getColor(index, i)}
               hidden={false}
+              width={char === ' ' ? '0.8rem' : 'auto'}
             />
           ))}
         </div>

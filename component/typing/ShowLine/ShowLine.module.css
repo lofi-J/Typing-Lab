@@ -1,12 +1,17 @@
 .lines {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
 	width: max-content;
+	height: 100%;
+}
+.line {
+	display: flex;
+	align-items: center;
+	height: 2rem;
 	& > span {
 		font-size: var(--typing-size);
 		font-weight: var(--typing-weight);
 		color: var(--gray-500);
 	}
-}
-.line {
-	display: flex;
-	align-items: center;
 }

@@ -2,13 +2,7 @@
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
-	width: var(--cell-width);
-	height: var(--cell-height);
 	font-size: var(--typing-size);
 	font-weight: var(--typing-weight);
 	color: var(--primary-color);
-}
-
-.red {
-	color: var(--red);
 }

@@ -22,6 +22,7 @@ const Playground = ({targetList}: IPlayground) => {
   const [validationResultArray, setValidationResultArray] = useState<boolean[][]>(initValidationResultArray(targetList));
   const [lineRange, setLineRange] = useState<TLineRange>(initLineRange(targetList));
   const a = Array.from({length: targetList.length}, () => []);
+  
   return (
     <div className={styles.container}>
       <div className={styles.text_wrap}>
