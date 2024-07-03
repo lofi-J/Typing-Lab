@@ -4,7 +4,7 @@ import {useState} from "react";
 import ShowLine from "@/component/typing/ShowLine/ShowLine";
 import TypingInput from "@/component/typing/TypingInput/TypingInput";
 import UserText from "@/component/typing/UserText/UserText";
-import {initLineRange, TLineRange, checkLanguage} from "@/utils/playgroundHelper";
+import {initLineRange, TLineRange} from "@/utils/playgroundHelper";
 import { TLang } from "@/static/texts/default_article";
 
 

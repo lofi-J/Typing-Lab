@@ -1,5 +1,5 @@
 import { TLang } from "@/static/texts/default_article";
-import {isKR, splitKR} from "@/utils/splitKR";
+import {isKR, isEN, splitKR} from "@/utils/splitKR";
 
 
 export type TLineRange = { start: number, end: number };
@@ -18,12 +18,12 @@ export const initLineRange = (target: string[]): TLineRange => {
 * @param {string} correctChar - 현재 타이핑해야할 텍스트 라인
 * @param {string} inputChar - 유저가 타이핑한 라인
 * */
-export const validateTypingChar = (correctChar: string, inputChar: string) => {
-  const index = inputChar.length-1;
+export const validateTypingLine = (correctLine: string, inputLine: string) => {
+  const index = inputLine.length-1;
   if (index < 0) return; // inputChar의 길이가 0인경우 early return
   
-  const base = correctChar[index];
-  const input = inputChar[index];
+  const base = correctLine[index];
+  const input = inputLine[index];
 
   if (!isKR(base)) {
     return base === input;
@@ -49,11 +49,17 @@ export const validateTypingChar = (correctChar: string, inputChar: string) => {
 
 export const indexToKey = (str: string, index: number) => `${str}-${index}`;
 
-export const checkLanguage = (text: string): TLang | undefined => {
+/*
+* 전달된 문자열의 감지된 언어를 반환하는 함수
+* @param {string}  - 현재 타이핑해야할 텍스트
+*
+* - 전달된 문자열에서 감지된 첫 언어타입을 return한다.
+* */
+export const checkLanguage = (word: string): TLang | undefined => {
   let type = undefined;
   
-  for (let i = 0; i < text.length; i++) {
-    const char = text[i];
+  for (let i = 0; i < word.length; i++) {
+    const char = word[i];
     if (/[a-zA-Z]/.test(char)) {
       return 'en';
     } else if (/[ㄱ-하-ㅣ-가-힣]/.test(char)) {
@@ -61,4 +67,14 @@ export const checkLanguage = (text: string): TLang | undefined => {
     }
   }
   return undefined;
+}
+
+export const isValidInputByLang = (char: string, lang: TLang): boolean => {
+  if (lang === 'kr') {
+    return isKR(char);
+  } else if (lang === 'en') {
+    return isEN(char);
+  } else {
+    throw new Error("Invalid language type");
+  }
 }
