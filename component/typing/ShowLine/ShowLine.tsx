@@ -1,5 +1,6 @@
 import styles from "./ShowLine.module.css";
 import React from "react";
+import "@/utils/extension/arrayExtensions";
 import {indexToKey, TLineRange} from "@/utils/playgroundHelper";
 import Cell from "@/component/typing/Cell/Cell";
 

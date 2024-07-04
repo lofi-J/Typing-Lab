@@ -1,8 +1,7 @@
 import styles from "./TypingInput.module.css";
+import {makeArray} from "@/utils/extension/arrayHelper";
 import {TLineRange, validateTypingLine} from "@/utils/playgroundHelper";
-import {isKR, isEN} from "@/utils/splitKR";
 import React, {useState, useEffect, useRef, ChangeEvent} from "react";
-import { TLang } from "@/static/texts/default_article";
 
 
 interface ITypingInput {
@@ -12,19 +11,17 @@ interface ITypingInput {
   lineRange: TLineRange;
   setLineRange: React.Dispatch<React.SetStateAction<TLineRange>>;
   setValidationResultArr: React.Dispatch<React.SetStateAction<boolean[][]>>;
-  langType: TLang;
 }
 
 const TypingInput = (
-  {targetList, totalUserText, setTotalUserText, lineRange, setLineRange, setValidationResultArr, langType
+  {targetList, totalUserText, setTotalUserText, lineRange, setLineRange, setValidationResultArr
 }: ITypingInput) => {
   
-  const MAX_LINE_INDEX = targetList.length-1;
   const inputRef = useRef<HTMLInputElement | null>(null);
   const baseLine = targetList[lineRange.start]; // 타이핑 해야하는 라인 string[]
   
   const [localValue, setLocalValue] = useState('');
-  const [localValid, setLocalValid] = useState<boolean[]>(Array.from({ length: baseLine.length }, () => true));
+  const [localValid, setLocalValid] = useState<boolean[]>(makeArray(baseLine.length, true));
   const [isBlockInput, setIsBlockInput] = useState(false);
   
   
@@ -46,9 +43,9 @@ const TypingInput = (
     setValid(value, isCorrect);
   }
 
-  const moveToNextLineRange = () => {
-    const nextStart = (lineRange.start + 1) <= MAX_LINE_INDEX ? lineRange.start + 1 : undefined;
-    const nextEnd = (lineRange.end + 1) <= MAX_LINE_INDEX ? lineRange.end + 1 : undefined;
+  const increaseLineRange = () => {
+    const nextStart = (lineRange.start + 1) <= targetList.length-1 ? lineRange.start + 1 : undefined;
+    const nextEnd = (lineRange.end + 1) <= targetList.length-1 ? lineRange.end + 1 : undefined;
 
     setLineRange(prev => {
       return {
@@ -65,17 +62,25 @@ const TypingInput = (
     if (key === 'Enter' || key === 13) {
       e.preventDefault();
       setLocalValue('');
-      moveToNextLineRange();
+      increaseLineRange();
     }
   }
   
   
   // localValue와 totalUserText동기화
   useEffect(() => {
+    // value
     const result = [...totalUserText];
     result[lineRange.start] = localValue;
     setTotalUserText(result);
-  }, [localValue, lineRange]);
+    
+    // validation
+    setValidationResultArr(prev => {
+      const result = [...prev];
+      result[lineRange.start] = localValid;
+      return result;
+    })
+  }, [localValue, lineRange, localValid, setValidationResultArr]);
   
   
   return (
