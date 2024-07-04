@@ -13,6 +13,37 @@ export const initLineRange = (target: string[]): TLineRange => {
   }
 }
 
+
+// 중성 예외 처리
+const doubleMiddle = ['ㅘ', 'ㅙ', 'ㅚ', 'ㅝ', 'ㅞ', 'ㅟ', 'ㅢ'];
+const DOUBLE_MIDDLE = {
+  'ㅘ': ['ㅗ', 'ㅏ'],
+  'ㅙ': ['ㅗ', 'ㅐ'],
+  'ㅚ': ['ㅗ', 'ㅣ'],
+  'ㅝ': ['ㅜ', 'ㅓ'],
+  'ㅞ': ['ㅜ', 'ㅔ'],
+  'ㅟ': ['ㅜ', 'ㅣ'],
+  'ㅢ': ['ㅡ', 'ㅣ']
+}
+const checkDoubleMiddle = (inputJung: string, baseJung: string) => {
+  const compareTarget = DOUBLE_MIDDLE[baseJung];
+  return inputJung === compareTarget[0];
+}
+
+// 종성 예외 처리
+const doubleFinal = ['ㄳ', 'ㄵ', 'ㄶ', 'ㄺ', 'ㄻ', 'ㄼ', 'ㄽ', 'ㄾ', 'ㄿ', 'ㅀ', 'ㅄ'];
+const DOUBLE_FINAL = {
+  'ㄳ': ['ㄱ', 'ㅅ'], 'ㄵ': ['ㄴ', 'ㅈ'], 'ㄶ': ['ㄴ', 'ㅎ'],
+  'ㄺ': ['ㄹ', 'ㄱ'], 'ㄻ': ['ㄹ', 'ㅁ'], 'ㄼ': ['ㄹ', 'ㅂ'],
+  'ㄽ': ['ㄹ', 'ㅅ'], 'ㄾ': ['ㄹ', 'ㅌ'], 'ㄿ': ['ㄹ', 'ㅍ'],
+  'ㅀ': ['ㄹ', 'ㅎ'], 'ㅄ': ['ㅂ', 'ㅅ']
+}
+// 겹받침 검사
+const checkDoubleFinal = (inputJong: string, baseJong: string) => {
+  const compareTarget = DOUBLE_FINAL[baseJong];
+  return inputJong === compareTarget[0];
+}
+
 /*
 * 유저가 타이핑한 문자가 타이핑 타겟과 일치하는지 검사하는 함수
 * @param {string} correctChar - 현재 타이핑해야할 텍스트 라인
@@ -20,28 +51,45 @@ export const initLineRange = (target: string[]): TLineRange => {
 * */
 export const validateTypingLine = (correctLine: string, inputLine: string) => {
   const index = inputLine.length-1;
+  const nextIndex = (index + 1) >= correctLine.length ? undefined : index + 1;
+  
   if (index < 0) return; // inputChar의 길이가 0인경우 early return
   
   const base = correctLine[index];
   const input = inputLine[index];
+  // next index
+  const nextBase = correctLine[nextIndex];
 
-  if (!isKR(base)) {
+  if (!isKR(base) || !isKR(input)) {
     return base === input;
   }
   
   // 한글의 경우
   const splitedBase = splitKR(base);
   const splitedInput = splitKR(input);
+  // next index
+  const nextSplitBase = nextBase && splitKR(nextBase);
   
   // 한글을 입력해야하지만 한글을 입력하지 않은 경우
   if (splitedInput.cho && (splitedInput.cho !== splitedBase.cho)) {
     return false;
   }
   if (splitedInput.jung && (splitedInput.jung !== splitedBase.jung)) {
-    return false;
+    if (doubleMiddle.includes(splitedBase.jung)) {
+      checkDoubleMiddle(splitedInput.jung, splitedBase.jung);
+    } else {
+      return false;
+    }
   }
   if (splitedInput.jong && (splitedInput.jong !== splitedBase.jong)) {
-    return false;
+    // 종성 비교 후 불 일치한 경우 겹받침 검사를 진행
+    if (doubleFinal.includes(splitedBase.jong)) {
+      checkDoubleFinal(splitedInput.jong, splitedBase.jong);
+    } else if (nextIndex && doubleFinal.includes(splitedInput.jong)) {
+      checkDoubleFinal(nextSplitBase.cho, splitedInput.jong);
+    } else if (nextIndex && (nextSplitBase.cho !== splitedInput.jong)) { // 다음 index의 초성과 비교
+      return false;
+    }
   }
   // 그 외 true
   return true;

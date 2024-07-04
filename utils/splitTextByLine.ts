@@ -9,7 +9,7 @@ const EN_BLANK_WIDTH = 0.8;
 * @param {string} text - 타이핑 타겟
 * */
 export const splitTextByLine = (text: string, playgroundWidth: number, langType: TLang): string[] => {
-  const result: string[] = [];
+  let result: string[] = [];
   let currentWord = '';
   let currentWidth = 0;
   
@@ -33,6 +33,9 @@ export const splitTextByLine = (text: string, playgroundWidth: number, langType:
     }
   }
   saveAndInit();
-
+  
+  // remove last blank
+  result = [...result].map(str => str[str.length-1] === ' ' ? str.slice(0, str.length-1) : str);
+ 
   return result;
 }

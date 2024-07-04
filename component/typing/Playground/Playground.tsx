@@ -21,8 +21,8 @@ const Playground = ({targetList, langType}: IPlayground) => {
   const [totalUserText, setTotalUserTexts] = useState<string[]>(Array.from({length: targetList.length}, () => ''));
   const [validationResultArray, setValidationResultArray] = useState<boolean[][]>(initValidationResultArray(targetList));
   const [lineRange, setLineRange] = useState<TLineRange>(initLineRange(targetList));
-
-
+  
+  
   return (
     <div className={styles.container}>
       <div className={styles.text_wrap}>
