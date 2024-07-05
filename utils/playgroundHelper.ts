@@ -37,8 +37,6 @@ export const validateTypingLine = (correctLine: string, inputLine: string) => {
   const index = inputLine.length-1;
   const nextIndex = (index + 1) >= correctLine.length ? undefined : index + 1;
   
-  if (index < 0) return;
-  
   const base = correctLine[index];
   const input = inputLine[index];
   const nextBase = correctLine[nextIndex];
