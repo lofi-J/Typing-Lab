@@ -33,13 +33,14 @@ const DOUBLE_FINAL = {
 * @param {string} correctChar - 현재 타이핑해야할 텍스트 라인
 * @param {string} inputChar - 유저가 타이핑한 라인
 * */
-export const validateTypingLine = (correctLine: string, inputLine: string) => {
+export const validateTypingLine = (baseLine: string, inputLine: string) => {
   const index = inputLine.length-1;
-  const nextIndex = (index + 1) >= correctLine.length ? undefined : index + 1;
+  const nextIndex = (index + 1) >= baseLine.length ? undefined : index + 1;
   
-  const base = correctLine[index];
+  const base = baseLine[index];
   const input = inputLine[index];
-  const nextBase = correctLine[nextIndex];
+  const nextBase = baseLine[nextIndex];
+  
 
   // 비교 대상에 한국어가 포함되어있지 않다면 단순 비교를 진행
   if (!isKR(base) || !isKR(input)) {
@@ -48,7 +49,7 @@ export const validateTypingLine = (correctLine: string, inputLine: string) => {
   
   const splitedBase = splitKR(base);
   const splitedInput = splitKR(input);
-  const nextSplitBase = nextBase && splitKR(nextBase);
+  const nextSplitedBase = nextBase && splitKR(nextBase);
   
   // 초성 비교
   if (splitedInput.cho && (splitedInput.cho !== splitedBase.cho)) {
@@ -64,17 +65,22 @@ export const validateTypingLine = (correctLine: string, inputLine: string) => {
   }
   // 종성 비교 및 예외 처리
   if (splitedInput.jong && (splitedInput.jong !== splitedBase.jong)) {
-    if (DOUBLE_FINAL[splitedInput.jong] && DOUBLE_FINAL[splitedBase.jong]) {
-      return splitedInput.jong === splitedBase.jong;
-    }
-    else if (DOUBLE_FINAL[splitedInput.jong] && !DOUBLE_FINAL[splitedBase.jong]) {
-      if (nextIndex && (nextSplitBase.cho !== DOUBLE_FINAL[splitedInput.jong][1])) {
+    if (!DOUBLE_FINAL[splitedInput.jong] && DOUBLE_FINAL[splitedBase.jong]) {
+      if (splitedInput.jong !== DOUBLE_FINAL[splitedBase.jong][0]) {
         return false;
       }
-    } else if (!DOUBLE_FINAL[splitedInput.jong] && DOUBLE_FINAL[splitedBase.jong]) {
-      return splitedInput.jong === DOUBLE_FINAL[splitedBase.jong][0]
-    } else if (nextIndex && (nextSplitBase.cho !== splitedInput.jong)) {
-      return false;
+    }
+    if (!DOUBLE_FINAL[splitedInput.jong] && !DOUBLE_FINAL[splitedBase.jong]) {
+      if (nextIndex && (splitedInput.jong !== nextSplitedBase.cho)) {
+        return false;
+      } else if (!nextIndex) {
+        return false;
+      }
+    }
+    if (DOUBLE_FINAL[splitedInput.jong] && nextIndex) {
+      if (DOUBLE_FINAL[splitedInput.jong][1] !== nextSplitedBase.cho) {
+        return false;
+      }
     }
   }
 

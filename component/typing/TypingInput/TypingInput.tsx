@@ -28,7 +28,7 @@ const TypingInput = (
   
   
   const setValid = (value: string, isCorrect: boolean) => {
-    const index = value.length-1; // value길이 0이하인 경우는 호출 되지 않음
+    const index = value.length-1;
     const result = [...localValid];
     result[index] = isCorrect;
     setLocalValid(result);
@@ -46,7 +46,6 @@ const TypingInput = (
     })
   }
   
-  
   const moveToNextLine = () => {
     setLocalValue('')
     setLocalValid(initValidationArray(baseLine));
@@ -56,7 +55,7 @@ const TypingInput = (
   // Event
   const onKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const key = e.key || e.keyCode;
-    
+
     if (localValue.length > baseLine.length) {
       moveToNextLine();
     }
@@ -78,6 +77,18 @@ const TypingInput = (
     setValid(value, isCorrect);
   }
   
+  // IME 키보드 시스템 종성 예외처리
+  const onComposingEnd = () => {
+    const value = localValue;
+    const index = value.length - 1;
+    const isCorrect = value[index] === baseLine.slice(index, index + 1);
+    
+    setLocalValid(prev => {
+      const newValid = [...prev];
+      newValid[index] = isCorrect;
+      return newValid;
+    })
+  }
   
   // localValue와 totalUserText동기화
   useEffect(() => {
@@ -99,10 +110,10 @@ const TypingInput = (
     <div>
       <input
         type={'text'}
-        value={localValue}
         className={styles.input}
         onChange={onChange}
         onKeyDown={onKeydown}
+        onCompositionEnd={onComposingEnd}
         autoFocus={true}
         onFocus={() => setCaret(true)}
         onBlur={() => setCaret(false)}

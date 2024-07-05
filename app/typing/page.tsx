@@ -6,7 +6,7 @@ import Playground from "@/component/typing/Playground/Playground";
 import GradientCard from "@/component/Card/GradientCard/GradientCard";
 import {splitTextByLine} from "@/utils/splitTextByLine";
 import default_article from "@/static/texts/default_article";
-import sentence from "@/static/texts/static_kr_01";
+import sentence from "@/static/texts/static_en_01";
 
 
 const PLAYGROUND_WIDTH = 80;
