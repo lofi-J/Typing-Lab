@@ -11,6 +11,7 @@ interface ITypingInput {
   lineRange: TLineRange;
   setLineRange: React.Dispatch<React.SetStateAction<TLineRange>>;
   setValidationResultArr: React.Dispatch<React.SetStateAction<boolean[][]>>;
+  setCaret: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const initValidationArray = (baseLine: string) => {
@@ -18,7 +19,7 @@ const initValidationArray = (baseLine: string) => {
 }
 
 const TypingInput = (
-  {targetList, totalUserText, setTotalUserText, lineRange, setLineRange, setValidationResultArr
+  {targetList, totalUserText, setTotalUserText, lineRange, setLineRange, setValidationResultArr, setCaret
 }: ITypingInput) => {
   
   const baseLine = targetList[lineRange.start]; // 타이핑 해야하는 라인 string
@@ -103,6 +104,8 @@ const TypingInput = (
         onChange={onChange}
         onKeyDown={onKeydown}
         autoFocus={true}
+        onFocus={() => setCaret(true)}
+        onBlur={() => setCaret(false)}
       />
     </div>
   );

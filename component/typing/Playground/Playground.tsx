@@ -15,7 +15,7 @@ const Playground = ({targetList}: IPlayground) => {
   const [totalUserText, setTotalUserTexts] = useState<string[]>(makeArray(targetList.length, ''));
   const [validationResultArray, setValidationResultArray] = useState<boolean[][]>(makeArray(targetList.length, []));
   const [lineRange, setLineRange] = useState<TLineRange>(initLineRange(targetList));
-  
+  const [showCaret, setShowCaret] = useState(true);
   
   return (
     <div className={styles.container}>
@@ -25,7 +25,12 @@ const Playground = ({targetList}: IPlayground) => {
           totalUserText={totalUserText}
           lineRange={lineRange}
         />
-        <UserText totalUserText={totalUserText} lineRange={lineRange} validResult={validationResultArray} />
+        <UserText
+          totalUserText={totalUserText}
+          lineRange={lineRange}
+          validResult={validationResultArray}
+          showCaret={showCaret}
+        />
       </div>
       <TypingInput
         targetList={targetList}
@@ -34,6 +39,7 @@ const Playground = ({targetList}: IPlayground) => {
         setValidationResultArr={setValidationResultArray}
         lineRange={lineRange}
         setLineRange={setLineRange}
+        setCaret={setShowCaret}
       />
     </div>
   );

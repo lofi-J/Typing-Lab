@@ -14,6 +14,8 @@
 	width: max-content;
 	height: 2rem;
 	position: relative;
+}
+.caret {
 	&:first-of-type::after {
 		content: '';
 		position: absolute;
