@@ -1,7 +1,7 @@
 import styles from "./TypingInput.module.css";
 import {makeArray} from "@/utils/extension/arrayHelper";
 import {TLineRange, validateTypingLine} from "@/utils/playgroundHelper";
-import React, {useState, useEffect, useRef, ChangeEvent} from "react";
+import React, {useState, useEffect, ChangeEvent} from "react";
 
 
 interface ITypingInput {
@@ -21,9 +21,7 @@ const TypingInput = (
   {targetList, totalUserText, setTotalUserText, lineRange, setLineRange, setValidationResultArr
 }: ITypingInput) => {
   
-  const inputRef = useRef<HTMLInputElement | null>(null);
   const baseLine = targetList[lineRange.start]; // 타이핑 해야하는 라인 string
-  
   const [localValue, setLocalValue] = useState('');
   const [localValid, setLocalValid] = useState<boolean[]>(initValidationArray(baseLine));
   
@@ -99,7 +97,6 @@ const TypingInput = (
   return (
     <div>
       <input
-        ref={inputRef}
         type={'text'}
         value={localValue}
         className={styles.input}

@@ -1,5 +1,5 @@
 import styles from "./Cell.module.css";
-import {CSSProperties} from "react";
+import {CSSProperties, memo} from "react";
 
 export type TCellColor = 'gray' | 'red' | 'white';
 
@@ -34,4 +34,4 @@ const Cell = ({char, color, hidden, width}: ICell) => {
   );
 }
 
-export default Cell;
+export default memo(Cell);
