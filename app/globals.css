@@ -6,8 +6,8 @@
   /* color */
   --primary-color: #fff;
   --primary-color-rgb: rgb(255, 255, 255);
-  --background-color: #000;
-  --background-color-rgb: rgb(0, 0, 0);
+  --background-color: #131313;
+  --background-color-rgb: rgb(19, 19, 19);
   --header-background-color: rgba(var(--background-color-rgb, 0.8));
   --gradient-start-color: #06142c;
   --gradient-middle-color: #14122c;
@@ -62,7 +62,7 @@
   --accent-color: #06142c;
 }
 
-/* smooth theme change */t
+/* smooth theme change */
 body, .header, .footer {
   transition: background-color 0.3s, color 0.3s;
 }
@@ -88,7 +88,6 @@ html, body {
 
 main {
   padding-top: var(--header-height);
-  background: var(--gradient-background-color);
   min-width: 100vw;
   min-height: 100vh;
 }

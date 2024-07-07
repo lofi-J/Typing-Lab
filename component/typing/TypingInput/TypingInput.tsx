@@ -110,6 +110,7 @@ const TypingInput = (
     <div>
       <input
         type={'text'}
+        value={localValue}
         className={styles.input}
         onChange={onChange}
         onKeyDown={onKeydown}
