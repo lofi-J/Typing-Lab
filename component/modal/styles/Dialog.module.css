@@ -1,0 +1,29 @@
+.dialog {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgb(0, 0, 0, 0.6);
+	z-index: 10;
+	width: 100vw;
+	height: 100vh;
+}
+
+.modal {
+	position: relative;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	min-width: 40rem;
+	min-height: 20rem;
+	width: max-content;
+	display: flex;
+	flex-direction: column;
+	-webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+	z-index: 20;
+	background-color: var(--gray-900);
+	border-radius: var(--border-radius);
+	padding: 1rem;
+}

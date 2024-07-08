@@ -1,0 +1,11 @@
+.x_btn {
+	position: absolute;
+	top: 2rem;
+	right: 2rem;
+	z-index: 20;
+	cursor: pointer;
+	width: 2rem;
+	height: 2rem;
+	fill: white;
+	stroke: white;
+}
