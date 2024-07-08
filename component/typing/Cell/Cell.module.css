@@ -6,3 +6,15 @@
 	font-weight: var(--typing-weight);
 	color: var(--primary-color);
 }
+
+.shake {
+	animation: shake 0.3s;
+}
+
+@keyframes shake {
+	0% { transform: translateY(0); }
+	25% { transform: translateY(-0.2rem); }
+	50% { transform: translateY(0.2rem); }
+	75% { transform: translateY(-0.2rem); }
+	100% { transform: translateY(0); }
+}

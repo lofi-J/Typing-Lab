@@ -24,13 +24,17 @@ const getColor = (color: TCellColor) => {
 }
 
 const Cell = ({char, color, hidden, width}: ICell) => {
+  
   const style: CSSProperties = {
     color: getColor(color),
     opacity: hidden ? '0' : '1',
     width: width
   }
+  
+  const cellClassName = `${styles.cell} ${color === 'red' ? styles.shake : ''}`;
+  
   return (
-    <span className={styles.cell} style={style}>{char}</span>
+    <span className={cellClassName} style={style}>{char}</span>
   );
 }
 
