@@ -31,7 +31,7 @@ const Header = () => {
     <header className={styles.header}>
       <nav className={styles.nav}>
         <Link href={'/'} className={`${font.className} ${styles.logo}`} onClick={onClickLogo}>
-          <TextWriterAnimation text={'LOFI-TYPING'} delay={80} rewrite={reWriteLogo} playOnRender={false} />
+          <TextWriterAnimation text={'TYPING-LAB'} delay={80} rewrite={reWriteLogo} playOnRender={false} />
         </Link>
         <div className={styles.link_wrap}>
           {headers.map((item, index) => (

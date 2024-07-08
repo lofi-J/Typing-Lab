@@ -9,8 +9,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Lofi Typing",
-  description: "Lofi Typing | Chill",
+  title: "Typing Lab",
+  description: "Typing Lab | Landing",
 };
 
 export default function RootLayout({
