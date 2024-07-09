@@ -9,6 +9,7 @@
 
 .shake {
 	animation: shake 0.3s;
+	text-decoration: underline;
 }
 
 @keyframes shake {
@@ -17,4 +18,10 @@
 	50% { transform: translateY(0.2rem); }
 	75% { transform: translateY(-0.2rem); }
 	100% { transform: translateY(0); }
+}
+
+.wrong_blank {
+	width: var(--typing-size);
+	height: var(--typing-size);
+	border-bottom: 0.2rem dotted var(--red);
 }

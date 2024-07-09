@@ -31,7 +31,10 @@ const Cell = ({char, color, hidden, width}: ICell) => {
     width: width
   }
   
-  const cellClassName = `${styles.cell} ${color === 'red' ? styles.shake : ''}`;
+  const cellClassName = `
+  ${styles.cell}
+  ${color === 'red' ? styles.shake : ''}
+  ${(color === 'red' && char === ' ') ? styles.wrong_blank : ''}`;
   
   return (
     <span className={cellClassName} style={style}>{char}</span>
