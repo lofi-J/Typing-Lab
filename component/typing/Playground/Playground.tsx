@@ -16,6 +16,7 @@ const Playground = ({targetList}: IPlayground) => {
   const [validationResultArray, setValidationResultArray] = useState<boolean[][]>(makeArray(targetList.length, []));
   const [lineRange, setLineRange] = useState<TLineRange>(initLineRange(targetList));
   const [showCaret, setShowCaret] = useState(true);
+  const [totalWrongCount, setTotalWrongCount] = useState(0);
   
   return (
     <div className={styles.container}>
@@ -36,6 +37,7 @@ const Playground = ({targetList}: IPlayground) => {
         targetList={targetList}
         totalUserText={totalUserText}
         setTotalUserText={setTotalUserTexts}
+        setTotalWrongCount={setTotalWrongCount}
         setValidationResultArr={setValidationResultArray}
         lineRange={lineRange}
         setLineRange={setLineRange}
