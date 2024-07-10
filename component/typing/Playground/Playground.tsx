@@ -1,22 +1,23 @@
 import styles from "./Playground.module.css";
 import {makeArray} from "@/utils/extension/arrayHelper";
-import {useState} from "react";
+import React, {useState} from "react";
 import ShowLine from "@/component/typing/ShowLine/ShowLine";
 import TypingInput from "@/component/typing/TypingInput/TypingInput";
 import UserText from "@/component/typing/UserText/UserText";
 import {initLineRange, TLineRange} from "@/utils/playgroundHelper";
+import {TTextStatus} from "@/app/typing/page";
 
 
 interface IPlayground {
   targetList: string[];
+  setTextCounts: React.Dispatch<React.SetStateAction<TTextStatus>>;
 }
 
-const Playground = ({targetList}: IPlayground) => {
+const Playground = ({targetList, setTextCounts}: IPlayground) => {
   const [totalUserText, setTotalUserTexts] = useState<string[]>(makeArray(targetList.length, ''));
   const [validationResultArray, setValidationResultArray] = useState<boolean[][]>(makeArray(targetList.length, []));
   const [lineRange, setLineRange] = useState<TLineRange>(initLineRange(targetList));
   const [showCaret, setShowCaret] = useState(true);
-  const [totalWrongCount, setTotalWrongCount] = useState(0);
   
   return (
     <div className={styles.container}>
@@ -37,11 +38,11 @@ const Playground = ({targetList}: IPlayground) => {
         targetList={targetList}
         totalUserText={totalUserText}
         setTotalUserText={setTotalUserTexts}
-        setTotalWrongCount={setTotalWrongCount}
         setValidationResultArr={setValidationResultArray}
         lineRange={lineRange}
         setLineRange={setLineRange}
         setCaret={setShowCaret}
+        setTextCounts={setTextCounts}
       />
     </div>
   );
