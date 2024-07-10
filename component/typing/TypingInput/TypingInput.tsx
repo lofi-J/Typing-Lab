@@ -132,19 +132,17 @@ const TypingInput = (
   
   
   return (
-    <div>
-      <input
-        type={'text'}
-        value={localValue}
-        className={styles.input}
-        onChange={onChange}
-        onKeyDown={onKeydown}
-        onCompositionEnd={onComposingEnd}
-        autoFocus={true}
-        onFocus={() => setCaret(true)}
-        onBlur={() => setCaret(false)}
-      />
-    </div>
+    <input
+      type={'text'}
+      value={localValue}
+      className={styles.input}
+      onChange={onChange}
+      onKeyDown={onKeydown}
+      onCompositionEnd={onComposingEnd}
+      autoFocus={true}
+      onFocus={() => setCaret(true)}
+      onBlur={() => setCaret(false)}
+    />
   );
 }
 

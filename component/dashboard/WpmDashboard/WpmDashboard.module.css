@@ -1,7 +1,7 @@
 .container {
 	display: flex;
 	justify-content: center;
-	width: var(--main-width);
+	width: 80rem;
 	border: 1px solid white;
 	color: gray;
 }
