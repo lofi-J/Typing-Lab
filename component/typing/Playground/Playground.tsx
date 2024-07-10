@@ -5,12 +5,12 @@ import ShowLine from "@/component/typing/ShowLine/ShowLine";
 import TypingInput from "@/component/typing/TypingInput/TypingInput";
 import UserText from "@/component/typing/UserText/UserText";
 import {initLineRange, TLineRange} from "@/utils/playgroundHelper";
-import {TTextStatus} from "@/app/typing/page";
+import {TTextCounts} from "@/app/typing/page";
 
 
 interface IPlayground {
   targetList: string[];
-  setTextCounts: React.Dispatch<React.SetStateAction<TTextStatus>>;
+  setTextCounts: React.Dispatch<React.SetStateAction<TTextCounts>>;
 }
 
 const Playground = ({targetList, setTextCounts}: IPlayground) => {

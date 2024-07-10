@@ -3,7 +3,7 @@
 import styles from "./page.module.css";
 import {useState} from "react";
 import Playground from "@/component/typing/Playground/Playground";
-import GradientCard from "@/component/Card/GradientCard/GradientCard";
+import PlaygroundWrapper from "@/section/PlaygroundWrapper/PlaygroundWrapper";
 import {splitTextByLine} from "@/utils/splitTextByLine";
 import default_article from "@/static/texts/default_article";
 import sentence from "@/static/texts/static_kr_01";
@@ -28,12 +28,12 @@ export default function Typing() {
   return (
     <main className={styles.main}>
       <WpmDashboard textCounts={textCounts} startTime={startTime} />
-      <GradientCard style={{width: `${PLAYGROUND_WIDTH}rem`, position: 'relative'}}>
+      <PlaygroundWrapper style={{width: `${PLAYGROUND_WIDTH}rem`, position: 'relative'}}>
         <Playground
           targetList={targetList || splitTextByLine(default_article.contents, PLAYGROUND_WIDTH, sentence.lang)}
           setTextCounts={setTextCounts}
         />
-      </GradientCard>
+      </PlaygroundWrapper>
     </main>
   );
 }

@@ -1,11 +1,11 @@
-import styles from "./GradientCard.module.css";
+import styles from "./PlaygroundWrapper.module.css";
 import {CSSProperties, ReactNode} from "react";
 
-interface IGradientCard {
+interface IPlaygroundWrapper {
   children: ReactNode;
   style?: CSSProperties;
 }
-const GradientCard = ({children, style}: IGradientCard) => {
+const PlaygroundWrapper = ({children, style}: IPlaygroundWrapper) => {
   return (
     <div className={styles.card} style={style}>
       {children}
@@ -13,4 +13,4 @@ const GradientCard = ({children, style}: IGradientCard) => {
   );
 }
 
-export default GradientCard;
+export default PlaygroundWrapper;
