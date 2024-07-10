@@ -1,5 +1,5 @@
 import styles from "./WpmDashboard.module.css";
-import React, {useState} from "react";
+import React from "react";
 import moment from "moment/moment";
 import {TTextCounts} from "@/app/typing/page";
 import useElapsedTimer from "@/hooks/useElapsedTimer";
@@ -12,7 +12,7 @@ interface IWpmDashboard {
 }
 
 const WpmDashboard = ({textCounts, startTime}: IWpmDashboard) => {
-  const {elapsed, start, clear, flagTick} = useElapsedTimer(startTime);
+  const {elapsed, flagTick} = useElapsedTimer(startTime);
   const wpm = useCalcWPM(textCounts.totalCount, elapsed, flagTick);
   
   

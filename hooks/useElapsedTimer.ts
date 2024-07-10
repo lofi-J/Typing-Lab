@@ -29,7 +29,7 @@ const useElapsedTimer = (startTime: moment.Moment) => {
     return () => clear();
   }, [startTime]);
   
-  return { elapsed, start, clear, flagTick };
+  return { elapsed, flagTick };
 }
 
 export default useElapsedTimer;
