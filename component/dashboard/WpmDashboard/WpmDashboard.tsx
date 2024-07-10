@@ -14,8 +14,7 @@ interface IWpmDashboard {
 const WpmDashboard = ({textCounts, startTime}: IWpmDashboard) => {
   const {elapsed, flagTick} = useElapsedTimer(startTime);
   const wpm = useCalcWPM(textCounts.totalCount, elapsed, flagTick);
-  
-  
+  // TODO chart.js 그래프
   return (
     <div className={styles.container}>
       <div className={styles.test}>

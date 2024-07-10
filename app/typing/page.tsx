@@ -8,6 +8,7 @@ import default_article from "@/static/texts/default_article";
 import sentence from "@/static/texts/static_kr_01";
 import WpmDashboard from "@/component/dashboard/WpmDashboard/WpmDashboard";
 import useSetStartTime from "@/hooks/useSetStartTime";
+import Keyboard from "@/component/Keyboard/Keyboard";
 
 
 export type TTextCounts = {
@@ -29,6 +30,7 @@ export default function Typing() {
         targetList={targetList || splitTextByLine(default_article.contents, 80, sentence.lang)}
         setTextCounts={setTextCounts}
       />
+      <Keyboard />
     </main>
   );
 }

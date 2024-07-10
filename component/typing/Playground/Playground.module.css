@@ -5,6 +5,9 @@
 	overflow: hidden;
 	width: 80rem;
 	height: max-content;
+	padding: 2rem 1rem;
+	border-top: 1px solid var(--primary-color);
+	border-bottom: 1px solid var(--primary-color);
 }
 .text_wrap {
 	position: relative;
