@@ -1,23 +1,9 @@
 'use client';
 
 import styles from "./Keyboard.module.css";
-import {memo, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
+import Key from "@/component/Keyboard/Key";
 
-
-interface IKey {
-  detectedKey: string;
-  text: string;
-}
-const Key = memo(({ detectedKey, text }: IKey) => {
-  const className = () => {
-    if (detectedKey === text) {
-      return `${styles.key} ${styles.active}`;
-    } else {
-      return styles.key;
-    }
-  }
-  return <span className={className()}>{text}</span>
-});
 
 const Keyboard = () => {
   const [detectedKey, setDetectedKey] = useState('');

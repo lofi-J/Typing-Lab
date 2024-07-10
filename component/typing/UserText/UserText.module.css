@@ -1,7 +1,7 @@
 .lines {
 	position: absolute;
 	top: 0;
-	left: 0;
+	left: 0.8rem;
 	display: flex;
 	flex-direction: column;
 	gap: 1.5rem;
