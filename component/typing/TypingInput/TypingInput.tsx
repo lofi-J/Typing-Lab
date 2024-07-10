@@ -2,17 +2,18 @@ import styles from "./TypingInput.module.css";
 import {makeArray} from "@/utils/extension/arrayHelper";
 import {TLineRange, validateTypingLine} from "@/utils/playgroundHelper";
 import React, {useState, useEffect, ChangeEvent} from "react";
+import {TTextStatus} from "@/app/typing/page";
 
 
 interface ITypingInput {
   targetList: string[];
   totalUserText: string[];
   setTotalUserText: React.Dispatch<React.SetStateAction<string[]>>;
-  setTotalWrongCount: React.Dispatch<React.SetStateAction<number>>;
   lineRange: TLineRange;
   setLineRange: React.Dispatch<React.SetStateAction<TLineRange>>;
   setValidationResultArr: React.Dispatch<React.SetStateAction<boolean[][]>>;
   setCaret: React.Dispatch<React.SetStateAction<boolean>>;
+  setTextCounts: React.Dispatch<React.SetStateAction<TTextStatus>>;
 }
 
 const initValidationArray = (baseLine: string) => {
@@ -20,7 +21,8 @@ const initValidationArray = (baseLine: string) => {
 }
 
 const TypingInput = (
-  {targetList, totalUserText, setTotalUserText, lineRange, setLineRange, setValidationResultArr, setCaret, setTotalWrongCount
+  {targetList, totalUserText, setTotalUserText, lineRange, setLineRange,
+  setValidationResultArr, setCaret, setTextCounts
 }: ITypingInput) => {
   
   const baseLine = targetList[lineRange.start]; // 타이핑 해야하는 라인 string
@@ -28,6 +30,10 @@ const TypingInput = (
   const [localValid, setLocalValid] = useState<boolean[]>(initValidationArray(baseLine));
   const [isBlockTyping, setIsBlockTyping] = useState(false);
   
+  // increase state
+  const updateTextStatus = (key: keyof TTextStatus) => {
+    setTextCounts(prev => ({...prev, [key]: prev[key] + 1}));
+  }
   
   const setValid = (value: string, isCorrect: boolean) => {
     const index = value.length-1;
@@ -75,6 +81,7 @@ const TypingInput = (
     if (value.length === 0) {
       setLocalValue('');
       setIsBlockTyping(false);
+      return;
     }
     
     const isCorrect = validateTypingLine(baseLine, value);
@@ -83,14 +90,16 @@ const TypingInput = (
       setLocalValue(value);
       setValid(value, isCorrect);
       setIsBlockTyping(false);
+      if (!isDelete) updateTextStatus('totalCount');
       return;
     } else if (!isBlockTyping && !isCorrect) {
       setLocalValue(value);
       setValid(value, isCorrect);
       setIsBlockTyping(true);
+      updateTextStatus('wrongCount');
+      updateTextStatus('totalCount');
       return;
     }
-    setTotalWrongCount(prev => prev + 1);
   }
   
   // IME 키보드 시스템 종성 예외처리

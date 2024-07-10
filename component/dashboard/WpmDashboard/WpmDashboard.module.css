@@ -1,0 +1,19 @@
+.container {
+	display: flex;
+	justify-content: center;
+	width: var(--main-width);
+	border: 1px solid white;
+	color: gray;
+}
+
+
+.test {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.wpm {
+	font-size: 3rem;
+	text-align: center;
+}
