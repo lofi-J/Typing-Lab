@@ -1,5 +1,3 @@
-'use client';
-
 import styles from "./Keyboard.module.css";
 import {useEffect, useState} from "react";
 import Key from "@/component/Keyboard/Key";

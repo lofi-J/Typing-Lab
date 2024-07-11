@@ -2,7 +2,7 @@ import styles from "./TypingInput.module.css";
 import {makeArray} from "@/utils/extension/arrayHelper";
 import {TLineRange, validateTypingLine} from "@/utils/playgroundHelper";
 import React, {useState, useEffect, ChangeEvent} from "react";
-import {TTextStatus} from "@/app/typing/page";
+import {TTextCounts} from "@/app/typing/page";
 
 
 interface ITypingInput {
@@ -13,7 +13,7 @@ interface ITypingInput {
   setLineRange: React.Dispatch<React.SetStateAction<TLineRange>>;
   setValidationResultArr: React.Dispatch<React.SetStateAction<boolean[][]>>;
   setCaret: React.Dispatch<React.SetStateAction<boolean>>;
-  setTextCounts: React.Dispatch<React.SetStateAction<TTextStatus>>;
+  setTextCounts: React.Dispatch<React.SetStateAction<TTextCounts>>;
 }
 
 const initValidationArray = (baseLine: string) => {
@@ -31,7 +31,7 @@ const TypingInput = (
   const [isBlockTyping, setIsBlockTyping] = useState(false);
   
   // increase state
-  const updateTextStatus = (key: keyof TTextStatus) => {
+  const updateTextStatus = (key: keyof TTextCounts) => {
     setTextCounts(prev => ({...prev, [key]: prev[key] + 1}));
   }
   

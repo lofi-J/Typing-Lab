@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react";
 
-const useCalcWPM = (totalCount: number, elapsedTime: number, flagTick: nubmber) => {
+const useCalcWPM = (totalCount: number, elapsedTime: number, flagTick: number) => {
   const [wpm, setWpm] = useState(0);
   
   const milliToMinute = (millisecond: number) => millisecond / 60000;

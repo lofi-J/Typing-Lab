@@ -3,12 +3,13 @@ import moment from "moment";
 
 const useElapsedTimer = (startTime: moment.Moment) => {
   const [flagTick, setFlagTick] = useState<number>(0);
-  const intervalRef = useRef(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const elapsedRef = useRef(0);
   const elapsed = elapsedRef.current;
   
   const start = useCallback(() => {
     if (intervalRef.current !== null || !startTime) return;
+
     intervalRef.current = setInterval(() => {
       elapsedRef.current = moment().diff(startTime, 'millisecond');
       setFlagTick(prev => prev + 1);
