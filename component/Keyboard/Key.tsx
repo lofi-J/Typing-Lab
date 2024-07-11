@@ -5,13 +5,14 @@ import {IKeyInfo} from "@/static/keymap";
 interface IKey {
   detectedKey: string;
   keyInfo: IKeyInfo;
+  style?: string;
 }
-const Key = ({ detectedKey, keyInfo }: IKey) => {
+const Key = ({ detectedKey, keyInfo, style }: IKey) => {
   const className = () => {
     if (detectedKey === keyInfo.code) {
-      return `${styles.key} ${styles.active}`;
+      return `${styles.key} ${styles.active} ${style}`;
     } else {
-      return styles.key;
+      return `${styles.key} ${style}`;
     }
   }
   

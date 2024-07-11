@@ -19,7 +19,6 @@ const Keyboard = () => {
   
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      console.log(e.code);
       setDetectedKey(e.code);
     }
     
@@ -32,7 +31,7 @@ const Keyboard = () => {
       {renderRow(firstRow, 'low1')}
       {renderRow(secondRow, 'low2')}
       {renderRow(thirdRow, 'low3')}
-      <div className={`${styles.key} ${styles.spacebar} ${detectedKey === 'Space' ? styles.active : ''}`}>spacebar</div>
+      <Key keyInfo={{text: 'spacebar', code: 'Space'}} detectedKey={detectedKey} style={styles.spacebar} />
     </div>
   );
 }
