@@ -1,20 +1,21 @@
 import {memo} from "react";
 import styles from "@/component/Keyboard/Keyboard.module.css";
+import {IKeyInfo} from "@/static/keymap";
 
 interface IKey {
   detectedKey: string;
-  text: string;
+  keyInfo: IKeyInfo;
 }
-const Key = ({ detectedKey, text }: IKey) => {
+const Key = ({ detectedKey, keyInfo }: IKey) => {
   const className = () => {
-    if (detectedKey === text) {
+    if (detectedKey === keyInfo.code) {
       return `${styles.key} ${styles.active}`;
     } else {
       return styles.key;
     }
   }
   
-  return <span className={className()}>{text}</span>
+  return <span className={className()}>{keyInfo.text}</span>
 }
 
 export default memo(Key);

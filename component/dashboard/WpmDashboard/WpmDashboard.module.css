@@ -2,10 +2,8 @@
 	display: flex;
 	justify-content: center;
 	width: 80rem;
-	border: 1px solid white;
 	color: gray;
 }
-
 
 .test {
 	display: flex;

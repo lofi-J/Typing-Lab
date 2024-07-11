@@ -1,7 +1,7 @@
 import {useState, useCallback, useEffect, useRef} from "react";
 import moment from "moment";
 
-const useElapsedTimer = (startTime: moment.Moment) => {
+const useElapsedTimer = (startTime: moment.Moment | undefined) => {
   const [flagTick, setFlagTick] = useState<number>(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const elapsedRef = useRef(0);
