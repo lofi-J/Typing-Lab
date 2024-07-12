@@ -39,7 +39,7 @@ export const validateTypingLine = (baseLine: string, inputLine: string) => {
   
   const base = baseLine[index];
   const input = inputLine[index];
-  const nextBase = baseLine[nextIndex];
+  const nextBase = nextIndex ? baseLine[nextIndex] : undefined;
   
 
   // 비교 대상에 한국어가 포함되어있지 않다면 단순 비교를 진행
@@ -57,28 +57,28 @@ export const validateTypingLine = (baseLine: string, inputLine: string) => {
   }
   // 중성 비교 및 예외 처리
   if (splitedInput.jung && (splitedInput.jung !== splitedBase.jung)) {
-    if (DOUBLE_MIDDLE[splitedBase.jung]) {
-      return splitedInput.jung === DOUBLE_MIDDLE[splitedBase.jung][0];
+    if (DOUBLE_MIDDLE[splitedBase.jung as keyof typeof DOUBLE_MIDDLE]) {
+      return splitedInput.jung === DOUBLE_MIDDLE[splitedBase.jung as keyof typeof DOUBLE_MIDDLE][0];
     } else {
       return false;
     }
   }
   // 종성 비교 및 예외 처리
   if (splitedInput.jong && (splitedInput.jong !== splitedBase.jong)) {
-    if (!DOUBLE_FINAL[splitedInput.jong] && DOUBLE_FINAL[splitedBase.jong]) {
-      if (splitedInput.jong !== DOUBLE_FINAL[splitedBase.jong][0]) {
+    if (!DOUBLE_FINAL[splitedInput.jong as keyof typeof DOUBLE_FINAL] && DOUBLE_FINAL[splitedBase.jong as keyof typeof DOUBLE_FINAL]) {
+      if (splitedInput.jong !== DOUBLE_FINAL[splitedBase.jong as keyof typeof DOUBLE_FINAL][0]) {
         return false;
       }
     }
-    if (!DOUBLE_FINAL[splitedInput.jong] && !DOUBLE_FINAL[splitedBase.jong]) {
-      if (nextIndex && (splitedInput.jong !== nextSplitedBase.cho)) {
+    if (!DOUBLE_FINAL[splitedInput.jong as keyof typeof DOUBLE_FINAL] && !DOUBLE_FINAL[splitedBase.jong as keyof typeof DOUBLE_FINAL]) {
+      if (nextIndex && nextSplitedBase && (splitedInput.jong !== nextSplitedBase.cho)) {
         return false;
       } else if (!nextIndex) {
         return false;
       }
     }
-    if (DOUBLE_FINAL[splitedInput.jong] && nextIndex) {
-      if (DOUBLE_FINAL[splitedInput.jong][1] !== nextSplitedBase.cho) {
+    if (DOUBLE_FINAL[splitedInput.jong as keyof typeof DOUBLE_FINAL] && nextIndex) {
+      if (nextSplitedBase && (DOUBLE_FINAL[splitedInput.jong as keyof typeof DOUBLE_FINAL][1] !== nextSplitedBase.cho)) {
         return false;
       }
     }

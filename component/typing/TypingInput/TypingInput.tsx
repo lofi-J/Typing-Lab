@@ -29,6 +29,7 @@ const TypingInput = (
   const [localValue, setLocalValue] = useState('');
   const [localValid, setLocalValid] = useState<boolean[]>(initValidationArray(baseLine));
   const [isBlockTyping, setIsBlockTyping] = useState(false);
+  const [isPressEnter, setIsPressEnter] = useState(false);
   
   // increase state
   const updateTextStatus = (key: keyof TTextCounts) => {
@@ -55,7 +56,7 @@ const TypingInput = (
   }
   
   const moveToNextLine = () => {
-    setLocalValue('')
+    setLocalValue('');
     setLocalValid(initValidationArray(baseLine));
     setIsBlockTyping(false);
     increaseLineRange();
@@ -65,19 +66,19 @@ const TypingInput = (
   const onKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const key = e.key || e.keyCode;
 
-    if (localValue.length > baseLine.length) {
-      moveToNextLine();
-    }
-    
-    if (key === 'Enter' || key === 13) {
-      e.preventDefault();
-      moveToNextLine();
-    }
+    if (e.code === 'Space' || (key === 'Enter' || key === 13)) {
+      if (localValue.length >= baseLine.length) {
+        moveToNextLine();
+        setIsPressEnter(true);
+      }
+    } else setIsPressEnter(false);
   }
   
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    
+
+    if (isPressEnter) return;
+
     if (value.length === 0) {
       setLocalValue('');
       setIsBlockTyping(false);
