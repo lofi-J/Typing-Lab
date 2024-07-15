@@ -1,12 +1,14 @@
-import {memo} from "react";
 import styles from "@/component/Keyboard/Keyboard.module.css";
+import {memo} from "react";
 import {IKeyInfo} from "@/static/keymap";
+
 
 interface IKey {
   detectedKey: string;
   keyInfo: IKeyInfo;
   style?: string;
 }
+
 const Key = ({ detectedKey, keyInfo, style }: IKey) => {
   const className = () => {
     if (detectedKey === keyInfo.code) {
