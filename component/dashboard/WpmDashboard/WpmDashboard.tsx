@@ -4,6 +4,7 @@ import moment from "moment/moment";
 import {TTextCounts} from "@/app/typing/page";
 import useElapsedTimer from "@/hooks/useElapsedTimer";
 import useCalcWPM from "@/hooks/useCalcWPM";
+import LineChart from "@/component/chart/LineChart";
 
 
 interface IWpmDashboard {
@@ -14,11 +15,11 @@ interface IWpmDashboard {
 const WpmDashboard = ({textCounts, startTime}: IWpmDashboard) => {
   const {elapsed, flagTick} = useElapsedTimer(startTime);
   const wpm = useCalcWPM(textCounts.totalCount, elapsed, flagTick);
-  // TODO chart.js 그래프
+  
   return (
     <div className={styles.container}>
       <div className={styles.test}>
-        <p className={styles.wpm}>wpm: {wpm}</p>
+        <LineChart wpms={[]} />
       </div>
     </div>
   );
