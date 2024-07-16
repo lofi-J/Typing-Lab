@@ -1,14 +1,14 @@
 'use client';
 
 import styles from "./page.module.css";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import WpmDashboard from "@/component/dashboard/WpmDashboard/WpmDashboard";
 import Playground from "@/component/typing/Playground/Playground";
+import Keyboard from "@/component/Keyboard/Keyboard";
 import {splitTextByLine} from "@/utils/splitTextByLine";
+import useSetStartTime from "@/hooks/useSetStartTime";
 import default_article from "@/static/texts/default_article";
 import sentence from "@/static/texts/static_kr_01";
-import WpmDashboard from "@/component/dashboard/WpmDashboard/WpmDashboard";
-import useSetStartTime from "@/hooks/useSetStartTime";
-import Keyboard from "@/component/Keyboard/Keyboard";
 
 
 export type TTextCounts = {
@@ -17,10 +17,14 @@ export type TTextCounts = {
 }
 
 export default function Typing() {
-  const [targetList, setTargetList] = useState(splitTextByLine(sentence.contents, 80, sentence.lang));
+  const [targetList, setTargetList] = useState<string[]>();
   const [textCounts, setTextCounts] = useState<TTextCounts>({totalCount: 0, wrongCount:0});
   const {totalCount, wrongCount} = textCounts;
   const startTime = useSetStartTime(totalCount);
+
+  useEffect(() => {
+    setTargetList(splitTextByLine(sentence.contents, 76, sentence.lang));
+  }, [])
   
   
   return (
