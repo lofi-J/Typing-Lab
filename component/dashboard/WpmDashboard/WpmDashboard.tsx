@@ -5,6 +5,8 @@ import {TTextCounts} from "@/app/typing/page";
 import useElapsedTimer from "@/hooks/useElapsedTimer";
 import useCalcWPM from "@/hooks/useCalcWPM";
 import LineChart from "@/component/chart/LineChart";
+import { IoSpeedometerOutline } from "react-icons/io5";
+import { GoClock } from "react-icons/go";
 
 
 interface IWpmDashboard {
@@ -13,23 +15,9 @@ interface IWpmDashboard {
 }
 
 const WpmDashboard = ({textCounts, startTime}: IWpmDashboard) => {
-  const {elapsed, flagTick} = useElapsedTimer(startTime);
+  const {elapsed, flagTick} = useElapsedTimer(startTime); // ms
   const wpm = useCalcWPM(textCounts.totalCount, elapsed, flagTick);
   const [wpmQueue, setWpmQueue] = useState<number[]>([]);
-  const [timeQueue, setTimeQueue] = useState<number[]>([]);
-  
-  /*
-  * data가 number라면 wpmQueue를 set
-  * data가 string이라면 timeQueue를 set
-  * */
-  const setQueue = (data: number | string) => {
-    const result = data;
-    if (typeof data === 'number') {
-    
-    } else {
-    
-    }
-  }
   
   useEffect(() => {
     setWpmQueue(prev => {
@@ -42,10 +30,22 @@ const WpmDashboard = ({textCounts, startTime}: IWpmDashboard) => {
     });
   }, [wpm])
   
+  
+  // TODO 정확도, 총 타자 수 등 ...
   return (
     <div className={styles.container}>
-      <div className={styles.test}>
-        <LineChart wpms={wpmQueue} times={[]} />
+      <div className={styles.chart}>
+        <LineChart wpms={wpmQueue} />
+      </div>
+      <div className={styles.vital}>
+        <div className={styles.wpm}>
+          <IoSpeedometerOutline />
+          <span>{wpm}</span>
+        </div>
+        <div>
+          <GoClock />
+          <span>{elapsed}</span>
+        </div>
       </div>
     </div>
   );

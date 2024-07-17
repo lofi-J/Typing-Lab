@@ -1,17 +1,34 @@
 .container {
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	width: 80rem;
-	color: gray;
+	color: var(--primary-color);
 }
 
-.test {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+.chart {
+	width: 30rem;
+	height: 10rem;
+	& > canvas {
+		width: 100%;
+		height: 100%;
+	}
 }
+
+.vital {
+	width: 30rem;
+	height: 10rem;
+	border: 0.1rem solid var(--primary-color);
+	border-radius: var(--border-radius);
+	display: grid;
+}
+
 .wpm {
-	font-size: 3rem;
-	text-align: center;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	font-size: 2.5rem;
+	& > svg {
+		width: 2rem;
+		height: 2rem;
+	}
 }
