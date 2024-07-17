@@ -14,21 +14,31 @@
 	}
 }
 
-.vital {
+.dashboard {
 	width: 30rem;
 	height: 10rem;
 	border: 0.1rem solid var(--primary-color);
 	border-radius: var(--border-radius);
+	padding: 1rem;
 	display: grid;
 }
 
-.wpm {
+.data_wrap {
 	display: flex;
 	align-items: center;
 	gap: 1rem;
-	font-size: 2.5rem;
+	& > span { font-size: 1.5rem; }
 	& > svg {
 		width: 2rem;
 		height: 2rem;
 	}
+}
+
+.time {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+.data {
+	font-size: 2rem;
 }

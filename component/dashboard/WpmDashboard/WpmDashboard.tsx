@@ -7,6 +7,7 @@ import useCalcWPM from "@/hooks/useCalcWPM";
 import LineChart from "@/component/chart/LineChart";
 import { IoSpeedometerOutline } from "react-icons/io5";
 import { GoClock } from "react-icons/go";
+import {converMsToMinSec} from "@/utils/dashboardHelper";
 
 
 interface IWpmDashboard {
@@ -18,6 +19,7 @@ const WpmDashboard = ({textCounts, startTime}: IWpmDashboard) => {
   const {elapsed, flagTick} = useElapsedTimer(startTime); // ms
   const wpm = useCalcWPM(textCounts.totalCount, elapsed, flagTick);
   const [wpmQueue, setWpmQueue] = useState<number[]>([]);
+  const {minutes, seconds} = converMsToMinSec(elapsed);
   
   useEffect(() => {
     setWpmQueue(prev => {
@@ -31,20 +33,23 @@ const WpmDashboard = ({textCounts, startTime}: IWpmDashboard) => {
   }, [wpm])
   
   
-  // TODO 정확도, 총 타자 수 등 ...
+  // TODO 정확도, 총 타자 수 등 ... (디자인 수정 필요)
   return (
     <div className={styles.container}>
       <div className={styles.chart}>
         <LineChart wpms={wpmQueue} />
       </div>
-      <div className={styles.vital}>
-        <div className={styles.wpm}>
+      <div className={styles.dashboard}>
+        <div className={styles.data_wrap}>
           <IoSpeedometerOutline />
-          <span>{wpm}</span>
+          <b className={styles.data}>{wpm}</b>
         </div>
-        <div>
+        <div className={styles.data_wrap}>
           <GoClock />
-          <span>{elapsed}</span>
+          <span className={styles.time}>
+            <b className={styles.data}>{minutes}</b>m
+            <b className={styles.data}>{seconds}</b>s
+          </span>
         </div>
       </div>
     </div>
