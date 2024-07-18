@@ -1,10 +1,10 @@
 .container {
-	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height: calc(50vh - var(--header-height));
+	height: 100%;
+	margin-top: 25vh;
 }
 
 /* TextWriterAnimation */
@@ -18,22 +18,21 @@
 	100% { opacity: 1; }
 }
 .press_btn {
-	position: absolute;
-	bottom: 0;
 	width: max-content;
+	padding-top: 10vh;
 	animation: showing 0.8s ease;
 	&:hover {
 		cursor: pointer;
 	}
 }
 .p {
-	border: 1px solid var(--normal-gray);
 	border-radius: var(--border-radius);
-	background-color: var(--light-blue);
+	background-color: var(--accent-color);
 	font-size: 1.2rem;
 	padding: 0.8rem 1rem;
+	transition: transform linear 0.2s;
 	&:hover {
-		background-color: var(--dark-blue);
+		transform: translateY(-0.5rem);
 	}
 }
 

@@ -8,7 +8,6 @@
   --primary-color-rgb: rgb(255, 255, 255);
   --background-color: #131313;
   --background-color-rgb: rgb(19, 19, 19);
-  --header-background-color: rgba(var(--background-color-rgb, 0.8));
   --gradient-start-color: #06142c;
   --gradient-middle-color: #14122c;
   --gradient-end-color: #22102c;
@@ -16,11 +15,11 @@
   --card-gradient-start-color: #131d30;
   --card-gradient-end-color: #15091b;
   --card-gradient-background: linear-gradient(to right, var(--card-gradient-start-color), var(--card-gradient-end-color));
-  --accent-color: #3360cc;
+  --accent-color: #054bfc;
   --light-yellow: #fdfda4;
   --red: #ff8a8a;
-  --light-blue: var(--accent-color);
-  --dark-blue: #113ead;
+  --gray: #1d1e21; /* font-color */
+  --font-gray: #171717; /* font-color */
   --mint: #37f3f4;
   --caret-color: #ffffff93;
   --normal-gray: #333;
@@ -55,7 +54,6 @@
   --primary-color-rgb: rgb(0, 0, 0);
   --background-color: #fff;
   --background-color-rgb: rgb(255, 255, 255);
-  --header-background-color: rgba(var(--background-color-rgb, 0.8));
   --gradient-start-color: #c2ffa3;
   --gradient-middle-color: #deffcb;
   --gradient-end-color: #ffffff;

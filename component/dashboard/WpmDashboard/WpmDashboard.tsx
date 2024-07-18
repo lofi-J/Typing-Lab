@@ -8,6 +8,8 @@ import LineChart from "@/component/chart/LineChart";
 import { IoSpeedometerOutline } from "react-icons/io5";
 import { GoClock } from "react-icons/go";
 import {converMsToMinSec} from "@/utils/dashboardHelper";
+import { TbTargetArrow } from "react-icons/tb";
+import { GiKeyboard } from "react-icons/gi";
 
 
 interface IWpmDashboard {
@@ -50,6 +52,14 @@ const WpmDashboard = ({textCounts, startTime}: IWpmDashboard) => {
             <b className={styles.data}>{minutes}</b>m
             <b className={styles.data}>{seconds}</b>s
           </span>
+        </div>
+        <div className={styles.data_wrap}>
+          <TbTargetArrow />
+          <b>정확도</b>
+        </div>
+        <div className={styles.data_wrap}>
+          <GiKeyboard />
+          <b>총 타자 수</b>
         </div>
       </div>
     </div>
