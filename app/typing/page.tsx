@@ -19,8 +19,7 @@ export type TTextCounts = {
 export default function Typing() {
   const [targetList, setTargetList] = useState<string[]>();
   const [textCounts, setTextCounts] = useState<TTextCounts>({totalCount: 0, wrongCount:0});
-  const {totalCount, wrongCount} = textCounts;
-  const startTime = useSetStartTime(totalCount);
+  const startTime = useSetStartTime(textCounts.totalCount);
 
   useEffect(() => {
     setTargetList(splitTextByLine(sentence.contents, 76, sentence.lang));

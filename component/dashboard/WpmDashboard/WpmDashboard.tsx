@@ -7,9 +7,10 @@ import useCalcWPM from "@/hooks/useCalcWPM";
 import LineChart from "@/component/chart/LineChart";
 import { IoSpeedometerOutline } from "react-icons/io5";
 import { GoClock } from "react-icons/go";
-import {converMsToMinSec} from "@/utils/dashboardHelper";
+import {converMsToMinSec, calculateAccuracy} from "@/utils/dashboardHelper";
 import { TbTargetArrow } from "react-icons/tb";
 import { GiKeyboard } from "react-icons/gi";
+import IconCountCard from "@/component/cards/IconCountCard/IconCountCard";
 
 
 interface IWpmDashboard {
@@ -34,33 +35,39 @@ const WpmDashboard = ({textCounts, startTime}: IWpmDashboard) => {
     });
   }, [wpm])
   
-  
-  // TODO 정확도, 총 타자 수 등 ... (디자인 수정 필요)
   return (
     <div className={styles.container}>
       <div className={styles.chart}>
         <LineChart wpms={wpmQueue} />
       </div>
       <div className={styles.dashboard}>
-        <div className={styles.data_wrap}>
-          <IoSpeedometerOutline />
-          <b className={styles.data}>{wpm}</b>
-        </div>
-        <div className={styles.data_wrap}>
-          <GoClock />
-          <span className={styles.time}>
-            <b className={styles.data}>{minutes}</b>m
-            <b className={styles.data}>{seconds}</b>s
-          </span>
-        </div>
-        <div className={styles.data_wrap}>
-          <TbTargetArrow />
-          <b>정확도</b>
-        </div>
-        <div className={styles.data_wrap}>
-          <GiKeyboard />
-          <b>총 타자 수</b>
-        </div>
+        <IconCountCard
+          icon={IoSpeedometerOutline}
+          title={'WPM'}
+          value={wpm}
+        />
+        <IconCountCard
+          icon={GoClock}
+          title={'시간'}
+          value={(
+            <>
+              <span>{minutes}m</span>
+              <span style={{paddingLeft: '0.5rem'}}>{seconds}s</span>
+            </>
+          )}
+        />
+        <IconCountCard
+          icon={TbTargetArrow}
+          title={'정확도'}
+          value={calculateAccuracy(textCounts.totalCount, textCounts.wrongCount)}
+          unit={'%'}
+        />
+        <IconCountCard
+          icon={GiKeyboard}
+          title={'총 타이핑'}
+          value={textCounts.totalCount}
+          unit={'회'}
+        />
       </div>
     </div>
   );

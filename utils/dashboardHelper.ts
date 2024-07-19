@@ -4,3 +4,10 @@ export const converMsToMinSec = (ms: number) => {
   
   return {minutes, seconds};
 }
+
+export const calculateAccuracy = (totalCount: number, mistake: number) => {
+  if (totalCount === 0) return 0;
+  
+  const accuracy = ((totalCount - mistake) / totalCount) * 100;
+  return Math.round(accuracy);
+}

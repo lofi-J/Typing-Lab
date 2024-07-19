@@ -7,7 +7,7 @@
 
 .chart {
 	width: 30rem;
-	height: 10rem;
+	height: 12rem;
 	& > canvas {
 		width: 100%;
 		height: 100%;
@@ -16,31 +16,12 @@
 
 .dashboard {
 	width: 30rem;
-	height: 10rem;
+	height: 12rem;
 	border: 1px solid var(--gray-900);
 	border-radius: var(--border-radius);
 	padding: 1rem;
 	display: grid;
 	grid-template-rows: repeat(2, 1fr);
 	grid-template-columns: repeat(2, 1fr);
-}
-
-.data_wrap {
-	display: flex;
-	align-items: center;
-	gap: 1rem;
-	& > span { font-size: 1.5rem; }
-	& > svg {
-		width: 1.5rem;
-		height: 1.5rem;
-	}
-}
-
-.time {
-	display: flex;
-	align-items: center;
-	gap: 0.5rem;
-}
-.data {
-	font-size: 2rem;
+	gap: 2rem;
 }
