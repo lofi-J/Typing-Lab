@@ -30,7 +30,7 @@ const WpmDashboard = ({textCounts, startTime}: IWpmDashboard) => {
         const arr = prev.slice(1);
         return [...arr, wpm];
       } else {
-        return [...prev, wpm]
+        return [...prev, wpm];
       }
     });
   }, [wpm])
