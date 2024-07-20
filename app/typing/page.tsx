@@ -2,13 +2,14 @@
 
 import styles from "./page.module.css";
 import {useEffect, useState} from "react";
-import WpmDashboard from "@/component/dashboard/WpmDashboard/WpmDashboard";
-import Playground from "@/component/typing/Playground/Playground";
-import Keyboard from "@/component/Keyboard/Keyboard";
+import sentence from "@/static/texts/static_kr_01";
 import {splitTextByLine} from "@/utils/splitTextByLine";
 import useSetStartTime from "@/hooks/useSetStartTime";
 import default_article from "@/static/texts/default_article";
-import sentence from "@/static/texts/static_kr_01";
+import WpmDashboard from "@/component/dashboard/WpmDashboard/WpmDashboard";
+import Playground from "@/component/typing/Playground/Playground";
+import Keyboard from "@/component/Keyboard/Keyboard";
+import TypingEndModal from "@/component/modal/styles/TypingEndModal/TypingEndModal";
 
 
 export type TTextCounts = {
@@ -20,7 +21,10 @@ export default function Typing() {
   const [targetList, setTargetList] = useState<string[]>();
   const [textCounts, setTextCounts] = useState<TTextCounts>({totalCount: 0, wrongCount:0});
   const startTime = useSetStartTime(textCounts.totalCount);
-
+  // modal
+  const [isEnd, setIsEnd] = useState(true);
+  const close = () => setIsEnd(false);
+  
   useEffect(() => {
     setTargetList(splitTextByLine(sentence.contents, 76, sentence.lang));
   }, [])
@@ -28,6 +32,7 @@ export default function Typing() {
   
   return (
     <main className={styles.main}>
+      {isEnd && <TypingEndModal close={close} />}
       <WpmDashboard textCounts={textCounts} startTime={startTime} />
       <Playground
         targetList={targetList || splitTextByLine(default_article.contents, 80, sentence.lang)}
