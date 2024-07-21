@@ -51,7 +51,7 @@ export default function Typing() {
   
   return (
     <main className={styles.main}>
-      {isEnd && <TypingEndModal close={close} />}
+      {isEnd && <TypingEndModal close={close} wpm={wpm} textCounts={textCounts} time={{minutes, seconds}} />}
       <WpmDashboard textCounts={textCounts} wpm={wpm} wpmQueue={wpmQueue} time={{minutes, seconds}} />
       <Playground
         targetList={targetList || splitTextByLine(default_article.contents, 80, sentence.lang)}
