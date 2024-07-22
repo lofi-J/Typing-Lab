@@ -13,7 +13,7 @@ import useElapsedTimer from "@/hooks/useElapsedTimer";
 import useCalcWPM from "@/hooks/useCalcWPM";
 import {calculateProgress, converMsToMinSec} from "@/utils/dashboardHelper";
 import {makeArray} from "@/utils/extension/arrayHelper";
-import Loading from "@/component/loading/Loading";
+import Loading from "@/component/Loading/Loading";
 
 
 export type TTextCounts = {
