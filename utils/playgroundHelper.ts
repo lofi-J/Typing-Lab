@@ -8,9 +8,15 @@ const LINE_LIMIT = 3;
 export const initLineRange = (target: string[]): TLineRange => {
   const length = target.length;
   
-  return {
-    start: 0,
-    end: length === 0 ? 0 : length > LINE_LIMIT ? LINE_LIMIT-1 : length-1
+  switch (length) {
+    case 0:
+      return {start: 0, end: 0};
+    case 1:
+      return {start: 0, end: 0};
+    case 2:
+      return {start: 0, end: 1};
+    default:
+      return {start: 0, end: LINE_LIMIT-1};
   }
 }
 

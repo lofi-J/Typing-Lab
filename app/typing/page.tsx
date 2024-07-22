@@ -5,7 +5,6 @@ import {useEffect, useState} from "react";
 import sentence from "@/static/texts/static_kr_01";
 import {splitTextByLine} from "@/utils/splitTextByLine";
 import useSetStartTime from "@/hooks/useSetStartTime";
-import default_article from "@/static/texts/default_article";
 import WpmDashboard from "@/component/dashboard/WpmDashboard/WpmDashboard";
 import Playground from "@/component/typing/Playground/Playground";
 import Keyboard from "@/component/Keyboard/Keyboard";
@@ -14,6 +13,7 @@ import useElapsedTimer from "@/hooks/useElapsedTimer";
 import useCalcWPM from "@/hooks/useCalcWPM";
 import {calculateProgress, converMsToMinSec} from "@/utils/dashboardHelper";
 import {makeArray} from "@/utils/extension/arrayHelper";
+import Loading from "@/component/loading/Loading";
 
 
 export type TTextCounts = {
@@ -70,12 +70,17 @@ export default function Typing() {
   }, [progress]);
   
   
+  // Loading
+  if (targetList === undefined) {
+    return <Loading />
+  }
+  
   return (
     <main className={styles.main}>
       {isEnd && <TypingEndModal close={close} wpm={wpm} textCounts={textCounts} time={{minutes, seconds}} wpmHistory={wpmHistory} />}
       <WpmDashboard textCounts={textCounts} wpm={wpm} wpmQueue={wpmQueue} time={{minutes, seconds}} progress={progress} />
       <Playground
-        targetList={targetList || splitTextByLine(default_article.contents, 80, sentence.lang)}
+        targetList={targetList}
         setTextCounts={setTextCounts}
         totalUserText={totalUserText}
         setTotalUserTexts={setTotalUserTexts}
