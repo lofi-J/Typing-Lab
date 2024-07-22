@@ -8,7 +8,7 @@ import {TTextCounts} from "@/app/typing/page";
 interface ITypingInput {
   targetList: string[];
   totalUserText: string[];
-  setTotalUserText: React.Dispatch<React.SetStateAction<string[]>>;
+  setTotalUserText: React.Dispatch<React.SetStateAction<string[] | undefined>>;
   lineRange: TLineRange;
   setLineRange: React.Dispatch<React.SetStateAction<TLineRange>>;
   setValidationResultArr: React.Dispatch<React.SetStateAction<boolean[][]>>;

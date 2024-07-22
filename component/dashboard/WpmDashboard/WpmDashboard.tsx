@@ -15,9 +15,10 @@ interface IWpmDashboard {
   wpm: number;
   textCounts: TTextCounts;
   time: {minutes: number, seconds: number};
+  progress: number;
 }
 
-const WpmDashboard = ({wpmQueue, wpm, time, textCounts}: IWpmDashboard) => {
+const WpmDashboard = ({wpmQueue, wpm, time, textCounts, progress}: IWpmDashboard) => {
   
   return (
     <div className={styles.container}>
@@ -48,9 +49,9 @@ const WpmDashboard = ({wpmQueue, wpm, time, textCounts}: IWpmDashboard) => {
         />
         <IconCountCard
           icon={GiKeyboard}
-          title={'총 타이핑'}
-          value={textCounts.totalCount}
-          unit={'회'}
+          title={'진행도'}
+          value={progress}
+          unit={'%'}
         />
       </div>
     </div>

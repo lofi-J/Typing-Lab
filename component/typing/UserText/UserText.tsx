@@ -12,10 +12,10 @@ interface IUserText {
 
 const UserText = ({totalUserText, lineRange, validResult, showCaret}: IUserText) => {
   const showUserText = totalUserText.copy(lineRange.start, lineRange.end);
-  const showResultArr = validResult.copy(lineRange.start, lineRange.end);
+  const showValidArr = validResult.copy(lineRange.start, lineRange.end);
   
   const getColor = (lineIndex: number, charIndex: number) => {
-    const isCorrect = showResultArr[lineIndex][charIndex];
+    const isCorrect = showValidArr[lineIndex][charIndex];
     return isCorrect ? 'white' : 'red';
   }
   

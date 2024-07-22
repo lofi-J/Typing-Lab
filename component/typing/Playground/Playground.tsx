@@ -11,13 +11,16 @@ import {TTextCounts} from "@/app/typing/page";
 interface IPlayground {
   targetList: string[];
   setTextCounts: React.Dispatch<React.SetStateAction<TTextCounts>>;
+  totalUserText?: string[];
+  setTotalUserTexts: React.Dispatch<React.SetStateAction<string[] | undefined>>;
 }
 
-const Playground = ({targetList, setTextCounts}: IPlayground) => {
-  const [totalUserText, setTotalUserTexts] = useState<string[]>(makeArray(targetList.length, ''));
+const Playground = ({targetList, setTextCounts, totalUserText, setTotalUserTexts}: IPlayground) => {
   const [validationResultArray, setValidationResultArray] = useState<boolean[][]>(makeArray(targetList.length, []));
   const [lineRange, setLineRange] = useState<TLineRange>(initLineRange(targetList));
   const [showCaret, setShowCaret] = useState(true);
+  
+  if (!totalUserText) return;
   
   return (
     <div className={styles.container}>

@@ -1,6 +1,7 @@
 import styles from "./TypingEndModal.module.css";
 import CustomModal from "@/component/modal/CustomModal";
 import {TTextCounts} from "@/app/typing/page";
+import LineChart from "@/component/chart/LineChart";
 
 
 interface ITypingEndModal {
@@ -8,10 +9,11 @@ interface ITypingEndModal {
   wpm: number;
   textCounts: TTextCounts;
   time: {minutes: number, seconds: number};
+  wpmHistory: number[];
 }
 
-const TypingEndModal = ({close, wpm, textCounts, time}: ITypingEndModal) => {
-  
+const TypingEndModal = ({close, wpm, textCounts, time, wpmHistory}: ITypingEndModal) => {
+  console.log(wpmHistory);
   return (
     <CustomModal close={close}>
       <div className={styles.container}>

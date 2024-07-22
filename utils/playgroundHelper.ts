@@ -6,9 +6,11 @@ const LINE_LIMIT = 3;
 
 // 타이핑 타겟 리스트를 이용해 초기 lineRange를 리턴
 export const initLineRange = (target: string[]): TLineRange => {
+  const length = target.length;
+  
   return {
     start: 0,
-    end: target.length > LINE_LIMIT ? LINE_LIMIT-1 : target.length-1
+    end: length === 0 ? 0 : length > LINE_LIMIT ? LINE_LIMIT-1 : length-1
   }
 }
 
