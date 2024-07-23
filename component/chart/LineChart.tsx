@@ -44,7 +44,12 @@ const LineChart = ({wpms}: ILineChart) => {
         grid: { display: true },
         ticks: {
           display: true,
-          callback: (value: number) => Math.round(value),
+          callback: (value: number, index: number, ticks: number[]) => {
+            if (index === 0 || index === ticks.length-1) {
+              return Math.round(value);
+            }
+            return '';
+          },
         },
       }
     },
