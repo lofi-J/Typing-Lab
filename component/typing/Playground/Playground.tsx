@@ -13,9 +13,10 @@ interface IPlayground {
   setTextCounts: React.Dispatch<React.SetStateAction<TTextCounts>>;
   totalUserText?: string[];
   setTotalUserTexts: React.Dispatch<React.SetStateAction<string[] | undefined>>;
+  setIsEnd: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Playground = ({targetList, setTextCounts, totalUserText, setTotalUserTexts}: IPlayground) => {
+const Playground = ({targetList, setTextCounts, totalUserText, setTotalUserTexts, setIsEnd}: IPlayground) => {
   const [validationResultArray, setValidationResultArray] = useState<boolean[][]>(makeArray(targetList.length, []));
   const [lineRange, setLineRange] = useState<TLineRange>(initLineRange(targetList));
   const [showCaret, setShowCaret] = useState(true);
@@ -46,6 +47,7 @@ const Playground = ({targetList, setTextCounts, totalUserText, setTotalUserTexts
         setLineRange={setLineRange}
         setCaret={setShowCaret}
         setTextCounts={setTextCounts}
+        setIsEnd={setIsEnd}
       />
     </div>
   );

@@ -14,6 +14,7 @@ interface ITypingInput {
   setValidationResultArr: React.Dispatch<React.SetStateAction<boolean[][]>>;
   setCaret: React.Dispatch<React.SetStateAction<boolean>>;
   setTextCounts: React.Dispatch<React.SetStateAction<TTextCounts>>;
+  setIsEnd: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const initValidationArray = (baseLine: string) => {
@@ -22,14 +23,15 @@ const initValidationArray = (baseLine: string) => {
 
 const TypingInput = (
   {targetList, totalUserText, setTotalUserText, lineRange, setLineRange,
-  setValidationResultArr, setCaret, setTextCounts
+  setValidationResultArr, setCaret, setTextCounts, setIsEnd
 }: ITypingInput) => {
-  
+ 
   const baseLine = targetList[lineRange.start]; // 타이핑 해야하는 라인 string
   const [localValue, setLocalValue] = useState('');
   const [localValid, setLocalValid] = useState<boolean[]>(initValidationArray(baseLine));
   const [isBlockTyping, setIsBlockTyping] = useState(false);
   const [isPressEnter, setIsPressEnter] = useState(false);
+  const maxTextCount = targetList.reduce((acc, cur: string) => {return acc + cur.length}, 0);
   
   // increase state
   const updateTextStatus = (key: keyof TTextCounts) => {
@@ -55,7 +57,16 @@ const TypingInput = (
     })
   }
   
+  // setEnd
+  const handleEnd = () => {
+    const inputCount = totalUserText.reduce((acc, cur: string) => {return acc + cur.length}, 0);
+    if (inputCount >= maxTextCount) {
+      setIsEnd(true);
+    }
+  }
+  
   const moveToNextLine = () => {
+    handleEnd();
     setLocalValue('');
     setLocalValid(initValidationArray(baseLine));
     setIsBlockTyping(false);

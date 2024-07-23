@@ -84,6 +84,7 @@ export default function Typing() {
         setTextCounts={setTextCounts}
         totalUserText={totalUserText}
         setTotalUserTexts={setTotalUserTexts}
+        setIsEnd={setIsEnd}
       />
       <Keyboard isActive={!isEnd} />
     </main>
