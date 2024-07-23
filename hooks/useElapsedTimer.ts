@@ -1,7 +1,7 @@
 import {useState, useCallback, useEffect, useRef} from "react";
 import moment from "moment";
 
-const useElapsedTimer = (startTime: moment.Moment | undefined) => {
+const useElapsedTimer = (startTime: moment.Moment | undefined, isEnd: boolean) => {
   const [flagTick, setFlagTick] = useState<number>(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const elapsedRef = useRef(0);
@@ -14,6 +14,7 @@ const useElapsedTimer = (startTime: moment.Moment | undefined) => {
       elapsedRef.current = moment().diff(startTime, 'millisecond');
       setFlagTick(prev => prev + 1);
     }, 250)
+    
   }, [startTime])
   
   const clear = useCallback(() => {
@@ -29,6 +30,12 @@ const useElapsedTimer = (startTime: moment.Moment | undefined) => {
     
     return () => clear();
   }, [startTime]);
+  
+  useEffect(() => {
+    if (isEnd) {
+      clear();
+    }
+  }, [isEnd, clear]);
   
   return { elapsed, flagTick };
 }

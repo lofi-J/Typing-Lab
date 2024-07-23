@@ -23,7 +23,7 @@ const WpmDashboard = ({wpmQueue, wpm, time, textCounts, progress}: IWpmDashboard
   return (
     <div className={styles.container}>
       <div className={styles.chart}>
-        <LineChart wpms={wpmQueue} />
+        <LineChart wpms={wpmQueue} title={'WPM(word per minutes)'} />
       </div>
       <div className={styles.dashboard}>
         <IconCountCard

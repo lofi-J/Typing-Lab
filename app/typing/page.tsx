@@ -24,18 +24,18 @@ export type TTextCounts = {
 export default function Typing() {
   const [targetList, setTargetList] = useState<string[]>();
   const [totalUserText, setTotalUserTexts] = useState<string[]>();
-  const [textCounts, setTextCounts] = useState<TTextCounts>({totalCount: 0, wrongCount:0});
+  const [textCounts, setTextCounts] = useState<TTextCounts>({totalCount: 0, wrongCount: 0});
   const startTime = useSetStartTime(textCounts.totalCount);
   const [totalTargetListLength, setTotalTargetListLength] = useState(0);
   const [wpmQueue, setWpmQueue] = useState<number[]>([]);
   const [wpmHistory, setWpmHistory] = useState<number[]>([]);
+  const [isEnd, setIsEnd] = useState(true);
   // calculate data
-  const {elapsed, flagTick} = useElapsedTimer(startTime); // ms
+  const {elapsed, flagTick} = useElapsedTimer(startTime, isEnd); // ms
   const wpm = useCalcWPM(textCounts.totalCount, elapsed, flagTick);
   const {minutes, seconds} = converMsToMinSec(elapsed);
   const [progress, setProgress] = useState(0);
-  // modal
-  const [isEnd, setIsEnd] = useState(false);
+  
   const close = () => setIsEnd(false);
   
   

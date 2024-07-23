@@ -13,7 +13,8 @@ interface ITypingEndModal {
 }
 
 const TypingEndModal = ({close, wpm, textCounts, time, wpmHistory}: ITypingEndModal) => {
-  console.log(wpmHistory);
+  console.log(textCounts);
+  
   return (
     <CustomModal close={close}>
       <div className={styles.container}>
@@ -22,7 +23,7 @@ const TypingEndModal = ({close, wpm, textCounts, time, wpmHistory}: ITypingEndMo
           <span className={styles.sub_title}>Did you enjoy your typing sesstion?</span>
         </div>
         <div className={styles.result}>
-        
+          <LineChart wpms={wpmHistory} title={'WPM per Progress'} />
         </div>
       </div>
     </CustomModal>
