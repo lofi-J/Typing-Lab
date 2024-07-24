@@ -36,7 +36,7 @@ const LandingSection = () => {
           className={styles.press_btn}
           onClick={() => router.push('/typing')}
         >
-          <p className={styles.p}>Press to any key.</p>
+          <p className={styles.p}>Press to any key</p>
         </div>
       )}
     </div>

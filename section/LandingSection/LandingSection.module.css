@@ -28,7 +28,9 @@
 .p {
 	border-radius: var(--border-radius);
 	background-color: var(--accent-color);
+	color: var(--color-with-accent);
 	font-size: 1.2rem;
+	font-weight: bold;
 	padding: 0.8rem 1rem;
 	transition: transform linear 0.2s;
 	&:hover {

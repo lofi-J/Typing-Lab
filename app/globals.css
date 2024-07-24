@@ -15,7 +15,8 @@
   --card-gradient-start-color: #131d30;
   --card-gradient-end-color: #15091b;
   --card-gradient-background: linear-gradient(to right, var(--card-gradient-start-color), var(--card-gradient-end-color));
-  --accent-color: #054bfc;
+  --accent-color: #e7fe55;
+  --color-with-accent: #000;
   --light-yellow: #fdfda4;
   --red: #ff8a8a;
   --gray: #1d1e21; /* font-color */
@@ -32,6 +33,7 @@
   --gray-700: #666666;
   --gray-800: #4f4f4f;
   --gray-900: #2b2b2b;  /* 가장 어두운 회색 */
+  --modal-background: #181818;
   
   /* shape */
   --border-radius: 12px;
