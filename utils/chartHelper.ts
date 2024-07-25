@@ -1,6 +1,6 @@
 import { ChartOptions } from 'chart.js';
 
-export const clearChartOption: ChartOptions<'line'> = {
+export const historyChartOption: ChartOptions<'line'> = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
@@ -8,7 +8,15 @@ export const clearChartOption: ChartOptions<'line'> = {
       display: false,
     },
     tooltip: {
-      enabled: false,
+      enabled: true,
+      callbacks: {
+        title: (tooltipItems) => {
+          const progress = tooltipItems[0].label; // x축(progress)
+          const wpm = tooltipItems[0].raw; // y축(wpm)
+          return `Progress: ${progress}\nWPM: ${wpm}`;
+        },
+        label: () => ''
+      }
     },
   },
   scales: {

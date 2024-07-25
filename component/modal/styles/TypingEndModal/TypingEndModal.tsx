@@ -2,7 +2,7 @@ import styles from "./TypingEndModal.module.css";
 import CustomModal from "@/component/modal/CustomModal";
 import {TTextCounts} from "@/app/typing/page";
 import LineChart from "@/component/chart/LineChart";
-import {clearChartOption} from "@/utils/chartHelper";
+import {historyChartOption} from "@/utils/chartHelper";
 
 
 interface ITypingEndModal {
@@ -31,7 +31,7 @@ const TypingEndModal = ({close, wpm, textCounts, time, wpmHistory}: ITypingEndMo
             <div className={styles.chart_title}>WPM per Progress</div>
             <LineChart
               wpms={wpmHistory}
-              customOptions={clearChartOption}
+              customOptions={historyChartOption}
               Xtitle={'Progress'}
             />
           </div>

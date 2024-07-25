@@ -6,13 +6,14 @@ import {
   LineElement,
   Legend,
   ChartOptions,
-  Tick
+  Tick,
+  Tooltip
 } from "chart.js";
 import { Line } from 'react-chartjs-2';
 import lodash from "lodash";
 import {getCSSVariable} from "@/utils/getCSSVariable";
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Legend);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Legend, Tooltip);
 
 interface ILineChart {
   customOptions?: ChartOptions<'line'>;
@@ -31,6 +32,7 @@ const LineChart = ({customOptions, wpms, title, Ytitle, Xtitle}: ILineChart) => 
         label: title || '',
         data: [...wpms],
         borderColor: getCSSVariable('--accent-color'),
+        backgroundColor: getCSSVariable('--accent-color'),
         borderWidth: 1,
         pointRadius: 0,
         pointHoverRadius: 5,
@@ -51,7 +53,7 @@ const LineChart = ({customOptions, wpms, title, Ytitle, Xtitle}: ILineChart) => 
         onClick: () => null, // title click disable
       },
       tooltip: {
-        enabled: true,
+        enabled: false,
         mode: 'nearest',
         intersect: false, // 가장 가까운 포인트에 툴팁 표시
         position: 'nearest',
