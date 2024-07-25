@@ -7,7 +7,7 @@ import {
   Legend,
   ChartOptions,
   Tick,
-  Tooltip
+  Tooltip, ChartData
 } from "chart.js";
 import { Line } from 'react-chartjs-2';
 import lodash from "lodash";
@@ -15,33 +15,45 @@ import {getCSSVariable} from "@/utils/getCSSVariable";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Legend, Tooltip);
 
+interface IdatasetsOptions {
+  label?: string;
+  borderColor?: string;
+  backgroundColor?: string;
+  borderWidth?: number;
+  pointRadius?: number;
+  pointHoverRadius?: number;
+}
+
 interface ILineChart {
   customOptions?: ChartOptions<'line'>;
+  customData?: ChartData<'line'>;
+  chartOptions?: IdatasetsOptions;
   wpms: number[];
   title?: string;
   Ytitle?: string;
   Xtitle?: string;
 }
-const LineChart = ({customOptions, wpms, title, Ytitle, Xtitle}: ILineChart) => {
+const LineChart = ({customOptions, customData, chartOptions, wpms, title, Ytitle, Xtitle}: ILineChart) => {
   const labels = Array.from({length: wpms.length }, () => 0);
   
-  const data = {
+  const data: ChartData<'line'> = {
     labels: labels,
     datasets: [
       {
         label: title || '',
         data: [...wpms],
-        borderColor: getCSSVariable('--accent-color'),
-        backgroundColor: getCSSVariable('--accent-color'),
-        borderWidth: 1,
-        pointRadius: 0,
-        pointHoverRadius: 5,
+        borderColor: chartOptions?.borderColor || getCSSVariable('--accent-color'),
+        backgroundColor: chartOptions?.backgroundColor || getCSSVariable('--accent-color'),
+        borderWidth: chartOptions?.borderWidth || 2,
+        pointRadius: chartOptions?.pointRadius || 0,
+        pointHoverRadius: chartOptions?.pointHoverRadius || 5,
       },
     ],
   }
   
   const options: ChartOptions<'line'> = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         labels: {
@@ -101,17 +113,20 @@ const LineChart = ({customOptions, wpms, title, Ytitle, Xtitle}: ILineChart) => 
     layout: {
       padding: {
         top: 0,
-        bottom: 0
+        bottom: 0,
+        left: 0,
+        right: 0,
       }
     }
   }
   
   // Deep merge
   const mergedOptions = lodash.mergeWith({}, options, customOptions);
+  const mergedData = lodash.mergeWith({}, data, customData);
   
   return (
     <Line
-      data={data}
+      data={mergedData}
       options={mergedOptions}
     />
   );

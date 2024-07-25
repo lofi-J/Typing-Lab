@@ -8,4 +8,7 @@
 	height: 2rem;
 	fill: white;
 	stroke: white;
+	&:hover {
+		fill: var(--accent-color);
+	}
 }

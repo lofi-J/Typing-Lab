@@ -14,20 +14,31 @@
 .result {
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
   justify-content: center;
   align-items: center;
   padding: 1rem 0;
 }
 .data_wrap {
-
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 1.5rem;
 }
 .chart {
   position: relative;
   width: 100%;
+  padding: 0 1.5rem;
+}
+.chart_inner {
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  padding: 1rem;
   height: 15rem;
   & > .chart_title {
     font-size: 1.2rem;
-    margin-left: 4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
   }
 }
 

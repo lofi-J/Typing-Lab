@@ -1,3 +1,7 @@
 export const getCSSVariable = (varName: string) => {
-  return getComputedStyle(document.documentElement).getPropertyValue(varName);
+  if (typeof window !== 'undefined') {
+    return getComputedStyle(document.documentElement).getPropertyValue(varName);
+  } else {
+    return '';
+  }
 }

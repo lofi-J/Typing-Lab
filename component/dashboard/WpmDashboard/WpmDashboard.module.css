@@ -6,9 +6,13 @@
 }
 
 .chart {
+	position: relative;
 	width: 30rem;
 	height: 12rem;
 	& > canvas {
+		position: absolute;
+		left: 0;
+		top: 0;
 		width: 100%;
 		height: 100%;
 	}
