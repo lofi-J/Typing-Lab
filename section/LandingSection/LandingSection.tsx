@@ -6,13 +6,18 @@ import {useEffect, useState} from "react";
 import {useRouter} from "next/navigation";
 
 
+const excludedKeys = ['F5', 'Meta', 'F12']; // TODO window key 추가 해야함
+
 const LandingSection = () => {
   const [isDone, setDone] = useState(false);
   const router = useRouter();
   
   useEffect(() => {
-    const handleAnyKey = () => {
-      router.push('/typing');
+    const handleAnyKey = (event: KeyboardEvent) => {
+      const key = event.key;
+      if (!excludedKeys.includes(key)) {
+        router.push('/typing');
+      }
     }
 
     window.addEventListener("keydown", handleAnyKey);
