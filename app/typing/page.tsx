@@ -29,7 +29,7 @@ export default function Typing() {
   const [totalTargetListLength, setTotalTargetListLength] = useState(0);
   const [wpmQueue, setWpmQueue] = useState<number[]>([]);
   const [wpmHistory, setWpmHistory] = useState<number[]>([]);
-  const [isEnd, setIsEnd] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
   // calculate data
   const {elapsed, flagTick} = useElapsedTimer(startTime, isEnd); // ms
   const wpm = useCalcWPM(textCounts.totalCount, elapsed, flagTick);

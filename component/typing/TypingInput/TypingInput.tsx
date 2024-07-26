@@ -3,6 +3,7 @@ import {makeArray} from "@/utils/extension/arrayHelper";
 import {TLineRange, validateTypingLine} from "@/utils/playgroundHelper";
 import React, {useState, useEffect, ChangeEvent} from "react";
 import {TTextCounts} from "@/app/typing/page";
+import {checkSyllableLevel} from "@/utils/playgroundHelper";
 
 
 interface ITypingInput {
@@ -73,6 +74,15 @@ const TypingInput = (
     increaseLineRange();
   }
   
+  const checkIMESystemDelete = (currentValue: string) => {
+    if (localValue.length === 0) return false;
+    
+    const prevSyllableLevel = checkSyllableLevel(localValue[localValue.length-1]);
+    const currentSyllableLevel = checkSyllableLevel(currentValue[currentValue.length-1]);
+    
+    return prevSyllableLevel > currentSyllableLevel;
+  }
+  
   // Event
   const onKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const key = e.key || e.keyCode;
@@ -98,11 +108,18 @@ const TypingInput = (
     
     const isCorrect = validateTypingLine(baseLine, value);
     const isDelete = localValue.length > value.length;
-    if ((isCorrect && !isBlockTyping) || isDelete) {
+    
+    if (isBlockTyping && checkIMESystemDelete(value) || isDelete) {
       setLocalValue(value);
       setValid(value, isCorrect);
       setIsBlockTyping(false);
-      if (!isDelete) updateTextStatus('totalCount');
+    } else if ((isCorrect && !isBlockTyping) || isDelete) {
+      setLocalValue(value);
+      setValid(value, isCorrect);
+      setIsBlockTyping(false);
+      if (!isDelete) {
+        updateTextStatus('totalCount');
+      }
       return;
     } else if (!isBlockTyping && !isCorrect) {
       setLocalValue(value);

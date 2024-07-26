@@ -95,4 +95,25 @@ export const validateTypingLine = (baseLine: string, inputLine: string) => {
   return true;
 }
 
+/*
+* string을 받아 초,중,종 입력단계별 1씩 증가 (이중 중성, 이중 종성도 고려)
+* @param {string} char - 검사 대상
+* */
+export const checkSyllableLevel = (char: string) => {
+  const splited = splitKR(char);
+  let level = 0;
+  if (splited.cho) level++;
+  if (splited.jung) {
+    level++;
+    if (DOUBLE_MIDDLE[splited.jung as keyof typeof DOUBLE_MIDDLE]) level++;
+  }
+  if (splited.jong) {
+    level++;
+    if (DOUBLE_FINAL[splited.jong as keyof typeof DOUBLE_FINAL]) level++;
+  }
+
+  return level;
+}
+
+console.log(checkSyllableLevel('끊'))
 export const indexToKey = (str: string, index: number) => `${str}-${index}`;
