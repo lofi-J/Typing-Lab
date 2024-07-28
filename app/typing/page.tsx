@@ -1,7 +1,7 @@
 'use client';
 
 import styles from "./page.module.css";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import sentence from "@/static/texts/static_kr_01";
 import {splitTextByLine} from "@/utils/splitTextByLine";
 import useSetStartTime from "@/hooks/useSetStartTime";
@@ -28,13 +28,14 @@ export default function Typing() {
   const startTime = useSetStartTime(textCounts.totalCount);
   const [totalTargetListLength, setTotalTargetListLength] = useState(0);
   const [wpmQueue, setWpmQueue] = useState<number[]>([]);
-  const [wpmHistory, setWpmHistory] = useState<number[]>([]);
   const [isEnd, setIsEnd] = useState(false);
   // calculate data
   const {elapsed, flagTick} = useElapsedTimer(startTime, isEnd); // ms
   const wpm = useCalcWPM(textCounts.totalCount, elapsed, flagTick);
   const {minutes, seconds} = converMsToMinSec(elapsed);
   const [progress, setProgress] = useState(0);
+  const wpmHistory = useRef<number[]>([]);
+  const prevProgressRef = useRef(0);
   
   const close = () => setIsEnd(false);
   
@@ -66,7 +67,16 @@ export default function Typing() {
   }, [wpm])
   
   useEffect(() => { // wpmHistory
-    setWpmHistory(prev => [...prev, wpm]);
+    if (progress <= 0) return;
+    if (progress > prevProgressRef.current) {
+      const increaseCount = progress - prevProgressRef.current;
+      for (let i=0; i<increaseCount; i++) {
+        wpmHistory.current.push(wpm);
+      }
+    } else if (progress <= prevProgressRef.current) {
+      wpmHistory.current = wpmHistory.current.slice(0, progress);
+    }
+    prevProgressRef.current = progress;
   }, [progress]);
   
   
@@ -77,7 +87,7 @@ export default function Typing() {
   
   return (
     <main className={styles.main}>
-      {isEnd && <TypingEndModal close={close} wpm={wpm} textCounts={textCounts} time={{minutes, seconds}} wpmHistory={wpmHistory} />}
+      {isEnd && <TypingEndModal close={close} wpm={wpm} textCounts={textCounts} time={{minutes, seconds}} wpmHistory={wpmHistory.current} />}
       <WpmDashboard textCounts={textCounts} wpm={wpm} wpmQueue={wpmQueue} time={{minutes, seconds}} progress={progress} />
       <Playground
         targetList={targetList}

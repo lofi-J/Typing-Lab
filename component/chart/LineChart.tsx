@@ -34,7 +34,7 @@ interface ILineChart {
   Xtitle?: string;
 }
 const LineChart = ({customOptions, customData, chartOptions, wpms, title, Ytitle, Xtitle}: ILineChart) => {
-  const labels = Array.from({length: wpms.length }, () => 0);
+  const labels = Array.from({length: wpms.length }, (_, index) => index + 1);
   
   const data: ChartData<'line'> = {
     labels: labels,

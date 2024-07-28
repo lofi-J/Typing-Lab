@@ -29,7 +29,7 @@ const inlineStyle: CSSProperties = {
   fill: getCSSVariable('--background-color'),
 };
 
-const TypingEndModal = ({close, wpm, textCounts, time, wpmHistory}: ITypingEndModal) => {
+const TypingEndModal = ({close, wpm, textCounts, time, wpmHistory}: ITypingEndModal) => {1
   
   return (
     <CustomModal close={close}>

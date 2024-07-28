@@ -115,5 +115,4 @@ export const checkSyllableLevel = (char: string) => {
   return level;
 }
 
-console.log(checkSyllableLevel('끊'))
 export const indexToKey = (str: string, index: number) => `${str}-${index}`;
