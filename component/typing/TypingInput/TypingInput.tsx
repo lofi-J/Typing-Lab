@@ -4,6 +4,7 @@ import {TLineRange, validateTypingLine} from "@/utils/playgroundHelper";
 import React, {useState, useEffect, ChangeEvent} from "react";
 import {TTextCounts} from "@/app/typing/page";
 import {checkSyllableLevel} from "@/utils/playgroundHelper";
+import useSoundContext from "@/hooks/useSoundContext";
 
 
 interface ITypingInput {
@@ -33,6 +34,9 @@ const TypingInput = (
   const [isBlockTyping, setIsBlockTyping] = useState(false);
   const [isPressEnter, setIsPressEnter] = useState(false);
   const maxTextCount = targetList.reduce((acc, cur: string) => {return acc + cur.length}, 0);
+  // sound player
+  const {playCorrect, playInCorrect, playSpace, playBackward, playEnter} = useSoundContext();
+  
   
   // increase state
   const updateTextStatus = (key: keyof TTextCounts) => {
@@ -67,6 +71,7 @@ const TypingInput = (
   }
   
   const moveToNextLine = () => {
+    playEnter();
     handleEnd();
     setLocalValue('');
     setLocalValid(initValidationArray(baseLine));
@@ -91,6 +96,11 @@ const TypingInput = (
       if (localValue.length >= baseLine.length) {
         moveToNextLine();
         setIsPressEnter(true);
+        return;
+      }
+      if (e.code === 'Space') {
+        playSpace();
+        return;
       }
     } else setIsPressEnter(false);
   }
@@ -110,24 +120,25 @@ const TypingInput = (
     const isDelete = localValue.length > value.length;
     
     if (isBlockTyping && checkIMESystemDelete(value) || isDelete) {
+      playBackward();
       setLocalValue(value);
       setValid(value, isCorrect);
       setIsBlockTyping(false);
     } else if ((isCorrect && !isBlockTyping) || isDelete) {
+      playCorrect();
       setLocalValue(value);
       setValid(value, isCorrect);
       setIsBlockTyping(false);
       if (!isDelete) {
         updateTextStatus('totalCount');
       }
-      return;
     } else if (!isBlockTyping && !isCorrect) {
+      playInCorrect();
       setLocalValue(value);
       setValid(value, isCorrect);
       setIsBlockTyping(true);
       updateTextStatus('wrongCount');
       updateTextStatus('totalCount');
-      return;
     }
   }
   

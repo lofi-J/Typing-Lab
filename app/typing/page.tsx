@@ -39,7 +39,6 @@ export default function Typing() {
   
   const close = () => setIsEnd(false);
   
-  
   useEffect(() => { // init
     const result = splitTextByLine(sentence.contents, 76, sentence.lang);
     setTargetList(result); // 타이핑 해야할 라인들 string[]
