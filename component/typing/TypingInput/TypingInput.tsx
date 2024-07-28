@@ -1,7 +1,7 @@
 import styles from "./TypingInput.module.css";
 import {makeArray} from "@/utils/extension/arrayHelper";
 import {TLineRange, validateTypingLine} from "@/utils/playgroundHelper";
-import React, {useState, useEffect, ChangeEvent} from "react";
+import React, {useState, useEffect, ChangeEvent, useRef} from "react";
 import {TTextCounts} from "@/app/typing/page";
 import {checkSyllableLevel} from "@/utils/playgroundHelper";
 import useSoundContext from "@/hooks/useSoundContext";
@@ -28,6 +28,7 @@ const TypingInput = (
   setValidationResultArr, setCaret, setTextCounts, setIsEnd
 }: ITypingInput) => {
  
+  const inputRef = useRef<HTMLInputElement>(null);
   const baseLine = targetList[lineRange.start]; // 타이핑 해야하는 라인 string
   const [localValue, setLocalValue] = useState('');
   const [localValid, setLocalValid] = useState<boolean[]>(initValidationArray(baseLine));
@@ -67,6 +68,9 @@ const TypingInput = (
     const inputCount = totalUserText.reduce((acc, cur: string) => {return acc + cur.length}, 0);
     if (inputCount >= maxTextCount) {
       setIsEnd(true);
+      if (inputRef.current) {
+        inputRef.current.blur();
+      }
     }
   }
   
@@ -173,6 +177,7 @@ const TypingInput = (
   
   return (
     <input
+      ref={inputRef}
       type={'text'}
       value={localValue}
       className={styles.input}

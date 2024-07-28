@@ -6,8 +6,8 @@
 	width: 80rem;
 	height: max-content;
 	padding: 2rem 1rem;
-	border-top: 1px solid var(--primary-color);
-	border-bottom: 1px solid var(--primary-color);
+	border-radius: var(--border-radius);
+	animation: shadows 3s linear infinite;
 }
 .text_wrap {
 	position: relative;
@@ -15,4 +15,20 @@
 	flex-direction: column;
 	align-items: flex-start;
 	gap: 1.5rem;
+}
+
+@keyframes shadows {
+	0% {
+		/*box-shadow: 0 0 3rem -1rem #48abe0;*/
+		box-shadow: 0 0 3rem -1rem #1e3252;
+	}
+	50% {
+		box-shadow: 0 0 3rem -1rem var(--mint);
+	}
+	75% {
+		box-shadow: 0 0 3rem -1rem var(--red);
+	}
+	100% {
+		box-shadow: 0 0 3rem -1rem #1e3252;
+	}
 }
