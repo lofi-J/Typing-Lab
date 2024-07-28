@@ -11,7 +11,7 @@ export const cleanChartOption: ChartOptions<'line'> = {
       enabled: true,
       callbacks: {
         title: (tooltipItems) => {
-          const progress = tooltipItems[0].label; // x축(progress)
+          const progress = tooltipItems[0].label + '%'; // x축(progress)
           const wpm = tooltipItems[0].raw; // y축(wpm)
           return `Progress: ${progress}\nWPM: ${wpm}`;
         },
