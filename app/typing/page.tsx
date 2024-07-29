@@ -8,12 +8,14 @@ import useSetStartTime from "@/hooks/useSetStartTime";
 import WpmDashboard from "@/component/dashboard/WpmDashboard/WpmDashboard";
 import Playground from "@/component/typing/Playground/Playground";
 import Keyboard from "@/component/Keyboard/Keyboard";
-import TypingEndModal from "@/component/modal/styles/TypingEndModal/TypingEndModal";
+import TypingEndModal from "@/component/modal/TypingEndModal/TypingEndModal";
 import useElapsedTimer from "@/hooks/useElapsedTimer";
 import useCalcWPM from "@/hooks/useCalcWPM";
 import {calculateProgress, converMsToMinSec} from "@/utils/dashboardHelper";
 import {makeArray} from "@/utils/extension/arrayHelper";
 import Loading from "@/component/Loading/Loading";
+import { IoIosSettings } from "react-icons/io";
+import TypingSettingsModal from "@/component/modal/TypingSettingsModal/TypingSettingsModal";
 
 
 export type TTextCounts = {
@@ -28,7 +30,9 @@ export default function Typing() {
   const startTime = useSetStartTime(textCounts.totalCount);
   const [totalTargetListLength, setTotalTargetListLength] = useState(0);
   const [wpmQueue, setWpmQueue] = useState<number[]>([]);
+  // modal
   const [isEnd, setIsEnd] = useState(false);
+  const [openSettings, setOpenSettings] = useState(false);
   // calculate data
   const {elapsed, flagTick} = useElapsedTimer(startTime, isEnd); // ms
   const wpm = useCalcWPM(textCounts.totalCount, elapsed, flagTick);
@@ -37,7 +41,8 @@ export default function Typing() {
   const wpmHistory = useRef<number[]>([]);
   const prevProgressRef = useRef(0);
   
-  const close = () => setIsEnd(false);
+  const closeEndModal = () => setIsEnd(false);
+  const closeSettingsModal = () => setOpenSettings(false);
   
   useEffect(() => { // init
     const result = splitTextByLine(sentence.contents, 76, sentence.lang);
@@ -86,7 +91,11 @@ export default function Typing() {
   
   return (
     <main className={styles.main}>
-      {isEnd && <TypingEndModal close={close} wpm={wpm} textCounts={textCounts} time={{minutes, seconds}} wpmHistory={wpmHistory.current} />}
+      {/* modal */}
+      {isEnd && <TypingEndModal close={closeEndModal} wpm={wpm} textCounts={textCounts} time={{minutes, seconds}} wpmHistory={wpmHistory.current} />}
+      {openSettings && <TypingSettingsModal close={closeSettingsModal} />}
+      
+      {/* contents */}
       <WpmDashboard textCounts={textCounts} wpm={wpm} wpmQueue={wpmQueue} time={{minutes, seconds}} progress={progress} />
       <Playground
         targetList={targetList}
@@ -96,6 +105,9 @@ export default function Typing() {
         setIsEnd={setIsEnd}
       />
       <Keyboard isActive={!isEnd} />
+      <div className={styles.settings} onClick={() => setOpenSettings(true)}>
+        <IoIosSettings />
+      </div>
     </main>
   );
 }

@@ -129,7 +129,6 @@ const TypingInput = (
       setValid(value, isCorrect);
       setIsBlockTyping(false);
     } else if ((isCorrect && !isBlockTyping) || isDelete) {
-      playCorrect();
       setLocalValue(value);
       setValid(value, isCorrect);
       setIsBlockTyping(false);
@@ -174,6 +173,9 @@ const TypingInput = (
     })
   }, [localValue, lineRange, localValid, setValidationResultArr, setTotalUserText]);
   
+  useEffect(() => {
+    playCorrect();
+  }, [localValue.length]);
   
   return (
     <input

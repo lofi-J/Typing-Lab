@@ -5,3 +5,17 @@
 	align-items: center;
 	gap: 7rem;
 }
+
+.settings {
+	cursor: pointer;
+	position: absolute;
+	bottom: 3rem;
+	left: 3rem;
+	& > svg {
+		width: 2rem;
+		height: 2rem;
+		&:hover {
+			fill: var(--normal-gray);
+		}
+	}
+}

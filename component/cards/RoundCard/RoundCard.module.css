@@ -14,7 +14,6 @@
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
-  background-color: var(--accent-color);
   & > svg {
     width: 3rem;
     height: 3rem;

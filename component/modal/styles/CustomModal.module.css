@@ -9,6 +9,6 @@
 	fill: white;
 	stroke: white;
 	&:hover {
-		fill: var(--accent-color);
+		fill: var(--normal-gray);
 	}
 }
