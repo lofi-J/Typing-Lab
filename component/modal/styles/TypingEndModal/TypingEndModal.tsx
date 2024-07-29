@@ -22,11 +22,11 @@ interface ITypingEndModal {
 
 
 const stroke: CSSProperties = {
-  stroke: getCSSVariable('--background-color'),
+  stroke: getCSSVariable('--purple'),
 }
 const inlineStyle: CSSProperties = {
   stroke: stroke.stroke,
-  fill: getCSSVariable('--background-color'),
+  fill: getCSSVariable('--purple'),
 };
 
 const TypingEndModal = ({close, wpm, textCounts, time, wpmHistory}: ITypingEndModal) => {1

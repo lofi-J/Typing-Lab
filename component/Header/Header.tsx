@@ -4,7 +4,7 @@ import styles from "./Header.module.css";
 import Link from "next/link";
 import {Playfair_Display} from "next/font/google";
 import ToggleTheme from "@/component/ToggleTheme/ToggleTheme";
-import TextWriterAnimation from "@/component/TextWriterAnimation/TextWriterAnimation";
+import TextWriterAnimation from "@/component/text/TextWriterAnimation/TextWriterAnimation";
 import {useState} from "react";
 import {usePathname} from "next/navigation";
 import headers from "@/static/header";

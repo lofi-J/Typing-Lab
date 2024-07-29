@@ -28,13 +28,15 @@
 .p {
 	border-radius: var(--border-radius);
 	background-color: var(--accent-color);
-	color: var(--color-with-accent);
+	border: 1px solid var(--purple);
+	color: var(--primary-color);
 	font-size: 1.2rem;
-	font-weight: bold;
+	font-weight: 600;
 	padding: 0.8rem 1rem;
 	transition: transform linear 0.2s;
 	&:hover {
 		transform: translateY(-0.5rem);
+		box-shadow: 0 0.4em 0.4em -0.2em var(--purple);
 	}
 }
 

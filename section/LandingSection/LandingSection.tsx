@@ -1,7 +1,7 @@
 'use client';
 
 import styles from "./LandingSection.module.css";
-import TextWriterAnimation from "@/component/TextWriterAnimation/TextWriterAnimation";
+import TextWriterAnimation from "@/component/text/TextWriterAnimation/TextWriterAnimation";
 import {useEffect, useState} from "react";
 import {useRouter} from "next/navigation";
 

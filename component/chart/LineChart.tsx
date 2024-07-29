@@ -42,8 +42,8 @@ const LineChart = ({customOptions, customData, chartOptions, wpms, title, Ytitle
       {
         label: title || '',
         data: [...wpms],
-        borderColor: chartOptions?.borderColor || getCSSVariable('--accent-color'),
-        backgroundColor: chartOptions?.backgroundColor || getCSSVariable('--accent-color'),
+        borderColor: chartOptions?.borderColor || getCSSVariable('--chart-color'),
+        backgroundColor: chartOptions?.backgroundColor || getCSSVariable('--chart-color'),
         borderWidth: chartOptions?.borderWidth || 2,
         pointRadius: chartOptions?.pointRadius || 0,
         pointHoverRadius: chartOptions?.pointHoverRadius || 5,
@@ -60,7 +60,7 @@ const LineChart = ({customOptions, customData, chartOptions, wpms, title, Ytitle
           usePointStyle: false,
           boxWidth: 0,
           padding: 0,
-          color: getCSSVariable('--primary-color'),
+          color: getCSSVariable('--chart-color'),
         },
         onClick: () => null, // title click disable
       },
@@ -96,6 +96,7 @@ const LineChart = ({customOptions, customData, chartOptions, wpms, title, Ytitle
         grid: { display: true },
         ticks: {
           display: true,
+          color: getCSSVariable('--purple'),
           // @ts-ignore
           callback: (tickValue: number, index: number, ticks: Tick[]) => {
             if (index === 0 || index === ticks.length-1) {
