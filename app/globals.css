@@ -8,17 +8,18 @@
   --primary-color-rgb: rgb(255, 255, 255);
   --background-color: #131313;
   --background-color-rgb: rgb(19, 19, 19);
-  --gradient-start-color: #06142c;
+  --gradient-start-color: #131313;
   --gradient-middle-color: #14122c;
   --gradient-end-color: #22102c;
   --gradient-background-color: linear-gradient(to bottom right, var(--gradient-start-color), var(--gradient-middle-color), var(--gradient-end-color));
   --card-gradient-start-color: #131d30;
   --card-gradient-end-color: #15091b;
   --card-gradient-background: linear-gradient(to right, var(--card-gradient-start-color), var(--card-gradient-end-color));
-  --accent-color: #e7fe55;
+  --accent-color: var(--gradient-middle-color);
   --color-with-accent: #000;
   --light-yellow: #fdfda4;
   --red: #ff8a8a;
+  --yellow: #e7fe55;
   --gray: #1d1e21; /* font-color */
   --font-gray: #171717; /* font-color */
   --mint: #37f3f4;

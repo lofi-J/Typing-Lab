@@ -16,15 +16,17 @@
 .logo {
 	display: flex;
 	align-items: center;
+	padding: 1rem;
 	& > span {
 		font-size: 2rem;
 		font-weight: bold;
 		text-align: center;	
 	}
 	&:hover {
-		color: var(--accent-color);
+		animation: glow 1s ease-in-out infinite alternate;
 	}
 }
+
 .link_wrap {
 	display: flex;
 	align-items: center;
