@@ -29,14 +29,13 @@ const inlineStyle: CSSProperties = {
   fill: getCSSVariable('--purple'),
 };
 
-const TypingEndModal = ({close, wpm, textCounts, time, wpmHistory}: ITypingEndModal) => {1
+const TypingEndModal = ({close, wpm, textCounts, time, wpmHistory}: ITypingEndModal) => {
   
   return (
     <CustomModal close={close}>
       <div className={styles.container}>
         <div className={styles.head}>
           <strong className={styles.title}>Typing Lab</strong>
-          <span className={styles.sub_title}>Did you enjoy your typing sesstion?</span>
         </div>
         <div className={styles.result}>
           <div className={styles.data_wrap}>
@@ -51,7 +50,7 @@ const TypingEndModal = ({close, wpm, textCounts, time, wpmHistory}: ITypingEndMo
               icon={GoClock}
               value={
                 <>
-                  {time.minutes}<span>m</span>
+                  {time.minutes}<span>m</ span>
                   {time.seconds}<span>s</span>
                 </>
               }
@@ -66,7 +65,7 @@ const TypingEndModal = ({close, wpm, textCounts, time, wpmHistory}: ITypingEndMo
           </div>
           <div className={styles.chart}>
             <div className={styles.chart_inner}>
-              <div className={styles.chart_title}>WPM per Progress</div>
+              <div className={styles.chart_title}>WPM History</div>
               <LineChart
                 wpms={wpmHistory}
                 customOptions={cleanChartOption}
