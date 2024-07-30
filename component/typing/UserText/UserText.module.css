@@ -23,10 +23,11 @@
 		right: 0;
 		top: 0;
 		display: inline-block;
-		width: 0.1rem;
+		width: 0.2rem;
 		height: 100%;
 		background-color: var(--caret-color);
 		animation: blink 1s step-start infinite;
+		z-index: 999;
 	}
 }
 @keyframes blink {

@@ -7,8 +7,6 @@
 .header {
   display: flex;
   align-items: center;
-  padding-bottom: 0.3rem;
-  border-bottom: 1px solid var(--gray-500);
   & > svg {
     margin-right: 1rem;
   }

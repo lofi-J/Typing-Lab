@@ -21,11 +21,19 @@
   
   /* static color */
   --light-yellow: #fdfda4;
-  --red: #ff8a8a;
   --yellow: #e7fe55;
+  --red: #ff8a8a;
   --purple: #a972cb;
   --mint: #37f3f4;
-  --caret-color: #ffffff93;
+  
+  --light-yellow-rgb: 253, 253, 164;
+  --red-rgb: 255, 138, 138;
+  --yellow-rgb: 231, 254, 85;
+  --purple-rgb: 169, 114, 203;
+  --mint-rgb: 55, 243, 244;
+  
+  --caret-color: var(--purple);
+  
   --gray: #1d1e21;
   --font-gray: #171717;
   --normal-gray: #333;
