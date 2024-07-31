@@ -6,8 +6,8 @@
 	cursor: pointer;
 	width: 2rem;
 	height: 2rem;
-	fill: white;
-	stroke: white;
+	fill: var(--primary-color);
+	stroke: var(--primary-color);
 	&:hover {
 		fill: var(--normal-gray);
 	}

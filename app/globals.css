@@ -15,11 +15,13 @@
   --card-gradient-start-color: #131d30;
   --card-gradient-end-color: #15091b;
   --card-gradient-background: linear-gradient(to right, var(--card-gradient-start-color), var(--card-gradient-end-color));
-  --accent-color: var(--gradient-middle-color);
+  --accent-color: var(--purple);
+  --accent-color-rgb: var(--purple-rgb);
   --color-with-accent: #000;
   --chart-color: var(--purple);
   
   /* static color */
+  --green: #40d672;
   --light-yellow: #fdfda4;
   --yellow: #e7fe55;
   --red: #ff8a8a;
@@ -31,6 +33,7 @@
   --yellow-rgb: 231, 254, 85;
   --purple-rgb: 169, 114, 203;
   --mint-rgb: 55, 243, 244;
+  --green-rgb: 64, 214, 114;
   
   --caret-color: var(--purple);
   
@@ -65,14 +68,19 @@
 }
 
 [data-theme="light"] {
-  --primary-color: #000;
-  --primary-color-rgb: rgb(0, 0, 0);
-  --background-color: #fff;
-  --background-color-rgb: rgb(255, 255, 255);
-  --gradient-start-color: #c2ffa3;
-  --gradient-middle-color: #deffcb;
-  --gradient-end-color: #ffffff;
-  --accent-color: #06142c;
+  --primary-color: #1f1f1f;
+  --primary-color-rgb: rgb(31, 31, 31);
+  --background-color: #dbdbdb;
+  --background-color-rgb: rgb(219, 219, 219);
+  --gradient-start-color: var(--background-color);
+  --gradient-middle-color: #dbdbeb;
+  --gradient-end-color: #dbdbd0;
+  --accent-color: var(--green);
+  --accent-color-rgb: var(--green-rgb);
+  --caret-color: var(--green);
+  --red: #ff4545;
+  --chart-color: var(--accent-color);
+  --modal-background: var(--gray-100);
 }
 
 /* smooth theme change */

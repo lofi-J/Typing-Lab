@@ -19,7 +19,7 @@
 	justify-content: center;
 	align-items: center;
 	border-radius: 4px;
-	border: 1px solid rgba(var(--purple-rgb), 0.8);
+	border: 1px solid rgba(var(--accent-color-rgb), 0.8);
 	box-sizing: content-box;
 	font-size: 1.2rem;
 }
@@ -30,15 +30,15 @@
 @keyframes pressKey {
 	0% {
 		transform: scale(1);
-		border: 1px solid rgba(var(--purple-rgb), 1);
+		border: 1px solid rgba(var(--accent-color-rgb), 1);
 	}
 	50% {
 		transform: scale(0.6);
-		border: 1px solid rgba(var(--purple-rgb), 0.3);
+		border: 1px solid rgba(var(--accent-color-rgb), 0.3);
 	}
 	100% {
 		transform: scale(1);
-		border: 1px solid rgba(var(--purple-rgb), 1);
+		border: 1px solid rgba(var(--accent-color-rgb), 1);
 	}
 }
 .active {

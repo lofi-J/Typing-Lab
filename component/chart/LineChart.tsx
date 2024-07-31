@@ -96,7 +96,7 @@ const LineChart = ({customOptions, customData, chartOptions, wpms, title, Ytitle
         grid: { display: true },
         ticks: {
           display: true,
-          color: getCSSVariable('--purple'),
+          color: getCSSVariable('--accent-color'),
           // @ts-ignore
           callback: (tickValue: number, index: number, ticks: Tick[]) => {
             if (index === 0 || index === ticks.length-1) {
