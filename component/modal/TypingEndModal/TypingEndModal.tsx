@@ -20,16 +20,15 @@ interface ITypingEndModal {
   wpmHistory: number[];
 }
 
-
-const stroke: CSSProperties = {
-  stroke: getCSSVariable('--accent-color'),
-}
-const inlineStyle: CSSProperties = {
-  stroke: stroke.stroke,
-  fill: getCSSVariable('--accent-color'),
-};
-
 const TypingEndModal = ({close, wpm, textCounts, time, wpmHistory}: ITypingEndModal) => {
+  
+  const stroke: CSSProperties = {
+    stroke: getCSSVariable('--accent-color'),
+  }
+  const inlineStyle: CSSProperties = {
+    stroke: stroke.stroke,
+    fill: getCSSVariable('--accent-color'),
+  };
   
   return (
     <CustomModal close={close}>
