@@ -24,6 +24,7 @@ export type TTextCounts = {
 }
 
 export default function Typing() {
+  const inputRef = useRef<HTMLInputElement>(null);
   const [targetList, setTargetList] = useState<string[]>();
   const [totalUserText, setTotalUserTexts] = useState<string[]>();
   const [textCounts, setTextCounts] = useState<TTextCounts>({totalCount: 0, wrongCount: 0});
@@ -92,7 +93,7 @@ export default function Typing() {
   return (
     <main className={styles.main}>
       {/* modal */}
-      {isEnd && <TypingEndModal close={closeEndModal} wpm={wpm} textCounts={textCounts} time={{minutes, seconds}} wpmHistory={wpmHistory.current} />}
+      {isEnd && <TypingEndModal close={closeEndModal} wpm={wpm} textCounts={textCounts} time={{minutes, seconds}} wpmHistory={wpmHistory.current} inputRef={inputRef} />}
       {openSettings && <TypingSettingsModal close={closeSettingsModal} />}
       
       {/* contents */}
@@ -104,6 +105,7 @@ export default function Typing() {
         setTotalUserTexts={setTotalUserTexts}
         isEnd={isEnd}
         setIsEnd={setIsEnd}
+        inputRef={inputRef}
       />
       <Keyboard isActive={!isEnd} />
       <div className={styles.settings} onClick={() => setOpenSettings(true)}>

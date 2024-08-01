@@ -1,6 +1,6 @@
 import styles from "./Playground.module.css";
 import {makeArray} from "@/utils/extension/arrayHelper";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import ShowLine from "@/component/typing/ShowLine/ShowLine";
 import TypingInput from "@/component/typing/TypingInput/TypingInput";
 import UserText from "@/component/typing/UserText/UserText";
@@ -15,20 +15,14 @@ interface IPlayground {
   setTotalUserTexts: React.Dispatch<React.SetStateAction<string[] | undefined>>;
   isEnd: boolean;
   setIsEnd: React.Dispatch<React.SetStateAction<boolean>>;
+  inputRef: React.RefObject<HTMLInputElement>
 }
 
-const Playground = ({targetList, setTextCounts, totalUserText, setTotalUserTexts, isEnd, setIsEnd}: IPlayground) => {
+const Playground = ({targetList, setTextCounts, totalUserText, setTotalUserTexts, isEnd, setIsEnd, inputRef}: IPlayground) => {
   const [validationResultArray, setValidationResultArray] = useState<boolean[][]>(makeArray(targetList.length, []));
   const [lineRange, setLineRange] = useState<TLineRange>(initLineRange(targetList));
-  const [showCaret, setShowCaret] = useState(true);
+  const [showCaret, setShowCaret] = useState(!isEnd);
   
-  useEffect(() => {
-    if (isEnd) {
-      setShowCaret(false);
-    } else {
-      setShowCaret(true);
-    }
-  }, [isEnd]);
   
   if (!totalUserText) return;
   
@@ -57,6 +51,7 @@ const Playground = ({targetList, setTextCounts, totalUserText, setTotalUserTexts
         setCaret={setShowCaret}
         setTextCounts={setTextCounts}
         setIsEnd={setIsEnd}
+        inputRef={inputRef}
       />
     </div>
   );

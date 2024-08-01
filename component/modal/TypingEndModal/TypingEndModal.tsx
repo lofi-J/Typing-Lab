@@ -1,5 +1,5 @@
 import styles from "./TypingEndModal.module.css";
-import {CSSProperties} from "react";
+import React, {CSSProperties, useEffect} from "react";
 import {TTextCounts} from "@/app/typing/page";
 import {cleanChartOption} from "@/utils/chartHelper";
 import CustomModal from "@/component/modal/CustomModal";
@@ -18,9 +18,10 @@ interface ITypingEndModal {
   textCounts: TTextCounts;
   time: {minutes: number, seconds: number};
   wpmHistory: number[];
+  inputRef: React.RefObject<HTMLInputElement>;
 }
 
-const TypingEndModal = ({close, wpm, textCounts, time, wpmHistory}: ITypingEndModal) => {
+const TypingEndModal = ({close, wpm, textCounts, time, wpmHistory, inputRef}: ITypingEndModal) => {
   
   const stroke: CSSProperties = {
     stroke: getCSSVariable('--accent-color'),
@@ -29,6 +30,17 @@ const TypingEndModal = ({close, wpm, textCounts, time, wpmHistory}: ITypingEndMo
     stroke: stroke.stroke,
     fill: getCSSVariable('--accent-color'),
   };
+  
+  useEffect(() => {
+    if (inputRef === null) return;
+    
+    setTimeout(() => {
+      if (inputRef.current) {
+        inputRef.current.blur();
+      }
+    }, 0.5);
+    
+  }, [inputRef]);
   
   return (
     <CustomModal close={close}>
