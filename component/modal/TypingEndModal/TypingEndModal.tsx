@@ -70,7 +70,7 @@ const TypingEndModal = ({close, wpm, textCounts, time, wpmHistory, inputRef}: IT
             <RoundCard
               title={'ACC'}
               icon={TbTargetArrow}
-              value={calculateAccuracy(textCounts.totalCount, textCounts.wrongCount)}
+              value={<>{calculateAccuracy(textCounts.totalCount, textCounts.wrongCount)}%</>}
               style={stroke}
             />
           </div>

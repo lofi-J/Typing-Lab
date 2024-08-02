@@ -4,9 +4,7 @@ import styles from "./LandingSection.module.css";
 import TextWriterAnimation from "@/component/text/TextWriterAnimation/TextWriterAnimation";
 import {useEffect, useState} from "react";
 import {useRouter} from "next/navigation";
-
-
-const excludedKeys = ['F5', 'Meta', 'F12']; // TODO window key 추가 해야함
+import {excludedKeys} from "@/static/keymap";
 
 const LandingSection = () => {
   const [isDone, setDone] = useState(false);

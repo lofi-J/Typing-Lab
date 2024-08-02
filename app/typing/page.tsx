@@ -24,7 +24,9 @@ export type TTextCounts = {
 }
 
 export default function Typing() {
+  // input
   const inputRef = useRef<HTMLInputElement>(null);
+  // data
   const [targetList, setTargetList] = useState<string[]>();
   const [totalUserText, setTotalUserTexts] = useState<string[]>();
   const [textCounts, setTextCounts] = useState<TTextCounts>({totalCount: 0, wrongCount: 0});
@@ -45,6 +47,8 @@ export default function Typing() {
   const closeEndModal = () => setIsEnd(false);
   const closeSettingsModal = () => setOpenSettings(false);
   
+  
+  // useEffect
   useEffect(() => { // init
     const result = splitTextByLine(sentence.contents, 76, sentence.lang);
     setTargetList(result); // 타이핑 해야할 라인들 string[]

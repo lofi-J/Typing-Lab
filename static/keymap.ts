@@ -23,3 +23,6 @@ export const thirdRow: IKeyInfo[] = [
   {text: 'm', code: 'KeyM'}, {text: ',', code: 'Comma'}, {text: '.', code: 'Period'},
   {text: '/', code: 'Slash'}
 ];
+
+// any key press 제외 항목
+export const excludedKeys = ['F5', 'Meta', 'F12']; // TODO add window
