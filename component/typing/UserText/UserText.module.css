@@ -13,8 +13,8 @@
 	justify-content: flex-start;
 	align-items: center;
 	width: max-content;
-	height: 2rem;
 	position: relative;
+	height: 2.1rem;
 }
 .caret {
 	&:first-of-type::after {

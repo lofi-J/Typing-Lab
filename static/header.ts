@@ -1,7 +1,7 @@
 const headers = [
   {title: 'Home', link: '/'},
   {title: 'Typing', link: '/typing'},
-  {title: 'Contents', link: '/contents'},
+  {title: 'Sentences', link: '/sentences'},
   {title: 'Notice', link: '/notice'},
   {title: 'Login', link: '/login'},
 ]

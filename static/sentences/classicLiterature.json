@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Pride and literature",
+    "sentence": "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife. However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered as the rightful property of some one or other of their daughters.",
+    "author": "Jane Austen"
+  },
+  {
+    "title": "Moby Dick",
+    "sentence": "Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation.",
+    "author": "Herman Melville"
+  },
+  {
+    "title": "Alice's Adventures in Wonderland",
+    "sentence": "Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, 'and what is the use of a book,' thought Alice 'without pictures or conversation?",
+    "author": "Lewis Carroll"
+  },
+  {
+    "title": "Hamlet",
+    "sentence": "To be, or not to be, that is the question—Whether 'tis nobler in the mind to suffer the slings and arrows of outrageous fortune, or to take arms against a sea of troubles and by opposing end them. To die: to sleep; no more; and by a sleep to say we end the heart-ache and the thousand natural shocks that flesh is heir to.",
+    "author": "William Shakespeare"
+  },
+  {
+    "title": "Frankenstein",
+    "sentence": "I had worked hard for nearly two years, for the sole purpose of infusing life into an inanimate body. For this I had deprived myself of rest and health. I had desired it with an ardour that far exceeded moderation; but now that I had finished, the beauty of the dream vanished, and breathless horror and disgust filled my heart.",
+    "author": "Mary Shelley"
+  },
+  {
+    "title": "Don Quixote",
+    "sentence": "When life itself seems lunatic, who knows where madness lies? Perhaps to be too practical is madness. To surrender dreams—this may be madness. To seek treasure where there is only trash. Too much sanity may be madness—and maddest of all: to see life as it is, and not as it should be.",
+    "author": "Miguel de Cervantes"
+  },
+  {
+    "title": "The Great Gatsby",
+    "sentence": "In his blue gardens men and girls came and went like moths among the whisperings and the champagne and the stars. At high tide in the afternoon I watched his guests diving from the tower of his raft or taking the sun on the hot sand of his beach while his two motor-boats slit the waters of the Sound, drawing aquaplanes over cataracts of foam. On weekends his Rolls-Royce became an omnibus, bearing parties to and from the city between nine in the morning and long past midnight, while his station wagon scampered like a brisk yellow bug to meet all trains. And on Mondays eight servants, including an extra gardener, toiled all day with mops and scrubbing-brushes and hammers and garden-shears, repairing the ravages of the night before.",
+    "author": "F. Scott Fitzgerald"
+  },
+  {
+    "title": "The Sorrows of Young Werther",
+    "sentence": "I have so much in me, and the feeling for her absorbs it all; I have so much, and without her it all comes to nothing. The fountain of my soul is overflowing, and the water spurts out, untasted, at every angle. And when I absorb her into every feeling, into every glance, there is still new longing, infinite longing, to reach out to her and to say: I lie at your feet! What is happiness but to be dissolved in a glowing sea of love, to die away in it as if overwhelmed by the sweet sweet sea, and finally to drink in again with renewed thirst a single drop of the dear spring?",
+    "author": "Johann Wolfgang von Goethe"
+  }
+]

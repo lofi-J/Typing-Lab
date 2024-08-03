@@ -1,0 +1,10 @@
+.container {
+  margin: 5rem auto;
+  width: 100rem;
+}
+
+/* text */
+.title {
+  font-size: 2rem;
+  font-weight: 500;
+}

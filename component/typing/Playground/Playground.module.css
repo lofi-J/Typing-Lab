@@ -19,7 +19,6 @@
 
 @keyframes shadows {
 	0% {
-		/*box-shadow: 0 0 3rem -1rem #48abe0;*/
 		box-shadow: 0 0 3rem -1rem #1e3252;
 	}
 	50% {

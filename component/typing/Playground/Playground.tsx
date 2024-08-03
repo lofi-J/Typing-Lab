@@ -47,8 +47,8 @@ const Playground = ({targetList, setTextCounts, totalUserText, setTotalUserTexts
   
   return (
     <div className={styles.container}>
+      {(!hasInputFocus && !isEnd) && <FocusAlert inputRef={inputRef}/>}
       <div className={styles.text_wrap}>
-        {(!hasInputFocus && !isEnd) && <FocusAlert inputRef={inputRef}/>}
         <ShowLine
           targetList={targetList}
           totalUserText={totalUserText}

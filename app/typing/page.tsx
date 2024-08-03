@@ -96,11 +96,9 @@ export default function Typing() {
   
   return (
     <main className={styles.main}>
-      {/* modal */}
       {isEnd && <TypingEndModal close={closeEndModal} wpm={wpm} textCounts={textCounts} time={{minutes, seconds}} wpmHistory={wpmHistory.current} inputRef={inputRef} />}
       {openSettings && <TypingSettingsModal close={closeSettingsModal} />}
       
-      {/* contents */}
       <WpmDashboard textCounts={textCounts} wpm={wpm} wpmQueue={wpmQueue} time={{minutes, seconds}} progress={progress} />
       <Playground
         targetList={targetList}

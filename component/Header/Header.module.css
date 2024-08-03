@@ -1,3 +1,10 @@
+@font-face {
+	font-family: "Kaushan Script";
+	src: url("../../fonts/Kaushan-script.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
 .header {
 	position: fixed;
 	width: 100%;
@@ -16,11 +23,13 @@
 .logo {
 	display: flex;
 	align-items: center;
-	padding: 1rem;
 	& > span {
+		font-family: "Kaushan Script", serif;
+		font-style: normal;
 		font-size: 2rem;
 		font-weight: bold;
-		text-align: center;	
+		text-align: center;
+		padding-right: 1rem;
 	}
 	&:hover {
 		animation: glow 1s ease-in-out infinite alternate;

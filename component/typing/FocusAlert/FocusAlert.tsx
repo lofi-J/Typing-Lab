@@ -22,7 +22,9 @@ const FocusAlert = ({inputRef}: IFocusAlert) => {
     const handleAnyKey = (event: KeyboardEvent) => {
       const key = event.key;
       if (!excludedKeys.includes(key)) {
-        focus()
+        setTimeout(() => {
+          focus();
+        }, 0.2);
       }
     }
     window.addEventListener("keydown", handleAnyKey);
