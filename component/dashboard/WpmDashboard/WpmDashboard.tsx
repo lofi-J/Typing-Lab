@@ -34,7 +34,7 @@ const WpmDashboard = ({wpmQueue, wpm, time, textCounts, progress}: IWpmDashboard
         />
         <IconCountCard
           icon={GoClock}
-          title={'시간'}
+          title={'TIME'}
           value={(
             <>
               <span>{time.minutes}m</span>
@@ -44,13 +44,13 @@ const WpmDashboard = ({wpmQueue, wpm, time, textCounts, progress}: IWpmDashboard
         />
         <IconCountCard
           icon={TbTargetArrow}
-          title={'정확도'}
+          title={'ACC'}
           value={calculateAccuracy(textCounts.totalCount, textCounts.wrongCount)}
           unit={'%'}
         />
         <IconCountCard
           icon={GiKeyboard}
-          title={'진행도'}
+          title={'Progress'}
           value={progress}
           unit={'%'}
         />

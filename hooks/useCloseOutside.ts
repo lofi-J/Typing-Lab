@@ -1,6 +1,6 @@
 import {useEffect, useRef} from "react";
 
-const useCloseModal = (close: () => void) => {
+const useCloseOutside = (close: () => void) => {
   const ref = useRef<HTMLDivElement | null>(null);
   
   useEffect(() => {
@@ -21,4 +21,4 @@ const useCloseModal = (close: () => void) => {
   return ref;
 }
 
-export default useCloseModal;
+export default useCloseOutside;

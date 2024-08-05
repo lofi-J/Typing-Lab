@@ -1,10 +1,33 @@
 .container {
-  margin: 5rem auto;
-  width: 100rem;
+  margin: 8rem auto 0;
+  padding-bottom: 4rem;
+  max-width: 100rem;
+  height: 100%;
+}
+
+.contents {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.select_wrap {
+  margin: 2rem 0;
+}
+.select {
+  cursor: pointer;
+  padding: 0.5rem 1.5rem;
+  outline: none;
+  background-color: transparent;
+  color: var(--primary-color);
+  font-size: 1.2rem;
 }
 
 /* text */
 .title {
   font-size: 2rem;
   font-weight: 500;
+  border-top: 1px solid var(--gray-500);
+  border-bottom: 1px solid var(--gray-500);
+  padding: 1rem 0;
 }

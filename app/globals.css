@@ -93,19 +93,28 @@ body, .header, .footer {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow: hidden;
   font-size: 62.5%;
 }
 
 html, body {
   background-color: var(--background-color);
   color: var(--primary-color);
-  
+  overflow-x: hidden;
   /* block drag */
   -webkit-user-select:none;
   -moz-user-select:none;
   -ms-user-select:none;
   user-select:none;
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--normal-gray);
+    border-radius: var(--border-radius);
+  }
 }
 
 main {
@@ -123,6 +132,7 @@ main {
 }
 header {
   height: var(--header-height);
+  background-image: linear-gradient(to right, var(--gradient-start-color), var(--gradient-start-color), var(--gradient-middle-color));
 }
 a {
   color: inherit;

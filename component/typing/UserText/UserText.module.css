@@ -15,6 +15,7 @@
 	width: max-content;
 	position: relative;
 	height: 2.1rem;
+	overflow: hidden;
 }
 .caret {
 	&:first-of-type::after {
