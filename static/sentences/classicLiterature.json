@@ -1,42 +1,58 @@
 [
   {
-    "title": "Pride and literature",
+    "title": "Pride and Prejudice",
+    "title_ko": "오만과 편견",
     "sentence": "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife. However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered as the rightful property of some one or other of their daughters.",
+    "sentence_ko": "보편적으로 인정된 진리 하나는, 큰 재산을 가진 독신 남자는 반드시 아내를 원한다는 것이다. 그 남자가 처음으로 이웃에 들어올 때 그의 감정이나 견해가 얼마나 알려지지 않았든 간에, 이 진리는 주변 가족들의 마음에 깊이 박혀 있어, 그가 그들의 딸들 중 한 명의 정당한 재산으로 여겨진다.",
     "author": "Jane Austen"
   },
   {
     "title": "Moby Dick",
+    "title_ko": "모비 딕",
     "sentence": "Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation.",
+    "sentence_ko": "나를 이슈메일이라고 부르시오. 몇 년 전 얼마 전인지는 중요하지 않다 주머니에 돈이 거의 없었고, 육지에서는 나를 흥미롭게 할 것이 없어서, 나는 조금 항해를 하며 세상의 물의 부분을 보려 했다. 그것은 내가 울화통을 달래고 순환을 조절하는 방법 중 하나이다.",
     "author": "Herman Melville"
   },
   {
     "title": "Alice's Adventures in Wonderland",
+    "title_ko": "이상한 나라의 앨리스",
     "sentence": "Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, 'and what is the use of a book,' thought Alice 'without pictures or conversation?",
+    "sentence_ko": "앨리스는 강둑에서 언니 옆에 앉아 있는 것과 할 일이 없는 것에 지쳐가기 시작했다. 그녀는 몇 번이고 언니가 읽고 있는 책을 들여다보았지만, 그 책에는 그림도 대화도 없었다. '그림도 대화도 없는 책이 무슨 소용이 있을까?'라고 앨리스는 생각했다.",
     "author": "Lewis Carroll"
   },
   {
     "title": "Hamlet",
+    "title_ko": "햄릿",
     "sentence": "To be, or not to be, that is the question—Whether 'tis nobler in the mind to suffer the slings and arrows of outrageous fortune, or to take arms against a sea of troubles and by opposing end them. To die: to sleep; no more; and by a sleep to say we end the heart-ache and the thousand natural shocks that flesh is heir to.",
+    "sentence_ko": "존재하느냐, 존재하지 않느냐, 그것이 문제로다 마음속으로 격렬한 운명의 비난과 화살을 견디는 것이 더 고귀한가, 아니면 무수한 고난의 바다에 맞서 싸워 그것들을 끝내는 것이 더 나은가. 죽는다는 것은 자는 것 더 이상 고통이 없는 그리고 잠으로써 우리가 겪는 마음의 고통과 수천 가지 자연적인 충격을 끝낸다는 것을 의미한다.",
     "author": "William Shakespeare"
   },
   {
     "title": "Frankenstein",
-    "sentence": "I had worked hard for nearly two years, for the sole purpose of infusing life into an inanimate body. For this I had deprived myself of rest and health. I had desired it with an ardour that far exceeded moderation; but now that I had finished, the beauty of the dream vanished, and breathless horror and disgust filled my heart.",
+    "title_ko": "프랑켄슈타인",
+    "sentence": "I had worked hard for nearly two years, for the sole purpose of infusing life into an inanimate body. For this I had deprived myself of rest and health. I had desired it with an ardour that far exceeded moderation but now that I had finished, the beauty of the dream vanished, and breathless horror and disgust filled my heart.",
+    "sentence_ko": "나는 거의 2년 동안 무생물에 생명을 불어넣기 위해 열심히 일했다. 이를 위해 나는 휴식과 건강을 포기했다. 나는 절제 이상으로 그것을 열망했다. 하지만 이제 내가 그것을 끝냈을 때, 꿈의 아름다움은 사라졌고, 숨이 막힐 듯한 공포와 혐오가 내 마음을 가득 채웠다.",
     "author": "Mary Shelley"
   },
   {
     "title": "Don Quixote",
+    "title_ko": "돈키호테",
     "sentence": "When life itself seems lunatic, who knows where madness lies? Perhaps to be too practical is madness. To surrender dreams—this may be madness. To seek treasure where there is only trash. Too much sanity may be madness—and maddest of all: to see life as it is, and not as it should be.",
+    "sentence_ko": "삶 자체가 미친 것처럼 보일 때, 누가 어디에 광기가 있는지 알 수 있을까? 아마도 지나치게 실용적인 것이 광기일 것이다. 꿈을 포기하는 것 이것이 광기일지도 모른다. 쓰레기만 있는 곳에서 보물을 찾는 것. 지나친 이성도 광기가 될 수 있다 그리고 무엇보다도 광기인 것은 삶을 있는 그대로 보는 것이며, 있어야 할 모습으로 보지 않는 것이다.",
     "author": "Miguel de Cervantes"
   },
   {
     "title": "The Great Gatsby",
+    "title_ko": "위대한 개츠비",
     "sentence": "In his blue gardens men and girls came and went like moths among the whisperings and the champagne and the stars. At high tide in the afternoon I watched his guests diving from the tower of his raft or taking the sun on the hot sand of his beach while his two motor-boats slit the waters of the Sound, drawing aquaplanes over cataracts of foam. On weekends his Rolls-Royce became an omnibus, bearing parties to and from the city between nine in the morning and long past midnight, while his station wagon scampered like a brisk yellow bug to meet all trains. And on Mondays eight servants, including an extra gardener, toiled all day with mops and scrubbing-brushes and hammers and garden-shears, repairing the ravages of the night before.",
+    "sentence_ko": "그의 푸른 정원에서는 남자들과 여자들이 나방처럼 속삭임과 샴페인과 별들 사이를 오갔다. 오후 만조 때 나는 그의 손님들이 그의 뗏목의 탑에서 다이빙을 하거나 그의 해변의 뜨거운 모래에서 햇볕을 즐기는 것을 지켜보았다. 그의 두 모터보트는 사운드의 물을 가르며 물보라를 일으키며 아쿠아플레인을 끌고 다녔다. 주말이 되면 그의 롤스로이스는 시내로부터 파티 손님들을 실어나르는 버스가 되었고, 그의 스테이션 왜건은 모든 기차를 맞이하기 위해 발 빠른 노란 벌레처럼 돌아다녔다. 그리고 월요일이면 여덟 명의 하인들, 추가된 정원사를 포함해, 온종일 대걸레와 솔, 망치와 정원 가위로 전날 밤의 흔적을 수리했다.",
     "author": "F. Scott Fitzgerald"
   },
   {
     "title": "The Sorrows of Young Werther",
+    "title_ko": "젊은 베르테르의 슬픔",
     "sentence": "I have so much in me, and the feeling for her absorbs it all; I have so much, and without her it all comes to nothing. The fountain of my soul is overflowing, and the water spurts out, untasted, at every angle. And when I absorb her into every feeling, into every glance, there is still new longing, infinite longing, to reach out to her and to say: I lie at your feet! What is happiness but to be dissolved in a glowing sea of love, to die away in it as if overwhelmed by the sweet sweet sea, and finally to drink in again with renewed thirst a single drop of the dear spring?",
+    "sentence_ko": "내 안에는 너무나 많은 것이 있고, 그녀에 대한 감정이 그것을 모두 흡수한다. 내 안에는 많은 것이 있지만, 그녀가 없으면 모든 것이 아무것도 아니다. 내 영혼의 샘은 넘쳐흐르고, 그 물은 어느 각도에서나 맛보지 못한 채 뿜어져 나온다. 그리고 내가 그녀를 모든 감정, 모든 눈빛 속에 흡수할 때마다, 그녀에게 다가가 이렇게 말하고 싶은 새로운 갈망, 무한한 갈망이 있다: 나는 당신의 발치에 누워 있습니다! 행복이란 사랑의 빛나는 바다에 녹아드는 것 외에 무엇이겠는가, 마치 달콤한 바다에 압도되어 사라져 가는 것처럼, 그리고 마침내 그 소중한 샘에서 한 방울의 물을 다시 목마름에 마시는 것처럼.",
     "author": "Johann Wolfgang von Goethe"
   }
 ]

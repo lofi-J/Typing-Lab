@@ -18,8 +18,8 @@
     position: absolute;
     top: 1px;
     right: 8px;
-    color: var(--accent-color);
-    font-size: 20px;
+    color: var(--primary-color);
+    font-size: 1.8rem;
     font-weight: bold;
   }
 }

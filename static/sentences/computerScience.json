@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Ada Lovelace on Analytical Engines",
+    "title_ko": "아이다 러브레이스와 해석 기관",
+    "sentence": "The Analytical Engine weaves algebraic patterns just as the Jacquard loom weaves flowers and leaves. In this, we see the first glimmers of what would become modern computing—the idea that machines could be programmed to perform any calculation or operation given the right set of instructions. Lovelace's foresight was remarkable, envisioning a future where machines could process not just numbers, but symbols, text, and even music. This vision laid the groundwork for the programmable computers we use today.",
+    "sentence_ko": "해석 기관은 마치 자카드 직기가 꽃과 잎을 짜는 것처럼 대수학적 패턴을 짜낸다. 여기서 우리는 현대 컴퓨팅의 초기 단서를 보게 되는데, 이는 적절한 지시 세트를 제공받으면 기계가 모든 계산이나 작업을 수행할 수 있다는 아이디어이다. 러브레이스의 통찰력은 놀라웠으며, 숫자뿐만 아니라 기호, 텍스트, 심지어 음악까지 처리할 수 있는 기계의 미래를 상상했다. 이 비전은 우리가 오늘날 사용하는 프로그래머블 컴퓨터의 기초를 마련했다.",
+    "author": "Ada Lovelace"
+  },
+  {
+    "title": "Charles Babbage on Machines",
+    "title_ko": "찰스 배비지와 기계들",
+    "sentence": "The whole of arithmetic now appeared within the grasp of mechanism. With the invention of the Difference Engine, Babbage demonstrated that complex calculations could be performed by a machine, thus freeing humans from the tedious and error-prone task of manual computation. This was a revolutionary concept at the time and set the stage for the development of more advanced computing machines, eventually leading to the digital computers we rely on today.",
+    "sentence_ko": "이제 산술 전체가 기계 장치의 범위 내에 있는 것처럼 보였다. 배비지는 차분 기관의 발명으로 복잡한 계산이 기계를 통해 수행될 수 있음을 보여주었고, 이를 통해 인간은 지루하고 오류가 발생하기 쉬운 수작업 계산에서 벗어날 수 있었다. 이는 당시 혁명적인 개념이었으며, 더 발전된 컴퓨팅 기계의 개발을 위한 무대를 마련했고, 궁극적으로 우리가 오늘날 의존하는 디지털 컴퓨터로 이어졌다.",
+    "author": "Charles Babbage"
+  },
+  {
+    "title": "Alan Turing on the Turing Machine",
+    "title_ko": "앨런 튜링과 튜링 머신",
+    "sentence": "A Turing machine can simulate the logic of any computer algorithm, regardless of complexity. Turing's concept of a machine that could perform any calculation provided the theoretical framework for the development of modern computers. This universal machine, as Turing proposed, could read and write symbols on an infinite tape, using a set of rules to process input and produce output. The Turing Machine remains a cornerstone of computer science, illustrating the power and limitations of algorithmic processes.",
+    "sentence_ko": "튜링 머신은 복잡성과 상관없이 어떤 컴퓨터 알고리즘의 논리를 모방할 수 있다. 모든 계산을 수행할 수 있는 기계라는 튜링의 개념은 현대 컴퓨터 개발을 위한 이론적 틀을 제공했다. 튜링이 제안한 이 보편적인 기계는 무한한 테이프에 기호를 읽고 쓸 수 있으며, 일련의 규칙을 사용하여 입력을 처리하고 출력을 생성할 수 있었다. 튜링 머신은 컴퓨터 과학의 초석으로 남아 있으며, 알고리즘 과정의 힘과 한계를 보여준다.",
+    "author": "Alan Turing"
+  },
+  {
+    "title": "Grace Hopper on Debugging",
+    "title_ko": "그레이스 호퍼와 디버깅",
+    "sentence": "The first actual case of a bug being found was in a computer relay, where an actual moth was removed with tweezers. Grace Hopper's anecdote about finding a literal bug in an early computer system gave rise to the term 'debugging,' now universally used in software development. Hopper was instrumental in developing the first compilers, which translated human-readable code into machine language, making programming more accessible and less prone to errors. Her contributions laid the foundation for the high-level programming languages we use today.",
+    "sentence_ko": "버그가 발견된 첫 실제 사례는 컴퓨터 릴레이에서 실제 나방이 핀셋으로 제거된 사건이었다. 초기 컴퓨터 시스템에서 실제 벌레를 발견한 그레이스 호퍼의 일화는 현재 소프트웨어 개발에서 널리 사용되는 용어인 '디버깅'의 기원을 제공했다. 호퍼는 사람에게 읽을 수 있는 코드를 기계어로 번역하는 최초의 컴파일러 개발에 중요한 역할을 했으며, 이를 통해 프로그래밍이 더욱 접근 가능하고 오류가 적어졌다. 그녀의 기여는 오늘날 우리가 사용하는 고급 프로그래밍 언어의 기초를 마련했다.",
+    "author": "Grace Hopper"
+  },
+  {
+    "title": "John von Neumann on Stored-Program Concept",
+    "title_ko": "존 폰 노이만과 저장 프로그램 개념",
+    "sentence": "Any stored-program computer can execute any program, making it a universal computing device. Von Neumann's architecture, which proposed storing instructions and data in the same memory, revolutionized computer design. This concept enabled the development of modern computers that could run multiple programs and be reprogrammed without needing to change the hardware. Von Neumann's ideas continue to influence computer architecture, with most computers today still following his basic principles.",
+    "sentence_ko": "어떤 저장 프로그램 컴퓨터도 모든 프로그램을 실행할 수 있으며, 이는 보편적인 컴퓨팅 장치가 된다. 지시 사항과 데이터를 동일한 메모리에 저장하는 것을 제안한 폰 노이만의 아키텍처는 컴퓨터 설계를 혁신적으로 변화시켰다. 이 개념은 여러 프로그램을 실행하고 하드웨어를 변경할 필요 없이 재프로그래밍할 수 있는 현대 컴퓨터의 개발을 가능하게 했다. 폰 노이만의 아이디어는 계속해서 컴퓨터 아키텍처에 영향을 미치며, 오늘날 대부분의 컴퓨터가 그의 기본 원칙을 따르고 있다.",
+    "author": "John von Neumann"
+  },
+  {
+    "title": "Claude Shannon on Information Theory",
+    "title_ko": "클로드 섀넌과 정보 이론",
+    "sentence": "The fundamental problem of communication is that of reproducing at one point either exactly or approximately a message selected at another point. Shannon's work on information theory provided the mathematical foundations for digital communication and data compression. His groundbreaking paper introduced the concept of the 'bit' as the basic unit of information, and his theories on entropy and redundancy have had a profound impact on everything from data transmission to cryptography. Shannon's insights laid the groundwork for the information age.",
+    "sentence_ko": "통신의 근본적인 문제는 한 지점에서 선택된 메시지를 다른 지점에서 정확히 또는 대략적으로 재현하는 것이다. 섀넌의 정보 이론에 대한 연구는 디지털 통신과 데이터 압축을 위한 수학적 기초를 제공했다. 그의 혁신적인 논문은 정보의 기본 단위로서 '비트' 개념을 도입했으며, 엔트로피와 중복에 대한 그의 이론은 데이터 전송에서 암호화에 이르기까지 모든 것에 깊은 영향을 미쳤다. 섀넌의 통찰력은 정보 시대의 기초를 마련했다.",
+    "author": "Claude Shannon"
+  }
+]
