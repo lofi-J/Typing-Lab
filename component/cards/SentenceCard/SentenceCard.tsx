@@ -15,7 +15,7 @@ const SentenceCard = ({index, title, author, sentence}: ISentencCard) => {
       <div className={styles.numbering}>{(index+1) < 10 && 0}{index+1}</div>
       <div className={styles.title}>{title}</div>
       <div className={styles.info_wrap}>
-        <div className={styles.author}>{author}</div>
+        <div className={`${styles.author} author`}>{author}</div>
         <div className={styles.sentence}>{sentence}</div>
       </div>
     </div>
