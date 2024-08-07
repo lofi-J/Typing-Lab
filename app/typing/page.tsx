@@ -16,6 +16,7 @@ import Loading from "@/component/Loading/Loading";
 import { IoIosSettings } from "react-icons/io";
 import TypingSettingsModal from "@/component/modal/TypingSettingsModal/TypingSettingsModal";
 import LocalStorage from "@/utils/LocalStorage";
+import default_article from "../../static/sentences/default_article";
 
 
 export type TTextCounts = {
@@ -51,8 +52,12 @@ export default function Typing() {
   
   // useEffect
   useEffect(() => { // init
-    if (!sentence) return;
-    const sentenceObj = JSON.parse(sentence);
+    let sentenceObj;
+    if (!sentence) {
+      sentenceObj = default_article;
+    } else {
+      sentenceObj = JSON.parse(sentence);
+    }
     const result = splitTextByLine(sentenceObj.sentence, 80, sentenceObj.lang);
     setTargetList(result); // 타이핑 해야할 라인들 string[]
     setTotalUserTexts(makeArray(result.length, '')); // 유저가 타이핑 한 라인들 string[]

@@ -1,5 +1,3 @@
-import { TLang } from "@/static/texts/default_article";
-
 const CHAR_WIDTH = 2.2;
 const BLANK_WIDTH = 1;
 const EN_CHAR_WIDTH = 1.1;
@@ -8,8 +6,7 @@ const EN_BLANK_WIDTH = 0.8;
 * string으로 구성된 글을 string[]로 나누어준다.
 * @param {string} text - 타이핑 타겟
 * */
-// TODO 수정필요
-export const splitTextByLine = (phrase: string, playgroundWidth: number, langType: TLang): string[] => {
+export const splitTextByLine = (phrase: string, playgroundWidth: number, langType: 'en' | 'ko'): string[] => {
   let result: string[] = [];
   let currentWord = '';
   let currentWidth = 0;

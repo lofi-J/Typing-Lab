@@ -1,7 +1,7 @@
 import styles from "./SentenceCard.module.css";
 import LocalStorage from "@/utils/LocalStorage";
 import Link from "next/link";
-import {TLang} from "@/static/texts/default_article";
+import {TLang} from "@/static/sentences/default_article";
 
 
 interface ISentencCard {

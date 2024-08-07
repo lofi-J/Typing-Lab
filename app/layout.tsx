@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
 import React from "react";
-import {Hahmlet, Inter} from "next/font/google";
+import {Inter, Inconsolata} from "next/font/google";
 import Header from "@/component/Header/Header";
 import "./globals.css";
 
 
 // google font
 const inter = Inter({ subsets: ["latin"] });
-const hahmlet = Hahmlet({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] });
+const inconsolata = Inconsolata({
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: "Typing Lab",
@@ -21,11 +25,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-theme={'dark'}>
-      <body className={`${hahmlet.className} ${inter.className}`}>
-        <div id={'portal'} />
-        <Header />
-        {children}
-      </body>
+    <body className={`${inter.className} ${inconsolata.className}`}>
+      <div id={'portal'}/>
+      <Header/>
+      {children}
+    </body>
     </html>
   );
 }
