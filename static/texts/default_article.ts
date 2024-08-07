@@ -1,4 +1,4 @@
-export type TLang = 'en' | 'kr'
+export type TLang = 'en' | 'ko';
 
 export interface IContents {
   title: string;

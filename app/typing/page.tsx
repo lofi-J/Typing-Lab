@@ -2,7 +2,6 @@
 
 import styles from "./page.module.css";
 import {useEffect, useRef, useState} from "react";
-import sentence from "@/static/texts/static_kr_01";
 import {splitTextByLine} from "@/utils/splitTextByLine";
 import useSetStartTime from "@/hooks/useSetStartTime";
 import WpmDashboard from "@/component/dashboard/WpmDashboard/WpmDashboard";
@@ -16,6 +15,7 @@ import {makeArray} from "@/utils/extension/arrayHelper";
 import Loading from "@/component/Loading/Loading";
 import { IoIosSettings } from "react-icons/io";
 import TypingSettingsModal from "@/component/modal/TypingSettingsModal/TypingSettingsModal";
+import LocalStorage from "@/utils/LocalStorage";
 
 
 export type TTextCounts = {
@@ -27,6 +27,7 @@ export default function Typing() {
   // input
   const inputRef = useRef<HTMLInputElement>(null);
   // data
+  const sentence = LocalStorage.getItem("sentence");
   const [targetList, setTargetList] = useState<string[]>();
   const [totalUserText, setTotalUserTexts] = useState<string[]>();
   const [textCounts, setTextCounts] = useState<TTextCounts>({totalCount: 0, wrongCount: 0});
@@ -50,11 +51,13 @@ export default function Typing() {
   
   // useEffect
   useEffect(() => { // init
-    const result = splitTextByLine(sentence.contents, 76, sentence.lang);
+    if (!sentence) return;
+    const sentenceObj = JSON.parse(sentence);
+    const result = splitTextByLine(sentenceObj.sentence, 80, sentenceObj.lang);
     setTargetList(result); // 타이핑 해야할 라인들 string[]
     setTotalUserTexts(makeArray(result.length, '')); // 유저가 타이핑 한 라인들 string[]
     setTotalTargetListLength(result.reduce((acc, cur) => acc + cur.length, 0)); // 타이핑해야할 총 텍스트 개수
-  }, [])
+  }, [sentence])
   
   useEffect(() => { // update
     if (!totalUserText) return;

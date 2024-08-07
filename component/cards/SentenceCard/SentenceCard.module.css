@@ -1,5 +1,4 @@
 .card_wrap {
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   border-top: 2px solid var(--primary-color);
@@ -20,13 +19,13 @@
 
 .title {
   font-size: 2rem;
+  line-height: 2.5rem;
   font-weight: bold;
   display: -webkit-box;
   word-break: break-word;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  height: 6rem;
-  margin-bottom: 1rem;
+  height: calc(2.5rem * 2);
 }
 
 .info_wrap {
@@ -34,19 +33,36 @@
 }
 
 .author {
-  width: max-content;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 500;
-  border: 1px solid var(--primary-color);
-  padding: 0.25rem 0.5rem;
-  border-radius: 12px;
   margin-bottom: 1rem;
 }
 
 .sentence {
   word-break: break-word;
-  height: 10rem;
+  font-size: 1.1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 1.1rem;
+  line-height: 1.3rem;
+  max-height: calc(1.3rem * 4);
+}
+
+.apply_btn {
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 300;
+  width: max-content;
+  margin-top: auto;
+  margin-bottom: 1rem;
+  padding: 0.5rem 2rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 12px;
+  transition: all 0.5s ease;
+  &:hover {
+    box-shadow: 0 2px 4px -1px var(--primary-color);
+    transform: translateY(-0.4rem);
+  }
 }

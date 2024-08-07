@@ -8,6 +8,7 @@ const EN_BLANK_WIDTH = 0.8;
 * string으로 구성된 글을 string[]로 나누어준다.
 * @param {string} text - 타이핑 타겟
 * */
+// TODO 수정필요
 export const splitTextByLine = (phrase: string, playgroundWidth: number, langType: TLang): string[] => {
   let result: string[] = [];
   let currentWord = '';
@@ -24,8 +25,8 @@ export const splitTextByLine = (phrase: string, playgroundWidth: number, langTyp
     currentWord += char;
     
     // acc width
-    if (char === ' ') currentWidth += langType === 'kr' ? BLANK_WIDTH : EN_BLANK_WIDTH;
-    else currentWidth += langType === 'kr' ? CHAR_WIDTH : EN_CHAR_WIDTH;
+    if (char === ' ') currentWidth += langType === 'ko' ? BLANK_WIDTH : EN_BLANK_WIDTH;
+    else currentWidth += langType === 'ko' ? CHAR_WIDTH : EN_CHAR_WIDTH;
     
     // check width at face to blank
     if (char === ' ' && currentWidth >= playgroundWidth) {

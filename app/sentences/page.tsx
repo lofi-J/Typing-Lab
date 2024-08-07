@@ -66,6 +66,7 @@ export default function SentencesPage() {
             <SentenceCard
               key={indexToKey(data.title, index)}
               index={index}
+              lang={isKorean ? 'ko' : 'en'}
               title={isKorean ? data.title_ko : data.title}
               author={data.author}
               sentence={isKorean ? data.sentence_ko : data.sentence}
