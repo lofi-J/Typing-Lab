@@ -1,12 +1,11 @@
 import styles from "./SentenceCard.module.css";
 import LocalStorage from "@/utils/LocalStorage";
 import Link from "next/link";
-import {TLang} from "@/static/sentences/default_article";
 
 
 interface ISentencCard {
   index: number;
-  lang: TLang;
+  lang: 'en' | 'ko';
   title: string;
   author: string;
   sentence: string;

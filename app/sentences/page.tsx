@@ -5,7 +5,7 @@ import SentenceCard from "@/component/cards/SentenceCard/SentenceCard";
 import React, {useEffect, useState} from "react";
 import {indexToKey} from "@/utils/playgroundHelper";
 import SelectBox from "@/component/select/SelectBox/SelectBox";
-import { BiTransferAlt } from "react-icons/bi";
+import {BiTransferAlt} from "react-icons/bi";
 import classicLiterature from "../../static/sentences/classicLiterature.json";
 import computerScience from "../../static/sentences/computerScience.json";
 import fairyTales from "../../static/sentences/fairyTales.json";

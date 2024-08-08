@@ -3,8 +3,17 @@
   justify-content: center;
   align-items: center;
   flex: 1;
-  height: calc(100vh - 4.8rem);
+  width: 100vw;
+  height: calc(100vh - var(--header-height));
   position: relative;
+  margin-top: var(--header-height);
+  background-size: 200% 200%;
+  background-image: radial-gradient(
+    circle,
+    var(--gradient-start-color) 0%,
+    var(--gradient-middle-color) 40%,
+    var(--gradient-start-color) 70%
+  );
 }
 
 .ping {

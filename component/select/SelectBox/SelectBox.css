@@ -16,8 +16,9 @@
   &::after {
     content: "⌵";
     position: absolute;
-    top: 1px;
-    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1rem;
     color: var(--primary-color);
     font-size: 1.8rem;
     font-weight: bold;
