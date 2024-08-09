@@ -11,7 +11,8 @@
     margin-right: 1rem;
   }
   & > span {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
   }
 }
 
@@ -19,6 +20,7 @@
   display: flex;
   & > span, & > span > span {
     font-size: 1.3rem;
+    font-weight: 800;
   }
 }
 

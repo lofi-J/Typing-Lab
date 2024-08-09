@@ -13,10 +13,10 @@ import useCalcWPM from "@/hooks/useCalcWPM";
 import {calculateProgress, converMsToMinSec} from "@/utils/dashboardHelper";
 import {makeArray} from "@/utils/extension/arrayHelper";
 import Loading from "@/component/Loading/Loading";
-import { IoIosSettings } from "react-icons/io";
-import TypingSettingsModal from "@/component/modal/TypingSettingsModal/TypingSettingsModal";
 import LocalStorage from "@/utils/LocalStorage";
 import default_article from "../../static/sentences/default_article";
+import { IoIosSettings } from "react-icons/io";
+import SettingSidebar from "@/component/sidebar/SettingSidebar";
 
 
 export type TTextCounts = {
@@ -37,7 +37,7 @@ export default function Typing() {
   const [wpmQueue, setWpmQueue] = useState<number[]>([]);
   // modal
   const [isEnd, setIsEnd] = useState(false);
-  const [openSettings, setOpenSettings] = useState(false);
+  const [isShowSidebar, setIsShowSidebar] = useState(false);
   // calculate data
   const {elapsed, flagTick} = useElapsedTimer(startTime, isEnd); // ms
   const wpm = useCalcWPM(textCounts.totalCount, elapsed, flagTick);
@@ -47,7 +47,6 @@ export default function Typing() {
   const prevProgressRef = useRef(0);
   
   const closeEndModal = () => setIsEnd(false);
-  const closeSettingsModal = () => setOpenSettings(false);
   
   
   // useEffect
@@ -98,14 +97,13 @@ export default function Typing() {
   
   
   // Loading
-  if (targetList === undefined) {
+  if (targetList === undefined || totalUserText === undefined) {
     return <Loading />
   }
   
   return (
     <main className={styles.main}>
       {isEnd && <TypingEndModal close={closeEndModal} wpm={wpm} textCounts={textCounts} time={{minutes, seconds}} wpmHistory={wpmHistory.current} inputRef={inputRef} />}
-      {openSettings && <TypingSettingsModal close={closeSettingsModal} />}
       
       <WpmDashboard textCounts={textCounts} wpm={wpm} wpmQueue={wpmQueue} time={{minutes, seconds}} progress={progress} />
       <Playground
@@ -118,9 +116,13 @@ export default function Typing() {
         inputRef={inputRef}
       />
       <Keyboard isActive={!isEnd} />
-      <div className={styles.settings} onClick={() => setOpenSettings(true)}>
-        <IoIosSettings />
-      </div>
+      {/* sidebar */}
+      {isShowSidebar ?
+        <SettingSidebar
+          close={() => setIsShowSidebar(false)}
+        /> :
+        <div className={styles.settings} onClick={() => setIsShowSidebar(true)}>{<IoIosSettings size={15}/>}</div>
+      }
     </main>
   );
 }

@@ -22,7 +22,7 @@
   --chart-color: var(--purple);
   
   /* static color */
-  --green: #40d672;
+  --green: #34a853;
   --light-yellow: #fdfda4;
   --yellow: #e7fe55;
   --red: #ff8a8a;
@@ -34,7 +34,7 @@
   --yellow-rgb: 231, 254, 85;
   --purple-rgb: 169, 114, 203;
   --mint-rgb: 55, 243, 244;
-  --green-rgb: 64, 214, 114;
+  --green-rgb: 52, 168, 83;
   
   --caret-color: var(--purple);
   
@@ -64,8 +64,8 @@
   --caret-height: 18px;
   
   /* font-size */
-  --typing-size: 2rem;
-  --typing-weight: 300;
+  --typing-size: 1.8rem;
+  --typing-weight: 500;
 }
 
 [data-theme="light"] {
