@@ -12,14 +12,15 @@
   position: absolute;
   left: 0;
   top: 0;
-  width: 15vw;
+  width: 20vw;
   height: 100vh;
   background-color: var(--gray-900);
   padding: 1rem;
 }
 
 .close {
-  height: 10%;
+  cursor: pointer;
+  height: 5%;
   display: flex;
   justify-content: flex-end;
   & > svg:hover {
@@ -27,9 +28,49 @@
     border-radius: 8px;
   }
 }
-
 .title {
   & > h1 {
+    text-align: center;
     font-size: 1.5rem;
   }
+  margin-bottom: 5rem;
+}
+.settings {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.wrap {
+  display: flex;
+  flex-direction: column;
+}
+.subtitle {
+  text-transform: uppercase;
+  text-align: left;
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+.btn_wrap {
+  cursor: pointer;
+  display: flex;
+  & > span {
+    flex: 1;
+    text-align: center;
+    font-size: 1.3rem;
+    border: 1px solid var(--normal-gray);
+    padding: 0.8rem 0;
+  }
+}
+.divider {
+  width: 100%;
+  height: 0.2rem;
+  background-color: var(--normal-gray);
+}
+.active {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+}
+.sound {
+  display: flex;
+  gap: 1rem;
 }

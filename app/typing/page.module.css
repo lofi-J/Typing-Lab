@@ -15,7 +15,17 @@
 		width: 2rem;
 		height: 2rem;
 		&:hover {
-			fill: var(--normal-gray);
+			fill: var(--gray-500);
+			animation: rotate 0.4s infinite linear;
 		}
+	}
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(45deg);
 	}
 }
