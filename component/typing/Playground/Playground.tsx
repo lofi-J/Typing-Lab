@@ -7,6 +7,7 @@ import UserText from "@/component/typing/UserText/UserText";
 import {initLineRange, TLineRange} from "@/utils/playgroundHelper";
 import {TTextCounts} from "@/app/typing/page";
 import FocusAlert from "@/component/typing/FocusAlert/FocusAlert";
+import {TWeight} from "@/static/settings";
 
 
 interface IPlayground {
@@ -17,9 +18,14 @@ interface IPlayground {
   isEnd: boolean;
   setIsEnd: React.Dispatch<React.SetStateAction<boolean>>;
   inputRef: React.RefObject<HTMLInputElement>;
+  fontSize: number;
+  fontWeight: TWeight;
 }
 
-const Playground = ({targetList, setTextCounts, totalUserText, setTotalUserTexts, isEnd, setIsEnd, inputRef}: IPlayground) => {
+const Playground = ({
+  targetList, setTextCounts, totalUserText, setTotalUserTexts, isEnd, setIsEnd, inputRef,
+  fontSize, fontWeight
+  }: IPlayground) => {
   const [validationResultArray, setValidationResultArray] = useState<boolean[][]>(makeArray(targetList.length, []));
   const [lineRange, setLineRange] = useState<TLineRange>(initLineRange(targetList));
   const [showCaret, setShowCaret] = useState(!isEnd);
@@ -53,12 +59,16 @@ const Playground = ({targetList, setTextCounts, totalUserText, setTotalUserTexts
           targetList={targetList}
           totalUserText={totalUserText}
           lineRange={lineRange}
+          fontSize={fontSize}
+          fontWeight={fontWeight}
         />
         <UserText
           totalUserText={totalUserText}
           lineRange={lineRange}
           validResult={validationResultArray}
           showCaret={showCaret}
+          fontSize={fontSize}
+          fontWeight={fontWeight}
         />
       </div>
       <TypingInput

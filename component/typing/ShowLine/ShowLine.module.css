@@ -12,8 +12,6 @@
 	height: 2.1rem;
 	overflow: hidden;
 	& > span {
-		font-size: var(--typing-size);
-		font-weight: var(--typing-weight);
 		color: var(--gray-500);
 	}
 }

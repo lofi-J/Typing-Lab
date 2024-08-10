@@ -7,8 +7,5 @@
 	background-color: transparent;
 	border: none;
 	outline: none;
-	font-size: var(--typing-size);
-	font-weight: var(--typing-weight);
-	color: var(--primary-color);
 	opacity: 0;
 }

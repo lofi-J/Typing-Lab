@@ -1,6 +1,7 @@
 import styles from "./UserText.module.css";
 import {indexToKey, TLineRange} from "@/utils/playgroundHelper";
 import Cell from "@/component/typing/Cell/Cell";
+import {TWeight} from "@/static/settings";
 
 
 interface IUserText {
@@ -8,9 +9,11 @@ interface IUserText {
   lineRange: TLineRange;
   validResult: boolean[][];
   showCaret: boolean;
+  fontSize: number;
+  fontWeight: TWeight;
 }
 
-const UserText = ({totalUserText, lineRange, validResult, showCaret}: IUserText) => {
+const UserText = ({totalUserText, lineRange, validResult, showCaret, fontSize, fontWeight}: IUserText) => {
   const showUserText = totalUserText.copy(lineRange.start, lineRange.end);
   const showValidArr = validResult.copy(lineRange.start, lineRange.end);
   
@@ -34,6 +37,8 @@ const UserText = ({totalUserText, lineRange, validResult, showCaret}: IUserText)
               color={getColor(index, i)}
               hidden={false}
               width={char === ' ' ? '0.8rem' : 'auto'}
+              size={fontSize}
+              weight={fontWeight}
             />
           ))}
         </div>

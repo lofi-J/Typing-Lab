@@ -2,8 +2,6 @@
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
-	font-size: var(--typing-size);
-	font-weight: var(--typing-weight);
 	color: var(--primary-color);
 }
 
@@ -21,7 +19,6 @@
 }
 
 .wrong_blank {
-	width: var(--typing-size);
-	height: var(--typing-size);
+	height: 100%;
 	border-bottom: 0.2rem dotted var(--red);
 }

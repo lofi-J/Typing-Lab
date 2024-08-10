@@ -119,6 +119,8 @@ export default function Typing() {
         isEnd={isEnd}
         setIsEnd={setIsEnd}
         inputRef={inputRef}
+        fontSize={settings.fontSize}
+        fontWeight={settings.fontWeight}
       />
       {settings.appearance === 'basic' &&
         <Keyboard isActive={!isEnd} />

@@ -1,5 +1,7 @@
 import styles from "./Cell.module.css";
 import {CSSProperties, memo} from "react";
+import {TWeight} from "@/static/settings";
+
 
 export type TCellColor = 'gray' | 'red' | 'white';
 
@@ -8,6 +10,8 @@ interface ICell {
   color: TCellColor;
   hidden?: boolean;
   width: string;
+  size: number;
+  weight: TWeight;
 }
 
 const getColor = (color: TCellColor) => {
@@ -23,12 +27,14 @@ const getColor = (color: TCellColor) => {
   }
 }
 
-const Cell = ({char, color, hidden, width}: ICell) => {
+const Cell = ({char, color, hidden, width, size, weight}: ICell) => {
   
   const style: CSSProperties = {
     color: getColor(color),
     opacity: hidden ? '0' : '1',
-    width: width
+    width: width,
+    fontSize: size,
+    fontWeight: weight
   }
   
   const cellClassName = `

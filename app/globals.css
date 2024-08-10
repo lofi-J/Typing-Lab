@@ -62,10 +62,6 @@
   --playground-width: 850px;
   --playground-height: 400px;
   --caret-height: 18px;
-  
-  /* font-size */
-  --typing-size: 1.8rem;
-  --typing-weight: 500;
 }
 
 [data-theme="light"] {
