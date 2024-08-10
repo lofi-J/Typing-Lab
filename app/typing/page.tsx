@@ -132,6 +132,8 @@ export default function Typing() {
           close={() => setIsShowSidebar(false)}
           settings={settings}
           setSettings={setSettings}
+          fontSize={settings.fontSize}
+          fontWeight={settings.fontWeight}
         /> :
         <div className={styles.settings} onClick={() => setIsShowSidebar(true)}>{<IoIosSettings size={15}/>}</div>
       }

@@ -1,6 +1,6 @@
 import styles from "./Playground.module.css";
 import {makeArray} from "@/utils/extension/arrayHelper";
-import React, {useEffect, useState} from "react";
+import React, {Dispatch, useEffect, useState} from "react";
 import ShowLine from "@/component/typing/ShowLine/ShowLine";
 import TypingInput from "@/component/typing/TypingInput/TypingInput";
 import UserText from "@/component/typing/UserText/UserText";
@@ -12,11 +12,11 @@ import {TWeight} from "@/static/settings";
 
 interface IPlayground {
   targetList: string[];
-  setTextCounts: React.Dispatch<React.SetStateAction<TTextCounts>>;
+  setTextCounts: Dispatch<React.SetStateAction<TTextCounts>>;
   totalUserText?: string[];
-  setTotalUserTexts: React.Dispatch<React.SetStateAction<string[] | undefined>>;
+  setTotalUserTexts: Dispatch<React.SetStateAction<string[] | undefined>>;
   isEnd: boolean;
-  setIsEnd: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsEnd: Dispatch<React.SetStateAction<boolean>>;
   inputRef: React.RefObject<HTMLInputElement>;
   fontSize: number;
   fontWeight: TWeight;

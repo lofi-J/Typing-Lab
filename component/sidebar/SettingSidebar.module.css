@@ -53,12 +53,16 @@
 .btn_wrap {
   cursor: pointer;
   display: flex;
-  & > span {
+  & > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex: 1;
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     border: 1px solid var(--normal-gray);
     padding: 0.8rem 0;
+    height: 3rem;
   }
 }
 .divider {
@@ -70,7 +74,32 @@
   background-color: var(--primary-color);
   color: var(--background-color);
 }
+
+/* sound */
 .sound {
   display: flex;
   gap: 1rem;
+}
+
+/* font */
+.font {
+  display: flex;
+  flex-direction: column;
+  & > h3 {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    &:not(:first-of-type) {
+      margin-top: 1rem;
+    }
+  }
+}
+.font_preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 8rem;
+  width: 100%;
+  margin-top: 1rem;
+  border: 1px solid var(--normal-gray);
 }
