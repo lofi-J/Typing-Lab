@@ -51,7 +51,7 @@ const WpmDashboard = ({wpmQueue, wpm, time, textCounts, progress}: IWpmDashboard
         <IconCountCard
           icon={GiKeyboard}
           title={'Progress'}
-          value={progress}
+          value={Math.round(progress)}
           unit={'%'}
         />
       </div>

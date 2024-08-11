@@ -14,8 +14,9 @@
   top: 0;
   width: 20vw;
   height: 100vh;
-  background-color: var(--gray-900);
+  background-color: var(--background-color-rgb);
   padding: 1rem;
+  border-right: 1px solid var(--gray-800);
 }
 
 .close {
@@ -63,6 +64,9 @@
     border: 1px solid var(--normal-gray);
     padding: 0.8rem 0;
     height: 3rem;
+    &:first-of-type {
+      border-right: none;
+    }
   }
 }
 .disable_btn {

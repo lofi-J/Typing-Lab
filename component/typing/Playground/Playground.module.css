@@ -2,7 +2,6 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	overflow: hidden;
 	width: 80rem;
 	height: max-content;
 	padding: 2rem 1rem;

@@ -49,7 +49,9 @@ export default function Typing() {
   // settings
   const [settings, setSettings] = useState(defaultSettings);
   
-  const closeEndModal = () => setIsEnd(false);
+  const closeEndModal = () => {
+    window.location.reload();
+  }
   
   
   // useEffect
@@ -121,6 +123,8 @@ export default function Typing() {
         inputRef={inputRef}
         fontSize={settings.fontSize}
         fontWeight={settings.fontWeight}
+        isShowProgressBar={settings.appearance === 'zen'}
+        progress={progress}
       />
       {settings.appearance === 'basic' &&
         <Keyboard isActive={!isEnd} />

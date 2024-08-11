@@ -1,0 +1,44 @@
+.bar {
+  position: absolute;
+  left: 0.1rem;
+  bottom: -1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 80rem;
+  height: 0.6rem;
+  padding: 1px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--background-color);
+  background-color: var(--background-color);
+  opacity: 0.8;
+}
+.gage {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  background-color: var(--accent-color);
+  transition: all 0.25s;
+  &:before {
+    content: '';
+    background: linear-gradient(45deg, var(--progress-1), var(--progress-2), var(--progress-3));
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 300%;
+    z-index: -1;
+    filter: blur(1px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 1;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+  }
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 300% 0; }
+  100% { background-position: 0 0; }
+}

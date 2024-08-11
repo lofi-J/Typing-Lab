@@ -42,6 +42,7 @@ const TypingEndModal = ({close, wpm, textCounts, time, wpmHistory, inputRef}: IT
     
   }, [inputRef]);
   
+  
   return (
     <CustomModal close={close}>
       <div className={styles.container}>

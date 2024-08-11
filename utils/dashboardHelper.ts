@@ -15,5 +15,5 @@ export const calculateAccuracy = (totalCount: number, mistake: number) => {
 export const calculateProgress = (totalCount: number, inputCount: number) => {
   if (!totalCount) return;
   
-  return Math.round((inputCount / totalCount) * 100);
+  return (inputCount / totalCount) * 100;
 }

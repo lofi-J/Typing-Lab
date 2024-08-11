@@ -13,11 +13,9 @@
   --gradient-middle-color: #14122c;
   --gradient-end-color: #22102c;
   --gradient-background-color: linear-gradient(to bottom right, var(--gradient-start-color), var(--gradient-middle-color), var(--gradient-end-color));
-  --card-gradient-start-color: #131d30;
-  --card-gradient-end-color: #15091b;
-  --card-gradient-background: linear-gradient(to right, var(--card-gradient-start-color), var(--card-gradient-end-color));
   --accent-color: var(--purple);
   --accent-color-rgb: var(--purple-rgb);
+  --accent-color-2: var(--mint);
   --color-with-accent: #000;
   --chart-color: var(--purple);
   
@@ -62,6 +60,11 @@
   --playground-width: 850px;
   --playground-height: 400px;
   --caret-height: 18px;
+  
+  /* progress bar */
+  --progress-1: var(--purple);
+  --progress-2: var(--mint);
+  --progress-3: var(--red);
 }
 
 [data-theme="light"] {
@@ -74,10 +77,16 @@
   --gradient-end-color: #dbdbd0;
   --accent-color: var(--green);
   --accent-color-rgb: var(--green-rgb);
+  --accent-color-2: var(--red);
   --caret-color: var(--green);
   --red: #ff4545;
   --chart-color: var(--accent-color);
   --modal-background: var(--gray-100);
+  
+  /* progress bar */
+  --progress-1: var(--gray-600);
+  --progress-2: var(--gray-700);
+  --progress-3: var(--gray-800);
 }
 
 /* smooth theme change */
