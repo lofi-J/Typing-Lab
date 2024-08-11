@@ -9,7 +9,7 @@ export interface ISettings {
 
 export const defaultSettings: ISettings = {
   appearance: 'basic',
-  fontSize: 18,
-  fontWeight: 500,
+  fontSize: 20,
+  fontWeight: 300,
   soundLevel: 0,
 }

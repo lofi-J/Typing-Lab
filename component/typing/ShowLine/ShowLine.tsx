@@ -30,6 +30,7 @@ const ShowLine = ({targetList, totalUserText, lineRange, fontSize, fontWeight}: 
               hidden={(index === 0 && i < userTextLength)}
               size={fontSize}
               weight={fontWeight}
+              id={(index === 0 && i === 0) ? 'typing-text' : undefined}
             />
           ))}
         </div>

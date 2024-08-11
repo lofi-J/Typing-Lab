@@ -12,6 +12,7 @@ interface ICell {
   width: string;
   size: number;
   weight: TWeight;
+  id?: string;
 }
 
 const getColor = (color: TCellColor) => {
@@ -27,7 +28,7 @@ const getColor = (color: TCellColor) => {
   }
 }
 
-const Cell = ({char, color, hidden, width, size, weight}: ICell) => {
+const Cell = ({char, color, hidden, width, size, weight, id}: ICell) => {
   
   const style: CSSProperties = {
     color: getColor(color),
@@ -44,7 +45,7 @@ const Cell = ({char, color, hidden, width, size, weight}: ICell) => {
   `;
   
   return (
-    <span className={cellClassName} style={style}>{char}</span>
+    <span className={cellClassName} style={style} id={id}>{char}</span>
   );
 }
 
