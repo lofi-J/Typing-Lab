@@ -18,6 +18,7 @@ import Loading from "@/component/Loading/Loading";
 import LocalStorage from "@/utils/LocalStorage";
 import { IoIosSettings } from "react-icons/io";
 import SettingSidebar from "@/component/sidebar/SettingSidebar";
+import localStorage from "@/utils/LocalStorage";
 
 
 export type TTextCounts = {
@@ -47,7 +48,8 @@ export default function Typing() {
   const wpmHistory = useRef<number[]>([]);
   const prevProgressRef = useRef(0);
   // settings
-  const [settings, setSettings] = useState(defaultSettings); // localStorage를 먼저 사용하도록 변경하기
+  const localSettings = localStorage.getItem("settings");
+  const [settings, setSettings] = useState(localSettings && JSON.parse(localSettings) || defaultSettings);
   
   const closeEndModal = () => {
     window.location.reload();

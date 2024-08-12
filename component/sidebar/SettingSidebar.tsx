@@ -1,5 +1,5 @@
 import styles from "./SettingSidebar.module.css";
-import React, {CSSProperties, SetStateAction} from "react";
+import React, {CSSProperties, SetStateAction, useEffect} from "react";
 import { IoClose } from "react-icons/io5";
 import useCloseOutside from "@/hooks/useCloseOutside";
 import {ISettings, TWeight} from "@/static/settings";
@@ -7,6 +7,8 @@ import { GiSpeaker } from "react-icons/gi";
 import { GiSpeakerOff } from "react-icons/gi";
 import { BsPlus } from "react-icons/bs";
 import { HiOutlineMinus } from "react-icons/hi2";
+import useSoundContext from "@/hooks/useSoundContext";
+import localStorage from "@/utils/LocalStorage";
 
 
 interface ISettingSidebar {
@@ -24,11 +26,16 @@ const MIN_FONT_WEIGHT = 100;
 
 const SettingSidebar = ({close, settings, setSettings, fontSize, fontWeight}: ISettingSidebar) => {
   const ref = useCloseOutside(close);
+  const {playCorrect} = useSoundContext(settings.soundLevel);
   
   const sampleCss: CSSProperties = {
     fontSize: fontSize,
     fontWeight: fontWeight
   }
+  
+  const inputRangeCss: CSSProperties = {
+    width: `calc(${settings.soundLevel * 10}%)`,
+  };
   
   const changeSettings = <K extends keyof ISettings>(key: K, value: ISettings[K]) => {
     setSettings({
@@ -49,6 +56,14 @@ const SettingSidebar = ({close, settings, setSettings, fontSize, fontWeight}: IS
       changeSettings(isSize ? 'fontSize' : 'fontWeight', nextValue as ISettings["fontWeight"]);
     }
   }
+  
+  useEffect(() => {
+    playCorrect();
+  }, [settings.soundLevel]);
+  
+  useEffect(() => {
+    localStorage.setItem('settings', JSON.stringify(settings));
+  }, [settings]);
   
   
   return (
@@ -85,20 +100,25 @@ const SettingSidebar = ({close, settings, setSettings, fontSize, fontWeight}: IS
             <h2 className={styles.subtitle}>sound</h2>
             <div className={styles.sound}>
               {settings.soundLevel === 0 ?
-                <GiSpeakerOff onClick={() => changeSettings('soundLevel', 3)} size={18} /> :
-                <GiSpeaker onClick={() => changeSettings('soundLevel', 0)} size={18} />
+                <GiSpeakerOff onClick={() => changeSettings('soundLevel', 3)} size={25} /> :
+                <GiSpeaker onClick={() => changeSettings('soundLevel', 0)} size={25} />
               }
-              <input
-                className={styles.sound_bar}
-                type="range"
-                value={settings.soundLevel}
-                min={0}
-                max={10}
-                step={1}
-                onChange={(e) => {
-                  changeSettings('soundLevel', Number(e.target.value) as ISettings["soundLevel"]);
-                }}
-              />
+              <div className={styles.sound_bar}>
+                <input
+                  className={styles.input}
+                  type="range"
+                  value={settings.soundLevel}
+                  min={0}
+                  max={10}
+                  step={1}
+                  onChange={(e) => {
+                    changeSettings('soundLevel', Number(e.target.value) as ISettings["soundLevel"]);
+                  }}
+                />
+                <div className={styles.show_input}>
+                  <div className={styles.gage} style={inputRangeCss} />
+                </div>
+              </div>
             </div>
           </div>
           <div className={styles.divider}/>

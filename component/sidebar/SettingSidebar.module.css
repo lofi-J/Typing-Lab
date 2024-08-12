@@ -12,7 +12,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  width: 20vw;
+  width: 30rem;
   height: 100vh;
   background-color: var(--background-color-rgb);
   padding: 1rem;
@@ -91,7 +91,41 @@
 /* sound */
 .sound {
   display: flex;
+  align-items: center;
   gap: 1rem;
+  cursor: pointer;
+}
+.sound_bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.input {
+  cursor: pointer;
+  width: 100%;
+  outline: none;
+  border: none;
+  opacity: 0;
+  z-index: 2;
+}
+.show_input {
+  cursor: pointer;
+  position: absolute;
+  width: 100%;
+  border: 1px solid var(--primary-color);
+  background-color: var(--background-color);
+  height: 1rem;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.gage {
+  cursor: pointer;
+  height: 0.8rem;
+  background-color: var(--accent-color);
+  z-index: 3;
 }
 
 /* font */
