@@ -85,9 +85,20 @@ const SettingSidebar = ({close, settings, setSettings, fontSize, fontWeight}: IS
             <h2 className={styles.subtitle}>sound</h2>
             <div className={styles.sound}>
               {settings.soundLevel === 0 ?
-                <GiSpeakerOff size={18}/> : <GiSpeaker size={18}/>
+                <GiSpeakerOff onClick={() => changeSettings('soundLevel', 3)} size={18} /> :
+                <GiSpeaker onClick={() => changeSettings('soundLevel', 0)} size={18} />
               }
-              <input type="range" className={styles.sound_bar}/>
+              <input
+                className={styles.sound_bar}
+                type="range"
+                value={settings.soundLevel}
+                min={0}
+                max={10}
+                step={1}
+                onChange={(e) => {
+                  changeSettings('soundLevel', Number(e.target.value) as ISettings["soundLevel"]);
+                }}
+              />
             </div>
           </div>
           <div className={styles.divider}/>

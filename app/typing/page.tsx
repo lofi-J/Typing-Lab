@@ -47,7 +47,7 @@ export default function Typing() {
   const wpmHistory = useRef<number[]>([]);
   const prevProgressRef = useRef(0);
   // settings
-  const [settings, setSettings] = useState(defaultSettings);
+  const [settings, setSettings] = useState(defaultSettings); // localStorage를 먼저 사용하도록 변경하기
   
   const closeEndModal = () => {
     window.location.reload();
@@ -125,6 +125,7 @@ export default function Typing() {
         fontWeight={settings.fontWeight}
         isShowProgressBar={settings.appearance === 'zen'}
         progress={progress}
+        settings={settings}
       />
       {settings.appearance === 'basic' &&
         <Keyboard isActive={!isEnd} />

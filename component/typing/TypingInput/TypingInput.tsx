@@ -5,6 +5,7 @@ import React, {useState, useEffect, ChangeEvent} from "react";
 import {TTextCounts} from "@/app/typing/page";
 import {checkSyllableLevel} from "@/utils/playgroundHelper";
 import useSoundContext from "@/hooks/useSoundContext";
+import {ISettings} from "@/static/settings";
 
 
 interface ITypingInput {
@@ -18,6 +19,7 @@ interface ITypingInput {
   setTextCounts: React.Dispatch<React.SetStateAction<TTextCounts>>;
   setIsEnd: React.Dispatch<React.SetStateAction<boolean>>;
   inputRef: React.RefObject<HTMLInputElement>;
+  settings: ISettings;
 }
 
 const initValidationArray = (baseLine: string) => {
@@ -26,7 +28,7 @@ const initValidationArray = (baseLine: string) => {
 
 const TypingInput = (
   {targetList, totalUserText, setTotalUserText, lineRange, setLineRange,
-  setValidationResultArr, setCaret, setTextCounts, setIsEnd, inputRef
+  setValidationResultArr, setCaret, setTextCounts, setIsEnd, inputRef, settings
 }: ITypingInput) => {
   
   const baseLine = targetList[lineRange.start]; // 타이핑 해야하는 라인 string
@@ -36,8 +38,7 @@ const TypingInput = (
   const [isPressEnter, setIsPressEnter] = useState(false);
   const maxTextCount = targetList.reduce((acc, cur: string) => {return acc + cur.length}, 0);
   // sound player
-  const {playCorrect, playInCorrect, playSpace, playBackward, playEnter} = useSoundContext();
-  
+  const {playCorrect, playInCorrect, playSpace, playBackward, playEnter} = useSoundContext(settings.soundLevel);
   
   // increase state
   const updateTextStatus = (key: keyof TTextCounts) => {

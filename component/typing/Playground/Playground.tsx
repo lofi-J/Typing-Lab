@@ -7,7 +7,7 @@ import UserText from "@/component/typing/UserText/UserText";
 import {initLineRange, TLineRange} from "@/utils/playgroundHelper";
 import {TTextCounts} from "@/app/typing/page";
 import FocusAlert from "@/component/typing/FocusAlert/FocusAlert";
-import {TWeight} from "@/static/settings";
+import {ISettings, TWeight} from "@/static/settings";
 import ProgressBar from "@/component/ProgressBar/ProgressBar";
 
 
@@ -23,11 +23,12 @@ interface IPlayground {
   fontWeight: TWeight;
   isShowProgressBar: boolean;
   progress: number;
+  settings: ISettings;
 }
 
 const Playground = ({
   targetList, setTextCounts, totalUserText, setTotalUserTexts, isEnd, setIsEnd, inputRef,
-  fontSize, fontWeight, isShowProgressBar, progress
+  fontSize, fontWeight, isShowProgressBar, progress, settings
   }: IPlayground) => {
   const [validationResultArray, setValidationResultArray] = useState<boolean[][]>(makeArray(targetList.length, []));
   const [lineRange, setLineRange] = useState<TLineRange>(initLineRange(targetList));
@@ -85,6 +86,7 @@ const Playground = ({
         setTextCounts={setTextCounts}
         setIsEnd={setIsEnd}
         inputRef={inputRef}
+        settings={settings}
       />
       {isShowProgressBar && <ProgressBar progress={progress} />}
     </div>
