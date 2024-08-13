@@ -66,15 +66,15 @@ export default function Typing() {
     }
     const result = splitTextByLine(sentenceObj.sentence, 80, sentenceObj.lang);
     setTargetList(result); // 타이핑 해야할 라인들 string[]
-    setTotalUserTexts(makeArray(result.length, '')); // 유저가 타이핑 한 라인들 string[]
-    setTotalTargetListLength(result.reduce((acc, cur) => acc + cur.length, 0)); // 타이핑해야할 총 텍스트 개수
+    setTotalUserTexts(makeArray(result.length, '')); // 유저가 타이핑 한 라인들: string[]
+    setTotalTargetListLength(result.reduce((acc, cur) => acc + cur.length, 0)); // 타이핑할 총 텍스트 개수
   }, [sentence])
   
   useEffect(() => { // update
     if (!totalUserText) return;
     
     const inputCount = totalUserText.reduce((acc, cur: string) => {return acc + cur.length}, 0);
-    const progress = calculateProgress(totalTargetListLength, inputCount); // targetList가 아직 초기화 되지 않았을 경우 undefined가 될 수 있음
+    const progress = calculateProgress(totalTargetListLength, inputCount);
     setProgress(progress || 0); // progress undefined인 경우 진행도 0
   }, [totalUserText]);
   
